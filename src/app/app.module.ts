@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 
 import { MaterialModule } from './material.module';
-import { RequestfromComponent } from './requestfrom/requestfrom.component';
+import { RequestFromComponent } from './request-from/request-from.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -24,7 +24,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 @NgModule({
   declarations: [
     AppComponent,
-    RequestfromComponent,
+    RequestFromComponent,
     MainNavComponent
   ],
   imports: [
