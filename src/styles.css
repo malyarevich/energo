@@ -1,0 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; font-family: Roboto, "Helvetica Neue", sans-serif; font-size: 18px; }
+body { margin: 0; }
+@import "custom-theme.scss";
+a{
+  text-decoration: none;
+  color: #FFF;
+}

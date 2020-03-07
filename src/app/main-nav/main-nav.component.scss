@@ -1,0 +1,30 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.logo_zoe{
+  display: flex;
+  align-items: center;
+
+  &__image{
+    height: 2rem;
+    width: auto;
+  }
+  &__title{
+    padding-left: .5rem;
+  }
+}

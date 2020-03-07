@@ -1,0 +1,57 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="#">Link 1</a>
+      <a mat-list-item href="#">Link 2</a>
+      <a mat-list-item href="#">Link 3</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <div class="logo_zoe">
+        <img class="logo_zoe__image" src="assets/image/zoe_logo-min.png" alt="">
+        <div class="logo_zoe__title">ПАТ Запоріжжяобленерго</div>
+      </div>
+
+      <button mat-button [matMenuTriggerFor]="companyMenu">Компанія</button>
+      <mat-menu #companyMenu="matMenu">
+        <button mat-menu-item>Item 1</button>
+      </mat-menu>
+      <button mat-button [matMenuTriggerFor]="presscenterMenu">Прес-центр</button>
+      <mat-menu #presscenterMenu="matMenu">
+        <button mat-menu-item>Item 1</button>
+      </mat-menu>
+      <button mat-button [matMenuTriggerFor]="procurementsMenu">Закупівлі</button>
+      <mat-menu #procurementsMenu="matMenu">
+        <button mat-menu-item>Item 1</button>
+      </mat-menu>
+      <button mat-button [matMenuTriggerFor]="salesMenu">Продажі</button>
+      <mat-menu #salesMenu="matMenu">
+        <button mat-menu-item>Item 1</button>
+      </mat-menu>
+      <button mat-button [matMenuTriggerFor]="salesMenu">Акціонерам</button>
+      <mat-menu #salesMenu="matMenu">
+        <button mat-menu-item>Item 1</button>
+      </mat-menu>
+
+
+    </mat-toolbar>
+
+    <!-- Add Content Here -->
+
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
