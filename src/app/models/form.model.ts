@@ -33,15 +33,23 @@ export const documentsForDownload = [
   }
 ];
 
+export const strategyForDownload = [
+  { id: 'Керівника', numberList: [0, 1] },
+  { id: 'presenter_of_chief', numberList: [2, 3] },
+  { id: 'phis_o', numberList: [2, 1] },
+  { id: 'presenter_of_phis_o', numberList: [2, 3, 4] },
+  { id: 'FOP', numberList: [0, 1, 2, 3] }
+]
+
 export const firstChecklist = [
   {
     group: 'options1',
-    id: 'first_join',
+    id: 'Нове приєднання',
     description: 'Які приєднуються до електричних мереж уперше'
   },
   {
     group: 'options1',
-    id: 'tech_params',
+    id: 'Зміна технічних параметри',
     description: 'Які змінюють технічні параметри'
   }
 ];
@@ -51,7 +59,7 @@ export const refDocument = 'http://www.zoe.com.ua/wp-content/uploads/2019/05/%D0
 export const secChecklist = [
   {
     group: 'options2',
-    id: 'chief_uo',
+    id: 'Керівника',
     description: 'Керівника юридичної особи'
   },
   {
@@ -82,7 +90,6 @@ export const sectionFields = [
     fields: [
       {
         name: 'firstName',
-        type: 'firstName',
         placeholder: 'ЄДРПОУ / IПН'
       },
       {
@@ -104,8 +111,10 @@ export const sectionFields = [
         placeholder: 'E-mail'
       },
 
-      { name: 'phone',
-        placeholder: 'Телефон' }
+      {
+        name: 'phone',
+        placeholder: 'Телефон'
+      }
     ]
   },
   {

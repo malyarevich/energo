@@ -1,0 +1,20 @@
+<!-- <ng-container *ngIf="isFieldTypeErrorById(fieldId, 'required')">
+  Будь ласка, <strong>заповніть це поле</strong>
+</ng-container>
+
+<ng-container *ngIf="isFieldTypeErrorById(fieldId, 'minLength')">
+  Будь ласка, введить більше символів
+</ng-container>
+
+<ng-container *ngIf="isFieldTypeErrorById(fieldId, 'maxLength')">
+  Будь ласка, введить меньшу кількість символів
+</ng-container>
+
+<ng-container *ngIf="isFieldTypeErrorById(fieldId, 'email')">
+  Будь ласка, введить корректний email address
+</ng-container> -->
+
+  <!-- <li class="error_list__item" *ngFor="let customError of customErrors">{{ customError }}</li> -->
+  <ng-container class="error_list__item" *ngFor="let error of ($errorList | async)">
+    <p [innerHTML]="error"></p>
+  </ng-container>

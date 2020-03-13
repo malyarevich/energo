@@ -12,9 +12,11 @@ import {
   firstChecklist,
   secChecklist,
   documentsForDownload,
-  refDocument
+  refDocument,
+  strategyForDownload
 } from '../models/form.model';
 import { FormService } from '../services/form.service';
+import { element } from 'protractor';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
@@ -42,7 +44,6 @@ export class RequestFromComponent implements OnInit {
   };
 
   myGroup: FormGroup;
-  emailFormControl: FormControl;
 
   refDocument = refDocument;
 
@@ -50,23 +51,18 @@ export class RequestFromComponent implements OnInit {
   sectionFields = sectionFields;
   firstChecklist = firstChecklist;
   secChecklist = secChecklist;
-  documentsForDownload = documentsForDownload;
+  documentsForDownload = [];
 
   matcher = new MyErrorStateMatcher();
 
-  constructor(private formService: FormService) {}
+  constructor(private formService: FormService) { }
 
   ngOnInit() {
     this.myGroup = this.formService.getFormGroup();
-    this.emailFormControl = this.formService.getEmailFormControl();
   }
 
   getFormValueById(id: string) {
     return this.formService.getFormValueById(id);
-  }
-  isFormErrorsById(id: string): boolean {
-    // return this.formService.isFormErrorsById(id);
-    return false;
   }
 
   dirtOption(group: any) {
@@ -76,13 +72,23 @@ export class RequestFromComponent implements OnInit {
   setPetitionTo(event: any) {
     // console.log('setPetitionTo', event);
     this.dirtOption(event.target.name); // name is group
-    // this.petitionTo = event.target.value;
+    this.formService.petitionTo = event.target.value;
   }
 
-  setPetitionFrom(event: any) {
-    // console.log('setPetitionFrom', event);
-    this.dirtOption(event.target.name); // name is group
-    // this.petitionFrom = event.target.value;
+  filterDocumentsForDownload(event: Event | any) {
+    this.documentsForDownload = [];
+    const { numberList } = strategyForDownload.find(element => (event.target.id === element.id))
+    numberList.forEach(id => {
+      this.documentsForDownload.push(documentsForDownload[id]);
+    })
+    console.log('setPetitionFrom', this.documentsForDownload);
+  }
+
+  setPetitionFrom(event: Event | any, option: string) {
+    this.filterDocumentsForDownload(event);
+
+    this.dirtOption(option); // name is group
+    this.formService.petitionFrom = event.target.id;
   }
 
   isBehaviorOption(group: string): boolean {
@@ -98,11 +104,17 @@ export class RequestFromComponent implements OnInit {
     return this.formService.hasUserDocFiles(id);
   }
 
-  hasEmailError(type: string): boolean {
-    return this.formService.hasEmailError(type);
-  }
-
   send() {
     this.formService.sendForm();
+  }
+
+  isDocumentsSelected(): boolean {
+    let isAllSelected = this.documentsForDownload.length > 0 ? true : false;
+    this.documentsForDownload.forEach(documentItem => {
+      if (!this.hasUserDocFiles(documentItem.id)) {
+        isAllSelected = false;
+      }
+    })
+    return isAllSelected;
   }
 }

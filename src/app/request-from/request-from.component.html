@@ -8,64 +8,41 @@
       <b class="fieldset__legendNum">1</b>
       <b>Заповненя заяви</b>
     </legend>
-    <div style="font-size: 1rem">
-      Завантажте, роздрукуйте та заповніть заяву про приєднання електроустановки
-    </div>
-
-    <br />
-    <button mat-raised-button color="warn" style="font-size: 1rem">
-      <a [href]="refDocument">Завантажити</a>
-    </button>
+    <app-step-download [refDocument]="refDocument"></app-step-download>
   </fieldset>
 
-  <fieldset
-    class="request_form__fieldset fieldset"
-    *ngFor="let section of sectionFields; let i = index"
-  >
+  <fieldset class="request_form__fieldset fieldset" *ngFor="let section of sectionFields; let i = index">
     <legend class="fieldset__legend">
       <b class="fieldset__legendNum"> {{ i + 2 }} </b>
       <b>{{ section.legend }}</b>
     </legend>
+    <!-- step-data -->
     <ng-container *ngFor="let fieldItem of section.fields">
       <ng-container *ngIf="fieldItem.type === 'select'; else defaultInput">
         <mat-form-field>
           <mat-label>{{ fieldItem.placeholder }}</mat-label>
-          <mat-select>
-            <mat-option
-              *ngFor="let option of fieldItem.options"
-              [value]="option.id"
-              >{{ option.label }}</mat-option
-            >
+          <mat-select [formControlName]="fieldItem.name" required>
+            <mat-option *ngFor="let option of fieldItem.options" [value]="option.id">{{ option.label }}</mat-option>
           </mat-select>
+          <mat-hint></mat-hint>
+          <mat-error>
+            <app-error-list [fieldId]="fieldItem.name"></app-error-list>
+          </mat-error>
         </mat-form-field>
       </ng-container>
       <ng-template #defaultInput>
         <mat-form-field class="example-full-width">
           <mat-label> {{ fieldItem.placeholder }}</mat-label>
-          <input
-            type="text"
-            matInput
-            [formControl]="emailFormControl"
-            [errorStateMatcher]="matcher"
-            [formControlName]="fieldItem.name"
-            [placeholder]=" "
-          />
+          <input type="text" matInput [errorStateMatcher]="matcher" [formControlName]="fieldItem.name"
+            [placeholder]="fieldItem.placeholder" />
           <mat-hint></mat-hint>
-          <mat-error
-            *ngIf="hasEmailError('email') && !hasEmailError('required')"
-          >
-            Please enter a valid email address
-          </mat-error>
-          <mat-error *ngIf="hasEmailError('required')">
-            Будь ласка, <strong>заповніть це поле</strong>
+          <mat-error>
+            <app-error-list [fieldId]="fieldItem.name"></app-error-list>
           </mat-error>
         </mat-form-field>
       </ng-template>
-      <p
-        class="fieldset__input_errors"
-        *ngIf="isFormErrorsById(fieldItem.name)"
-      ></p>
     </ng-container>
+    <!-- /step-data -->
   </fieldset>
 
   <fieldset class="request_form__fieldset fieldset">
@@ -73,39 +50,28 @@
       <b class="fieldset__legendNum">4</b>
       <b> Подання заяви</b>
     </legend>
+
+    <!-- step-object -->
     <div>Для об’єктів:</div>
     <p class="fieldset__part">
-      <label
-        class="fieldset__input_container"
-        *ngFor="let firstRadioItem of firstChecklist"
-      >
-        <input
-          type="radio"
-          [name]="firstRadioItem.group"
-          (click)="setPetitionTo($event)"
-          [id]="firstRadioItem.id"
-          [value]="firstRadioItem.id"
-        />
+      <label class="fieldset__input_container" *ngFor="let firstRadioItem of firstChecklist">
+        <input type="radio" [name]="firstRadioItem.group" (click)="setPetitionTo($event)" [id]="firstRadioItem.id"
+          [value]="firstRadioItem.id" />
         <span class="fieldset__input_checkmark"></span>
         <span class="label__wrap-normal">
           {{ firstRadioItem.description }}
         </span>
       </label>
     </p>
+    <!-- /step-object -->
+    
+    <!-- step-from -->
     <ng-container *ngIf="isBehaviorOption('options1')">
       <div>Звернення від:</div>
       <p class="fieldset__part">
-        <label
-          class="fieldset__input_container"
-          *ngFor="let secRadioItem of secChecklist"
-        >
-          <input
-            type="radio"
-            [name]="secRadioItem.group"
-            (click)="setPetitionFrom($event)"
-            [id]="secRadioItem.id"
-            [value]="secRadioItem.id"
-          />
+        <label class="fieldset__input_container" *ngFor="let secRadioItem of secChecklist">
+          <input type="radio" (click)="setPetitionFrom($event, secRadioItem.group)" [id]="secRadioItem.id"
+            [value]="secRadioItem.id" [formControlName]="secRadioItem.group" />
           <span class="fieldset__input_checkmark"></span>
           <span class="label__wrap-normal">
             {{ secRadioItem.description }}
@@ -113,6 +79,8 @@
         </label>
       </p>
     </ng-container>
+    <!-- /step-from -->
+
   </fieldset>
 
   <ng-container *ngIf="isBehaviorOption('options2')">
@@ -122,56 +90,12 @@
         <b> Перелік документів для завантаження</b>
       </legend>
 
-      <!-- Automatisation -->
-      <label
-        class="fieldset__input_container"
-        *ngFor="let documentItem of documentsForDownload"
-        [for]="documentItem.id"
-      >
-        <input
-          class="fieldset__input_load input_pdf_only"
-          type="file"
-          [name]="documentItem.id"
-          [id]="documentItem.id"
-          accept="application/pdf,image/*"
-          (change)="changeUserDocFiles($event)"
-        />
-        <span
-          class="fieldset__input_checkmark"
-          [ngClass]="{ checked: hasUserDocFiles(documentItem.id) }"
-        ></span>
-
-        <span class="label__wrap-normal ">
-          {{ documentItem.description }}
-        </span>
-      </label>
-    </fieldset>
-  </ng-container>
-  <ng-container *ngIf="isBehaviorOption('options2')">
-    <fieldset class="request_form__fieldset fieldset">
-      <legend class="fieldset__legend">
-        <b class="fieldset__legendNum">5</b>
-        <b> Перелік документів для завантаження</b>
-      </legend>
-
-      <!-- Automatisation -->
-      <label
-        class="fieldset__input_container"
-        *ngFor="let documentItem of documentsForDownload"
-        [for]="documentItem.id"
-      >
-        <input
-          class="fieldset__input_load input_pdf_only"
-          type="file"
-          [name]="documentItem.id"
-          [id]="documentItem.id"
-          accept="application/pdf,image/*"
-          (change)="changeUserDocFiles($event)"
-        />
-        <span
-          class="fieldset__input_checkmark"
-          [ngClass]="{ checked: hasUserDocFiles(documentItem.id) }"
-        ></span>
+      <!-- Automatization -->
+      <label class="fieldset__input_container" *ngFor="let documentItem of documentsForDownload"
+        [for]="documentItem.id">
+        <input class="fieldset__input_load input_pdf_only" type="file" [name]="documentItem.id" [id]="documentItem.id"
+          accept="application/pdf,image/*" (change)="changeUserDocFiles($event)" />
+        <span class="fieldset__input_checkmark" [ngClass]="{ checked: hasUserDocFiles(documentItem.id) }"></span>
 
         <span class="label__wrap-normal ">
           {{ documentItem.description }}
@@ -183,13 +107,8 @@
   <!-- <input type="text" formControlName="firstName" />
   <p>{{ getFormValueById("firstName") }}</p> -->
   <div class="button_container">
-    <button
-      mat-raised-button
-      color="warn"
-      class="submit_button"
-      type="submit"
-      (click)="send()"
-    >
+    <button mat-raised-button color="warn" class="submit_button" type="submit" (click)="send()"
+      [disabled]="myGroup.invalid || !isDocumentsSelected()">
       Відправити
     </button>
   </div>
