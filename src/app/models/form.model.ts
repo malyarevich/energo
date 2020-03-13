@@ -80,11 +80,15 @@ export const sectionFields = [
   {
     legend: 'Контактні дані',
     fields: [
-      { name: 'firstName', placeholder: 'ЄДРПОУ / IПН' },
+      {
+        name: 'firstName',
+        type: 'firstName',
+        placeholder: 'ЄДРПОУ / IПН'
+      },
       {
         name: 'pibName',
         placeholder:
-          'Найменування юридичної особи / ПІБ фізичної особи-замовника приєднання'
+          'Найменування юридичної особи / ПІБ фізичної особи'
       },
       {
         name: 'addressUr',
@@ -96,6 +100,7 @@ export const sectionFields = [
       },
       {
         name: 'email',
+        type: 'email',
         placeholder: 'E-mail'
       },
 
@@ -197,7 +202,7 @@ export const sectionFields = [
           }
         ]
       },
-      { name: 'address', placeholder: 'Address' }
+      { name: 'address', placeholder: 'Адреса об’єкта' }
     ]
   }
 ];

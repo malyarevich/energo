@@ -16,6 +16,12 @@ export class MainNavComponent {
       shareReplay()
     );
 
+  isWebAndTablet$: Observable<boolean> = this.breakpointObserver.observe([Breakpoints.Tablet, Breakpoints.Web ])
+    .pipe(
+      map(result => result.matches),
+      shareReplay()
+    );
+
   constructor(private breakpointObserver: BreakpointObserver) {}
 
 

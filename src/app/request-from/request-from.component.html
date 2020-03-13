@@ -1,6 +1,6 @@
 <form class="request_form" [formGroup]="myGroup">
   <h1 class="request_form__title">
-    <b>ПОДАННЯ ЗАЯВИ В ЕЛЕКТРОННОМУ ВИГЛЯДІ</b>
+    <b>ПОДАННЯ ЗАЯВИ НА ПРИЄДНАННЯ В ЕЛЕКТРОННОМУ ВИГЛЯДІ </b>
   </h1>
 
   <fieldset class="request_form__fieldset fieldset">
@@ -133,12 +133,44 @@
           type="file"
           [name]="documentItem.id"
           [id]="documentItem.id"
-          accept="application/pdf"
-          (change)="changePdfFile($event)"
+          accept="application/pdf,image/*"
+          (change)="changeUserDocFiles($event)"
         />
         <span
           class="fieldset__input_checkmark"
-          [ngClass]="{ checked: hasPdfFile(documentItem.id) }"
+          [ngClass]="{ checked: hasUserDocFiles(documentItem.id) }"
+        ></span>
+
+        <span class="label__wrap-normal ">
+          {{ documentItem.description }}
+        </span>
+      </label>
+    </fieldset>
+  </ng-container>
+  <ng-container *ngIf="isBehaviorOption('options2')">
+    <fieldset class="request_form__fieldset fieldset">
+      <legend class="fieldset__legend">
+        <b class="fieldset__legendNum">5</b>
+        <b> Перелік документів для завантаження</b>
+      </legend>
+
+      <!-- Automatisation -->
+      <label
+        class="fieldset__input_container"
+        *ngFor="let documentItem of documentsForDownload"
+        [for]="documentItem.id"
+      >
+        <input
+          class="fieldset__input_load input_pdf_only"
+          type="file"
+          [name]="documentItem.id"
+          [id]="documentItem.id"
+          accept="application/pdf,image/*"
+          (change)="changeUserDocFiles($event)"
+        />
+        <span
+          class="fieldset__input_checkmark"
+          [ngClass]="{ checked: hasUserDocFiles(documentItem.id) }"
         ></span>
 
         <span class="label__wrap-normal ">

@@ -5,6 +5,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+
+import { InMemoryDataService } from './services/in-memory-data.service';
 
 import { MaterialModule } from './material.module';
 import { RequestFromComponent } from './request-from/request-from.component';
@@ -32,6 +35,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, { dataEncapsulation: false }),
     MaterialModule,
     LayoutModule,
     MatToolbarModule,

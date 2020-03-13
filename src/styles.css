@@ -1,7 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; font-family: Roboto, "Helvetica Neue", sans-serif; font-size: 18px; }
-body { margin: 0; }
+html, body { width: 100vw;
+  height: 100vh;
+  overflow-x: hidden; overflow-y: hidden; font-family: Roboto, "Helvetica Neue", sans-serif; font-size: 24px !important; }
+
+@media screen and (max-width: 1920px ){
+  html, body { font-size: 1rem !important; }
+}
+/*@media screen and (max-width: 1280px ){*/
+/*  html, body { font-size: 12px; }*/
+/*}*/
+@media screen and (max-width: 960px ){
+  html, body { font-size: 0.9rem !important; }
+}
+@media screen and (max-width: 600px ){
+  html, body { font-size: 0.79rem !important; }
+}
+@media screen and (max-width: 320px ){
+  html, body { font-size: 0.7rem !important; }
+}
+
+body { margin: 0;}
+
+
 @import "custom-theme.scss";
 a{
   text-decoration: none;

@@ -13,8 +13,8 @@ import {
   secChecklist,
   documentsForDownload,
   refDocument
-} from './models/form.model';
-import { FormService } from './form.service';
+} from '../models/form.model';
+import { FormService } from '../services/form.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
@@ -85,17 +85,17 @@ export class RequestFromComponent implements OnInit {
     // this.petitionFrom = event.target.value;
   }
 
-  isBehaviorOption(id: string): boolean {
-    return this.behaviorModel[id];
+  isBehaviorOption(group: string): boolean {
+    return this.behaviorModel[group];
   }
 
-  changePdfFile(event: Event) {
+  changeUserDocFiles(event: Event) {
     // console.log(event);
-    this.formService.changePdfFile(event);
+    this.formService.changeUserDocFiles(event);
   }
 
-  hasPdfFile(id: string) {
-    return this.formService.hasPdfFile(id);
+  hasUserDocFiles(id: string) {
+    return this.formService.hasUserDocFiles(id);
   }
 
   hasEmailError(type: string): boolean {

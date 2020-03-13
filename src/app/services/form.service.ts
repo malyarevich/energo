@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -8,14 +8,15 @@ import { HttpClient } from '@angular/common/http';
 export class FormService {
   myGroup: FormGroup;
   emailFormControl: FormControl;
+  private connectionClientsUrl = 'api/ConnectionClients';
 
   isSubmitted = false;
   petitionTo = null;
   petitionFrom = null;
-  pdfFiles = {};
+  userDocFiles = {};
 
-  constructor(private http: HttpClient) { 
-    
+  constructor(private http: HttpClient) {
+
     // Инициализируем новую форм группу
     this.myGroup = new FormGroup({
       firstName: new FormControl(
@@ -42,7 +43,7 @@ export class FormService {
       ),
       addressUr: new FormControl(
         {
-          value: '', // state
+          value: '123123', // state
           disabled: false // off/on
         },
         Validators.compose([
@@ -87,7 +88,7 @@ export class FormService {
           value: null, // state
           disabled: false // off/on
         },
-        Validators.compose([
+          Validators.compose([
           Validators.required // обязательное поле
         ]) // Validations
       ),
@@ -113,15 +114,15 @@ export class FormService {
     });
   }
 
-  changePdfFile(event: Event) {
+  changeUserDocFiles(event: Event) {
     const target: any = event.target; // for compilation clear
-    this.pdfFiles[target.id] = target.files[0];
+    this.userDocFiles[target.id] = target.files[0];
 
-    // const urlLoadingPdfFile = `https://www.poe.pl.ua/loading-pdf-file/${target.id}`;
-    // this.http.put(urlLoadingPdfFile, target.files[0]).subscribe(
+    // const urlLoadingUserDocFiles = `https://www.poe.pl.ua/loading-pdf-file/${target.id}`;
+    // this.http.put(urlLoadingUserDocFiles, target.files[0]).subscribe(
     //   // success
     //   (successResponse: any) => {
-    //     this.pdfFiles[target.id] = successResponse.fileName;
+    //     this.userDocFiles[target.id] = successResponse.fileName;
     //     console.log(successResponse);
     //   },
     //   // error
@@ -138,13 +139,13 @@ export class FormService {
   isFormErrorsById(id: string): boolean {
     return !!this.myGroup.controls[id].errors && this.isSubmitted;
   }
-  
+
   getFormValueById(id: string) {
     return this.myGroup.value[id];
   }
-  
-  hasPdfFile(id: string) {
-    return !!this.pdfFiles[id];
+
+  hasUserDocFiles(id: string) {
+    return !!this.userDocFiles[id];
   }
 
   getFormGroup(): FormGroup {
@@ -160,13 +161,13 @@ export class FormService {
       form: this.myGroup.value, // 1 & 2 main form information
       petitionTo: this.petitionTo, // 3.1
       petitionFrom: this.petitionFrom, // 3.2
-      documentsForDownload: this.pdfFiles // 4 documentsForDownload pdf_only
+      documentsForDownload: this.userDocFiles // 4 documentsForDownload pdf_only
     };
     // console.log('data from front', data);
     // console.log('data this.myGroup', this.myGroup);
     if (this.myGroup.valid && this.petitionTo && this.petitionFrom) {
       this.http
-        .post('https://jsonplaceholder.typicode.com/posts', data)
+        .post(this.connectionClientsUrl, data)
         .subscribe(
           item => {
             console.log('success, response by server', item);
