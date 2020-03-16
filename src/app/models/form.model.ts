@@ -30,15 +30,23 @@ export const documentsForDownload = [
   {
     id: 'situation_document',
     description: `Статутний документ`
+  },
+  {
+    id: 'dovirenyst',
+    description: `Належним чином оформлена довіреність чи інший документ на право укладати договори особі, яка уповноважена підписувати договори (за потреби)`
+  },
+  {
+    id: 'passport',
+    description: `Паспорт`
   }
 ];
 
 export const strategyForDownload = [
-  { id: 'Керівника', numberList: [0, 1] },
-  { id: 'presenter_of_chief', numberList: [2, 3] },
-  { id: 'phis_o', numberList: [2, 1] },
-  { id: 'presenter_of_phis_o', numberList: [2, 3, 4] },
-  { id: 'FOP', numberList: [0, 1, 2, 3] }
+  { id: 'Керівника', numberList: [0, 1, 2, 3, 4, 5] },
+  { id: 'presenter_of_chief', numberList: [0, 1, 2, 3, 6, 4, 5] },
+  { id: 'phis_o', numberList: [0, 1, 2, 3, 7] },
+  { id: 'presenter_of_phis_o', numberList: [0, 1, 2, 3, 6] },
+  { id: 'FOP', numberList: [0, 1, 2, 3, 6, 7, 4] }
 ]
 
 export const firstChecklist = [
