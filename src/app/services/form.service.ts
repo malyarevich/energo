@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {BehaviorSubject, Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -11,19 +12,44 @@ export class FormService {
 
   isSubmitted = false;
   private _petitionTo = null;
-  private _petitionFrom = null;
+  private _petitionFrom$: BehaviorSubject<string> = new BehaviorSubject(null);
+  private _prefixPetitionFrom$: BehaviorSubject<string> = new BehaviorSubject(null);
+  private _finalPetitionFrom$: BehaviorSubject<string> = new BehaviorSubject(null);
   userDocFiles = {};
 
   set petitionTo(value: string) {
     this._petitionTo = value;
   }
 
+  get petitionFrom(): string {
+    return this._petitionFrom$.getValue();
+  }
+
   set petitionFrom(value: string) {
-    this._petitionFrom = value;
+    this._petitionFrom$.next(value);
+  }
+
+  get finalPetitionFrom$(): Observable<string> {
+    return this._finalPetitionFrom$.asObservable();
+  }
+
+  get finalPetitionFrom(): string {
+    return this._finalPetitionFrom$.getValue();
+  }
+
+  set finalPetitionFrom(value: string) {
+    this._finalPetitionFrom$.next(value);
+  }
+
+  set prefixPetitionFrom(value: string) {
+    this._prefixPetitionFrom$.next(value);
+  }
+
+  get prefixPetitionFrom(): string {
+    return this._prefixPetitionFrom$.getValue();
   }
 
   constructor(private http: HttpClient) {
-
     // Инициализируем новую форм группу
     this.myGroup = new FormGroup({
       firstName: new FormControl(
@@ -116,12 +142,29 @@ export class FormService {
         Validators.compose([
           Validators.required // обязательное поле
         ]) // Validations
+      ),
+      specialRights: new FormControl(
+        {
+          value: 0, // from who
+          disabled: false // off/on
+        },
+        Validators.compose([
+          Validators.required // обязательное поле
+        ]) // Validations
       )
     });
 
     // вкл функцию слежения за изменениями ЗНАЧЕНИЙ в форме
     this.myGroup.statusChanges.subscribe(result => {
       console.log(result);
+    });
+
+    this._petitionFrom$.subscribe(data => {
+      this.finalPetitionFrom = this.prefixPetitionFrom + data;
+    });
+
+    this._prefixPetitionFrom$.subscribe(data => {
+      this.finalPetitionFrom = data + this.petitionFrom;
     });
   }
 
@@ -146,7 +189,7 @@ export class FormService {
   getFieldControlById(id: string): AbstractControl {
     return this.myGroup.controls[id];
   }
-  
+
   getFormValueById(id: string) {
     return this.myGroup.value[id];
   }
@@ -159,13 +202,19 @@ export class FormService {
     return this.myGroup;
   }
 
+  filtrationForBackend(values: any): any {
+    console.log('values: ', values);
+    return values;
+  }
+
   sendForm() {
     const data = {
-      form: this.myGroup.value, // 2 & 3 main form information
-      petitionTo: this._petitionTo, // 4.1
-      petitionFrom: this._petitionFrom, // 4.2
+      form: this.filtrationForBackend(this.myGroup.value), // 2 & 3 main form information
+      petitionTo: this.petitionTo, // 4.1 For objects
+      petitionFrom: this.petitionFrom, // 4.2 From smb
       documentsForDownload: this.userDocFiles // 4 documentsForDownload pdf_only
     };
+
     // console.log('data this.myGroup', this.myGroup);
     // if (this.myGroup.valid && this.petitionTo && this.petitionFrom) {
     if (this.myGroup.valid) {

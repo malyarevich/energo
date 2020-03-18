@@ -80,10 +80,23 @@
       </p>
     </ng-container>
     <!-- /step-from -->
+    <ng-container *ngIf="isBehaviorOption('options2')">
+      <div>Sam:</div>
+      <p class="fieldset__part">
+        <label class="fieldset__input_container" *ngFor="let specialRightsItem of specialRights">
+          <input type="radio" (click)="clarificationPetitionFrom($event)" [id]="specialRightsItem.value"
+                 [value]="specialRightsItem.value" formControlName="specialRights" />
+          <span class="fieldset__input_checkmark"></span>
+          <span class="label__wrap-normal">
+            {{ specialRightsItem.description }}
+          </span>
+        </label>
+      </p>
+    </ng-container>
 
   </fieldset>
 
-  <ng-container *ngIf="isBehaviorOption('options2')">
+  <ng-container *ngIf="isBehaviorOption('downloadDocumentsStep')">
     <fieldset class="request_form__fieldset fieldset">
       <legend class="fieldset__legend">
         <b class="fieldset__legendNum">5</b>

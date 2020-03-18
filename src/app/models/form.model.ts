@@ -1,3 +1,7 @@
+// import {stringify} from "querystring";
+// import {element} from "protractor";
+// import any = jasmine.any;
+
 export const documentsForDownload = [
   {
     id: 'consent_ECP',
@@ -42,12 +46,21 @@ export const documentsForDownload = [
 ];
 
 export const strategyForDownload = [
-  { id: 'Керівника', numberList: [0, 1, 2, 3, 4, 5] },
-  { id: 'presenter_of_chief', numberList: [0, 1, 2, 3, 6, 4, 5] },
-  { id: 'phis_o', numberList: [0, 1, 2, 3, 7] },
-  { id: 'presenter_of_phis_o', numberList: [0, 1, 2, 3, 6] },
-  { id: 'FOP', numberList: [0, 1, 2, 3, 6, 7, 4] }
-]
+  { id: 'self_ur', numberList: [0, 1, 2, 3, 4, 5] },
+  { id: 'presenter_ur', numberList: [0, 1, 2, 3, 6, 4, 5] },
+  { id: 'self_phis_o', numberList: [0, 1, 2, 3, 7] },
+  { id: 'presenter_phis_o', numberList: [0, 1, 2, 3, 6] },
+  { id: 'self_fop', numberList: [0, 1, 2, 3, 6, 7, 4] },
+  { id: 'presenter_fop', numberList: [0, 1, 2, 3, 6, 7, 4] }
+];
+// export const strategyForDownload = [
+//   { id: 'self_ur', numberList: [0] },
+//   { id: 'presenter_ur', numberList: [1] },
+//   { id: 'self_phis_o', numberList: [2] },
+//   { id: 'presenter_phis_o', numberList: [3, 6] },
+//   { id: 'self_fop', numberList: [0, 7, 4] },
+//   { id: 'presenter_fop', numberList: [6, 7, 4] }
+// ];
 
 export const firstChecklist = [
   {
@@ -62,35 +75,52 @@ export const firstChecklist = [
   }
 ];
 
-export const refDocument = 'http://www.zoe.com.ua/wp-content/uploads/2019/05/%D0%97%D0%B0%D1%8F%D0%B2%D0%B0-%D0%BD%D0%B0-%D0%BF%D1%80%D0%B8%D1%81.doc';
+export const refDocument =
+    'http://www.zoe.com.ua/wp-content/uploads/2019/05/%D0%97%D0%B0%D1%8F%D0%B2%D0%B0-%D0%BD%D0%B0-%D0%BF%D1%80%D0%B8%D1%81.doc';
 
 export const secChecklist = [
   {
     group: 'options2',
-    id: 'Керівника',
-    description: 'Керівника юридичної особи'
-  },
-  {
-    group: 'options2',
-    id: 'presenter_of_chief',
-    description: 'Представника юридичної особи'
-  },
-  {
-    group: 'options2',
     id: 'phis_o',
-    description: 'Фізичної особи'
+    description: 'Для фізичних осіб'
   },
   {
     group: 'options2',
-    id: 'presenter_of_phis_o',
-    description: 'Представника фізичної особи'
+    id: 'fop',
+    description: 'Для ФОП'
   },
   {
     group: 'options2',
-    id: 'FOP',
-    description: 'Фізичної особи-підприємця'
+    id: 'ur',
+    description: 'Для юридичних осіб'
+  },
+];
+
+export const specialRights = [
+  {
+    id: 0,
+    value: 'self_',
+    description: 'Сам'
+  },
+  {
+    id: 1,
+    value: 'presenter_',
+    description: 'Довир'
   }
 ];
+//
+// export const thirdChecklist = [
+//   {
+//     group: 'options3',
+//     id: 'self_' && secChecklist.find(id =>  (id)),
+//     description: 'Сам'
+//   },
+//   {
+//     group: 'options3',
+//     id: 'presenter_' && secChecklist.find(id =>  (id)),
+//     description: 'Довир'
+//   }
+// ];
 
 export const sectionFields = [
   {

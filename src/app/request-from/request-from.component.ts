@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -11,12 +11,15 @@ import {
   sectionFields,
   firstChecklist,
   secChecklist,
+  specialRights,
   documentsForDownload,
   refDocument,
   strategyForDownload
 } from '../models/form.model';
 import { FormService } from '../services/form.service';
 import { element } from 'protractor';
+import {takeUntil} from 'rxjs/operators';
+import {BehaviorSubject, Observable} from "rxjs";
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
@@ -37,13 +40,29 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   templateUrl: './request-from.component.html',
   styleUrls: ['./request-from.component.scss']
 })
-export class RequestFromComponent implements OnInit {
+export class RequestFromComponent implements OnInit, OnDestroy {
   behaviorModel = {
     options1: false,
-    options2: false
+    options2: false,
+    specialRights: false,
+    downloadDocumentsStep: false,
   };
 
   myGroup: FormGroup;
+  destroy$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(undefined);
+  private _documentsForDownload$: BehaviorSubject<any> = new BehaviorSubject<any>([]);
+
+  get documentsForDownload$(): Observable<any> {
+    return this._documentsForDownload$.asObservable();
+  }
+
+  get documentsForDownload(): any {
+    return this._documentsForDownload$.getValue();
+  }
+
+  set documentsForDownload(list: any) {
+    this._documentsForDownload$.next(list);
+  }
 
   refDocument = refDocument;
 
@@ -51,7 +70,7 @@ export class RequestFromComponent implements OnInit {
   sectionFields = sectionFields;
   firstChecklist = firstChecklist;
   secChecklist = secChecklist;
-  documentsForDownload = [];
+  specialRights = specialRights;
 
   matcher = new MyErrorStateMatcher();
 
@@ -75,20 +94,32 @@ export class RequestFromComponent implements OnInit {
     this.formService.petitionTo = event.target.value;
   }
 
-  filterDocumentsForDownload(event: Event | any) {
-    this.documentsForDownload = [];
-    const { numberList } = strategyForDownload.find(element => (event.target.id === element.id))
+  filterDocumentsForDownload(strategyId: string) {
+    const documents = [];
+    const { numberList } = strategyForDownload.find(elem => (strategyId === elem.id));
+    console.log(numberList);
     numberList.forEach(id => {
-      this.documentsForDownload.push(documentsForDownload[id]);
-    })
-    console.log('setPetitionFrom', this.documentsForDownload);
+      documents.push(documentsForDownload[id]);
+    });
+    this.documentsForDownload = documents;
+    console.log(this.documentsForDownload);
   }
 
   setPetitionFrom(event: Event | any, option: string) {
-    this.filterDocumentsForDownload(event);
-
     this.dirtOption(option); // name is group
     this.formService.petitionFrom = event.target.id;
+  }
+
+  clarificationPetitionFrom(event: Event | any) {
+    console.log(event.target.value);
+    this.formService.prefixPetitionFrom = event.target.id;
+    this.formService.finalPetitionFrom$
+      // .pipe(takeUntil(this.destroy$))
+      .subscribe(data => {
+        console.log('data', data);
+        this.filterDocumentsForDownload(this.formService.finalPetitionFrom);
+      });
+    this.dirtOption('downloadDocumentsStep'); // name is group
   }
 
   isBehaviorOption(group: string): boolean {
@@ -109,12 +140,16 @@ export class RequestFromComponent implements OnInit {
   }
 
   isDocumentsSelected(): boolean {
-    let isAllSelected = this.documentsForDownload.length > 0 ? true : false;
+    let isAllSelected = this.documentsForDownload.length > 0;
     this.documentsForDownload.forEach(documentItem => {
       if (!this.hasUserDocFiles(documentItem.id)) {
         isAllSelected = false;
       }
-    })
+    });
     return isAllSelected;
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next(true);
   }
 }
