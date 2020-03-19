@@ -1,21 +1,29 @@
-// import {stringify} from "querystring";
-// import {element} from "protractor";
-// import any = jasmine.any;
+enum DocumentsEnem {
+  consent_ecp = 'consent_ECP',
+  copy_situation_plan = 'copy_situation_plan',
+  building_passport = 'building_passport',
+  pravo_vlasnosti = 'pravo_vlasnosti',
+  edrpou = 'EDRPOU',
+  situation_document = 'situation_document',
+  dovirenyst = 'dovirenyst',
+  passport = 'passport'
+}
+
 
 export const documentsForDownload = [
   {
-    id: 'consent_ECP',
+    id: DocumentsEnem.consent_ecp,
     description: `Заява про приєднання (з ЕЦП)` // ` - for multi-rows
   },
   {
-    id: 'copy_situation_plan',
+    id: DocumentsEnem.copy_situation_plan,
     description: `Копії ситуаційного плану та викопіювання з топографо-геодезичного
     плану в масштабі 1:2000 із зазначенням місця розташування
     об’єкта(об’єктів) замовника, земельної ділянки замовника або
     прогнозованої точки приєднання`
   },
   {
-    id: 'building_passport',
+    id: DocumentsEnem.building_passport,
     description: `Будівельний паспорт або містобудівних умов та обмежень з графічною
     частиною із зазначенням місця розташування , потужності та
     категорії надійності електропостачання за кожним об’єктом
@@ -23,26 +31,30 @@ export const documentsForDownload = [
     уперше)`
   },
   {
-    id: 'pravo_vlasnosti',
+    id: DocumentsEnem.pravo_vlasnosti,
     description: `Документ, який підтверджує право власності чи користування земельною
     ділянкою`
   },
   {
-    id: 'EDRPOU',
+    id: DocumentsEnem.edrpou,
     description: `Виписка , витяг, довідка із ЄДРПОУ`
   },
   {
-    id: 'situation_document',
+    id: DocumentsEnem.situation_document,
     description: `Статутний документ`
   },
   {
-    id: 'dovirenyst',
+    id: DocumentsEnem.dovirenyst,
     description: `Належним чином оформлена довіреність чи інший документ на право укладати договори особі, яка уповноважена підписувати договори (за потреби)`
   },
   {
-    id: 'passport',
+    id: DocumentsEnem.passport,
     description: `Паспорт`
   }
+];
+
+export const ignoredDocumentsForDownloadId = [
+  DocumentsEnem.edrpou
 ];
 
 export const strategyForDownload = [

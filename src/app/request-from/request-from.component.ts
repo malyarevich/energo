@@ -13,6 +13,7 @@ import {
   secChecklist,
   specialRights,
   documentsForDownload,
+  ignoredDocumentsForDownloadId,
   refDocument,
   strategyForDownload
 } from '../models/form.model';
@@ -97,12 +98,12 @@ export class RequestFromComponent implements OnInit, OnDestroy {
   filterDocumentsForDownload(strategyId: string) {
     const documents = [];
     const { numberList } = strategyForDownload.find(elem => (strategyId === elem.id));
-    console.log(numberList);
+    // console.log(numberList);
     numberList.forEach(id => {
       documents.push(documentsForDownload[id]);
     });
     this.documentsForDownload = documents;
-    console.log(this.documentsForDownload);
+    // console.log(this.documentsForDownload);
   }
 
   setPetitionFrom(event: Event | any, option: string) {
@@ -111,12 +112,12 @@ export class RequestFromComponent implements OnInit, OnDestroy {
   }
 
   clarificationPetitionFrom(event: Event | any) {
-    console.log(event.target.value);
+    // console.log(event.target.value);
     this.formService.prefixPetitionFrom = event.target.id;
     this.formService.finalPetitionFrom$
       // .pipe(takeUntil(this.destroy$))
-      .subscribe(data => {
-        console.log('data', data);
+      .subscribe((data) => {
+        // console.log('data', data);
         this.filterDocumentsForDownload(this.formService.finalPetitionFrom);
       });
     this.dirtOption('downloadDocumentsStep'); // name is group
@@ -139,11 +140,19 @@ export class RequestFromComponent implements OnInit, OnDestroy {
     this.formService.sendForm();
   }
 
+  isDocumentIgnored(id: string) {
+    return ignoredDocumentsForDownloadId.find(elem => {
+      return elem === id;
+    });
+  }
+
   isDocumentsSelected(): boolean {
     let isAllSelected = this.documentsForDownload.length > 0;
     this.documentsForDownload.forEach(documentItem => {
       if (!this.hasUserDocFiles(documentItem.id)) {
-        isAllSelected = false;
+        if (!this.isDocumentIgnored(documentItem.id)) {
+          isAllSelected = false;
+        }
       }
     });
     return isAllSelected;

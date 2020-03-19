@@ -58,7 +58,7 @@
         <input type="radio" [name]="firstRadioItem.group" (click)="setPetitionTo($event)" [id]="firstRadioItem.id"
           [value]="firstRadioItem.id" />
         <span class="fieldset__input_checkmark"></span>
-        <span class="label__wrap-normal">
+        <span class="label__wrap_normal">
           {{ firstRadioItem.description }}
         </span>
       </label>
@@ -73,7 +73,7 @@
           <input type="radio" (click)="setPetitionFrom($event, secRadioItem.group)" [id]="secRadioItem.id"
             [value]="secRadioItem.id" [formControlName]="secRadioItem.group" />
           <span class="fieldset__input_checkmark"></span>
-          <span class="label__wrap-normal">
+          <span class="label__wrap_normal">
             {{ secRadioItem.description }}
           </span>
         </label>
@@ -87,7 +87,7 @@
           <input type="radio" (click)="clarificationPetitionFrom($event)" [id]="specialRightsItem.value"
                  [value]="specialRightsItem.value" formControlName="specialRights" />
           <span class="fieldset__input_checkmark"></span>
-          <span class="label__wrap-normal">
+          <span class="label__wrap_normal">
             {{ specialRightsItem.description }}
           </span>
         </label>
@@ -109,10 +109,7 @@
         <input class="fieldset__input_load input_pdf_only" type="file" [name]="documentItem.id" [id]="documentItem.id"
           accept="application/pdf,image/*" (change)="changeUserDocFiles($event)" />
         <span class="fieldset__input_checkmark" [ngClass]="{ checked: hasUserDocFiles(documentItem.id) }"></span>
-
-        <span class="label__wrap-normal ">
-          {{ documentItem.description }}
-        </span>
+        <span class="label__wrap_normal">{{ documentItem.description }}</span>
       </label>
     </fieldset>
   </ng-container>
