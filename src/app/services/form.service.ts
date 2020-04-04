@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {BehaviorSubject, Observable} from "rxjs";
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -172,7 +173,11 @@ export class FormService {
     const target: any = event.target; // for compilation clear
     this.userDocFiles[target.id] = target.files[0];
 
-    const urlLoadingUserDocFiles = `https://www.zoe.com.ua/loading-pdf-file/${target.id}`;
+    console.log('target.files -> ', target.files[0])
+    // 1) endPoint + PUT/POST 
+    //  for uploading files
+    //  return link_for_file
+    const urlLoadingUserDocFiles = `${environment.urlUploadFiles}${target.id}`;
     this.http.put(urlLoadingUserDocFiles, target.files[0]).subscribe(
       // success
       (successResponse: any) => {
@@ -220,7 +225,7 @@ export class FormService {
     if (this.myGroup.valid) {
       console.log('data from front', data);
       this.http
-        .post('https://www.google.com/', data)
+        .post(environment.urlSendForm, data)
         .subscribe(
           item => {
             console.log('success, response by server', item);

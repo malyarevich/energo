@@ -58,7 +58,8 @@ export const ignoredDocumentsForDownloadId = [
 ];
 
 export const strategyForDownload = [
-  { id: 'self_ur', numberList: [0, 1, 2, 3, 4, 5] },
+  // { id: 'self_ur', numberList: [0, 1, 2, 3, 4, 5] },
+  { id: 'self_ur', numberList: [0] },
   { id: 'presenter_ur', numberList: [0, 1, 2, 3, 6, 4, 5] },
   { id: 'self_phis_o', numberList: [0, 1, 2, 3, 7] },
   { id: 'presenter_phis_o', numberList: [0, 1, 2, 3, 6] },

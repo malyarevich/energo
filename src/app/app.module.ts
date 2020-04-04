@@ -20,6 +20,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ErrorListComponent } from './request-from/error-list/error-list.component';
 import { StepDownloadComponent } from './request-from/step-download/step-download.component';
+import { StepDocumentComponent } from './request-from/step-document/step-document.component';
+import { FormStepperComponent } from './request-from/form-stepper/form-stepper.component';
 
 
 // @ts-ignore
@@ -29,7 +31,9 @@ import { StepDownloadComponent } from './request-from/step-download/step-downloa
     RequestFromComponent,
     MainNavComponent,
     ErrorListComponent,
-    StepDownloadComponent
+    StepDownloadComponent,
+    StepDocumentComponent,
+    FormStepperComponent,
   ],
   imports: [
     BrowserModule,

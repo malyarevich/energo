@@ -3,8 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  urlUploadFiles: 'https://www.zoe.com.ua/loading-pdf-file/',
+  urlSendForm: 'https://www.zoe.com.ua/',
 };
+// urlUploadFiles - endPoint for uploading files
+// urlSendForm - endPoint for send form
 
 /*
  * For easier debugging in development mode, you can import the following file

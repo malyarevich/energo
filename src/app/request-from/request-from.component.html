@@ -3,6 +3,44 @@
     <b>ПОДАННЯ ЗАЯВИ НА ПРИЄДНАННЯ В ЕЛЕКТРОННОМУ ВИГЛЯДІ </b>
   </h1>
 
+  <app-form-stepper stepNumber="1" legend="Заповненя заяви">
+    <app-step-download [refDocument]="refDocument"></app-step-download>
+  </app-form-stepper>
+
+  <ng-container *ngFor="let section of sectionFields; let i = index">
+    <app-form-stepper [stepNumber]="i + 2" [legend]="section.legend">
+      <!-- step-data -->
+      <ng-container *ngFor="let fieldItem of section.fields">
+        
+        <!-- <app-step-DATA_CONTACT [fieldItem]="fieldItem"></app-step-DATA_CONTACT> -->
+        <ng-container *ngIf="fieldItem.type === 'select'; else defaultInput">
+          <mat-form-field>
+            <mat-label>{{ fieldItem.placeholder }}</mat-label>
+            <mat-select [formControlName]="fieldItem.name" required>
+              <mat-option *ngFor="let option of fieldItem.options" [value]="option.id">{{ option.label }}</mat-option>
+            </mat-select>
+            <mat-hint></mat-hint>
+            <mat-error>
+              <app-error-list [fieldId]="fieldItem.name"></app-error-list>
+            </mat-error>
+          </mat-form-field>
+        </ng-container>
+        <ng-template #defaultInput>
+          <mat-form-field class="example-full-width">
+            <mat-label> {{ fieldItem.placeholder }}</mat-label>
+            <input type="text" matInput [errorStateMatcher]="matcher" [formControlName]="fieldItem.name"
+              [placeholder]="fieldItem.placeholder" />
+            <mat-hint></mat-hint>
+            <mat-error>
+              <app-error-list [fieldId]="fieldItem.name"></app-error-list>
+            </mat-error>
+          </mat-form-field>
+        </ng-template>
+      </ng-container>
+      <!-- /step-data -->
+    </app-form-stepper>
+  </ng-container>
+
   <fieldset class="request_form__fieldset fieldset">
     <legend class="fieldset__legend">
       <b class="fieldset__legendNum">1</b>
