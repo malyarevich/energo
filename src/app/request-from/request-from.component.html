@@ -3,157 +3,32 @@
     <b>ПОДАННЯ ЗАЯВИ НА ПРИЄДНАННЯ В ЕЛЕКТРОННОМУ ВИГЛЯДІ </b>
   </h1>
 
+  <!-- Document Step -->
   <app-form-stepper stepNumber="1" legend="Заповненя заяви">
-    <app-step-download [refDocument]="refDocument"></app-step-download>
+    <app-step-download></app-step-download>
   </app-form-stepper>
 
+  <!-- Contact Information -->
   <ng-container *ngFor="let section of sectionFields; let i = index">
     <app-form-stepper [stepNumber]="i + 2" [legend]="section.legend">
-      <!-- step-data -->
       <ng-container *ngFor="let fieldItem of section.fields">
-        
-        <!-- <app-step-DATA_CONTACT [fieldItem]="fieldItem"></app-step-DATA_CONTACT> -->
-        <ng-container *ngIf="fieldItem.type === 'select'; else defaultInput">
-          <mat-form-field>
-            <mat-label>{{ fieldItem.placeholder }}</mat-label>
-            <mat-select [formControlName]="fieldItem.name" required>
-              <mat-option *ngFor="let option of fieldItem.options" [value]="option.id">{{ option.label }}</mat-option>
-            </mat-select>
-            <mat-hint></mat-hint>
-            <mat-error>
-              <app-error-list [fieldId]="fieldItem.name"></app-error-list>
-            </mat-error>
-          </mat-form-field>
-        </ng-container>
-        <ng-template #defaultInput>
-          <mat-form-field class="example-full-width">
-            <mat-label> {{ fieldItem.placeholder }}</mat-label>
-            <input type="text" matInput [errorStateMatcher]="matcher" [formControlName]="fieldItem.name"
-              [placeholder]="fieldItem.placeholder" />
-            <mat-hint></mat-hint>
-            <mat-error>
-              <app-error-list [fieldId]="fieldItem.name"></app-error-list>
-            </mat-error>
-          </mat-form-field>
-        </ng-template>
+        <app-step-contact-info [fieldItem]="fieldItem"></app-step-contact-info>
       </ng-container>
-      <!-- /step-data -->
     </app-form-stepper>
   </ng-container>
 
-  <fieldset class="request_form__fieldset fieldset">
-    <legend class="fieldset__legend">
-      <b class="fieldset__legendNum">1</b>
-      <b>Заповненя заяви</b>
-    </legend>
-    <app-step-download [refDocument]="refDocument"></app-step-download>
-  </fieldset>
+  <!-- Fill of Application -->
+  <app-form-stepper stepNumber="4" legend="Подання заяви">
+    <app-step-application></app-step-application>
+  </app-form-stepper>
 
-  <fieldset class="request_form__fieldset fieldset" *ngFor="let section of sectionFields; let i = index">
-    <legend class="fieldset__legend">
-      <b class="fieldset__legendNum"> {{ i + 2 }} </b>
-      <b>{{ section.legend }}</b>
-    </legend>
-    <!-- step-data -->
-    <ng-container *ngFor="let fieldItem of section.fields">
-      <ng-container *ngIf="fieldItem.type === 'select'; else defaultInput">
-        <mat-form-field>
-          <mat-label>{{ fieldItem.placeholder }}</mat-label>
-          <mat-select [formControlName]="fieldItem.name" required>
-            <mat-option *ngFor="let option of fieldItem.options" [value]="option.id">{{ option.label }}</mat-option>
-          </mat-select>
-          <mat-hint></mat-hint>
-          <mat-error>
-            <app-error-list [fieldId]="fieldItem.name"></app-error-list>
-          </mat-error>
-        </mat-form-field>
-      </ng-container>
-      <ng-template #defaultInput>
-        <mat-form-field class="example-full-width">
-          <mat-label> {{ fieldItem.placeholder }}</mat-label>
-          <input type="text" matInput [errorStateMatcher]="matcher" [formControlName]="fieldItem.name"
-            [placeholder]="fieldItem.placeholder" />
-          <mat-hint></mat-hint>
-          <mat-error>
-            <app-error-list [fieldId]="fieldItem.name"></app-error-list>
-          </mat-error>
-        </mat-form-field>
-      </ng-template>
-    </ng-container>
-    <!-- /step-data -->
-  </fieldset>
-
-  <fieldset class="request_form__fieldset fieldset">
-    <legend class="fieldset__legend">
-      <b class="fieldset__legendNum">4</b>
-      <b> Подання заяви</b>
-    </legend>
-
-    <!-- step-object -->
-    <div>Для об’єктів:</div>
-    <p class="fieldset__part">
-      <label class="fieldset__input_container" *ngFor="let firstRadioItem of firstChecklist">
-        <input type="radio" [name]="firstRadioItem.group" (click)="setPetitionTo($event)" [id]="firstRadioItem.id"
-          [value]="firstRadioItem.id" />
-        <span class="fieldset__input_checkmark"></span>
-        <span class="label__wrap_normal">
-          {{ firstRadioItem.description }}
-        </span>
-      </label>
-    </p>
-    <!-- /step-object -->
-    
-    <!-- step-from -->
-    <ng-container *ngIf="isBehaviorOption('options1')">
-      <div>Звернення від:</div>
-      <p class="fieldset__part">
-        <label class="fieldset__input_container" *ngFor="let secRadioItem of secChecklist">
-          <input type="radio" (click)="setPetitionFrom($event, secRadioItem.group)" [id]="secRadioItem.id"
-            [value]="secRadioItem.id" [formControlName]="secRadioItem.group" />
-          <span class="fieldset__input_checkmark"></span>
-          <span class="label__wrap_normal">
-            {{ secRadioItem.description }}
-          </span>
-        </label>
-      </p>
-    </ng-container>
-    <!-- /step-from -->
-    <ng-container *ngIf="isBehaviorOption('options2')">
-      <div>Sam:</div>
-      <p class="fieldset__part">
-        <label class="fieldset__input_container" *ngFor="let specialRightsItem of specialRights">
-          <input type="radio" (click)="clarificationPetitionFrom($event)" [id]="specialRightsItem.value"
-                 [value]="specialRightsItem.value" formControlName="specialRights" />
-          <span class="fieldset__input_checkmark"></span>
-          <span class="label__wrap_normal">
-            {{ specialRightsItem.description }}
-          </span>
-        </label>
-      </p>
-    </ng-container>
-
-  </fieldset>
-
-  <ng-container *ngIf="isBehaviorOption('downloadDocumentsStep')">
-    <fieldset class="request_form__fieldset fieldset">
-      <legend class="fieldset__legend">
-        <b class="fieldset__legendNum">5</b>
-        <b> Перелік документів для завантаження</b>
-      </legend>
-
-      <!-- Automatization -->
-      <label class="fieldset__input_container" *ngFor="let documentItem of documentsForDownload"
-        [for]="documentItem.id">
-        <input class="fieldset__input_load input_pdf_only" type="file" [name]="documentItem.id" [id]="documentItem.id"
-          accept="application/pdf,image/*" (change)="changeUserDocFiles($event)" />
-        <span class="fieldset__input_checkmark" [ngClass]="{ checked: hasUserDocFiles(documentItem.id) }"></span>
-        <span class="label__wrap_normal">{{ documentItem.description }}</span>
-      </label>
-    </fieldset>
+  <!-- Document List -->
+  <ng-container *ngIf="(documentsForDownload$ | async).length > 0">
+    <app-form-stepper stepNumber="5" legend="Перелік документів для завантаження">
+      <app-step-document></app-step-document>
+    </app-form-stepper>
   </ng-container>
 
-  <!-- <input type="text" formControlName="firstName" />
-  <p>{{ getFormValueById("firstName") }}</p> -->
   <div class="button_container">
     <button mat-raised-button color="warn" class="submit_button" type="submit" (click)="send()"
       [disabled]="myGroup.invalid || !isDocumentsSelected()">

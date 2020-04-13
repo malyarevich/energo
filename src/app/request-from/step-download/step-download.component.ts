@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { refDocument } from '../models/form.model';
 
 @Component({
   selector: 'app-step-download',
@@ -6,11 +7,13 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./step-download.component.scss']
 })
 export class StepDownloadComponent implements OnInit {
-  @Input() refDocument: string;
-  
+
+  get refDocument(): string {
+    return refDocument;
+  }
+
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }

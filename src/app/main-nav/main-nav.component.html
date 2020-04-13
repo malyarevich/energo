@@ -1,37 +1,29 @@
 <mat-sidenav-container class="sidenav-container">
 
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="false">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="#">Компанія</a>
+      <a mat-list-item routerLinkActive="router-link-active" [routerLink]="['/request-form']" href="#">Компанія</a>
       <a mat-list-item href="#">Прес-центр</a>
       <a mat-list-item href="#">Закупівлі</a>
       <a mat-list-item href="#">Продажі</a>
       <a mat-list-item href="#">Акціонерам</a>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content >
+  <mat-sidenav-content>
 
     <mat-toolbar color="primary">
       <div class="toolbar-container">
-        <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async "
-        >
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <div class="logo_zoe">
-        <img class="logo_zoe__image" src="assets/image/zoe_logo-min.png" alt="">
-        <div class="logo_zoe__title">ПАТ Запоріжжяобленерго</div>
-      </div>
-        <div class="toolbar-menu"
-             *ngIf="isWebAndTablet$ | async">
+        <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async ">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <div class="logo_zoe">
+          <img class="logo_zoe__image" src="assets/image/zoe_logo-min.png" alt="">
+          <div class="logo_zoe__title">ПАТ Запоріжжяобленерго</div>
+        </div>
+        <div class="toolbar-menu" *ngIf="isWebAndTablet$ | async">
           <button mat-button [matMenuTriggerFor]="companyMenu">Компанія</button>
           <mat-menu #companyMenu="matMenu">
             <button mat-menu-item>Item 1</button>

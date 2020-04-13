@@ -1,8 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormService } from 'src/app/services/form.service';
-import { COMMON_ERRORS } from './common-errors';
 import { AbstractControl } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
+
+import { RequestFormService } from '../services/request-form.service';
+
+import { COMMON_ERRORS } from './common-errors';
 
 @Component({
   selector: 'app-error-list',
@@ -33,10 +35,10 @@ export class ErrorListComponent implements OnInit {
   }
 
 
-  constructor(private formService: FormService) { }
+  constructor(private reqForm: RequestFormService) { }
 
   ngOnInit(): void {
-    this.fieldControl = this.formService.getFieldControlById(this.fieldId);
+    this.fieldControl = this.reqForm.getFieldControlById(this.fieldId);
     this.errorList = this.getParsedErrors();
     this.fieldControl.statusChanges.subscribe(s => {
       if (s === 'INVALID') {

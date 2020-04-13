@@ -1,0 +1,22 @@
+<form [formGroup]="myGroup">
+
+  <ng-container *ngFor="let radioApplication of radioApplicationList; let i = index">
+    <div *ngIf="isPreviousStepDone(radioApplication.step, i)">
+      <div>{{ radioApplication.title }}</div>
+
+      <p class="fieldset__part">
+        <label class="fieldset__input_container" *ngFor="let chooseItem of radioApplication.chooseList">
+          <input type="radio" (click)="setChoose(chooseItem.id, radioApplication.step)" [id]="chooseItem.id"
+            [formControlName]="radioApplication.step" [value]="chooseItem.id" />
+
+          <span class="fieldset__input_checkmark"></span>
+
+          <span class="label__wrap_normal">
+            {{ chooseItem.description }}
+          </span>
+        </label>
+      </p>
+    </div>
+  </ng-container>
+
+</form>

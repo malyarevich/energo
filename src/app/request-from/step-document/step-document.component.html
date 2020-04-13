@@ -1,1 +1,7 @@
-<p>step-document works!</p>
+<label class="fieldset__input_container" *ngFor="let documentItem of (documentsForDownload$ | async)"
+  [for]="documentItem.id">
+  <input class="fieldset__input_load input_pdf_only" type="file" [name]="documentItem.id" [id]="documentItem.id"
+    accept="application/pdf,image/*" (change)="changeUserDocFiles($event)" />
+  <span class="fieldset__input_checkmark" [ngClass]="{ checked: hasUserDocFiles(documentItem.id) }"></span>
+  <span class="label__wrap_normal">{{ documentItem.description }}</span>
+</label>
