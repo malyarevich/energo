@@ -3,7 +3,7 @@
     <mat-form-field class="example-full-width">
       <mat-label>{{ fieldItem.placeholder }}</mat-label>
       <mat-select [formControlName]="fieldItem.name" required>
-        <mat-option *ngFor="let option of fieldItem.options" [value]="option.id">{{ option.label }}</mat-option>
+        <mat-option *ngFor="let option of options" [value]="option.id">{{ option.label }}</mat-option>
       </mat-select>
       <mat-hint></mat-hint>
       <mat-error>

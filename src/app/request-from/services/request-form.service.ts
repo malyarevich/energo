@@ -4,12 +4,18 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from "rxjs";
 import { environment } from 'src/environments/environment';
 import { ignoredDocumentsForDownloadId, StepRadioEnum, strategyForDownload, documentsForDownload } from '../models/form.model';
+import { map, filter } from 'rxjs/operators';
+import { AuthService } from '~/app/services/auth.service';
 
 export interface IOptionSteps {
   [StepRadioEnum.forObjects]?: string;
   [StepRadioEnum.askFrom]?: string;
   [StepRadioEnum.specialRights]?: string;
   [StepRadioEnum.documents]?: string;
+}
+
+export type ResListType = {
+  options: []
 }
 
 @Injectable({
@@ -19,12 +25,20 @@ export class RequestFormService {
   myGroup: FormGroup;
   isSubmitted = false;
   userDocFiles = {};
+  resList$: BehaviorSubject<ResListType> = new BehaviorSubject<ResListType>(null); // options
   doneSteps$: BehaviorSubject<IOptionSteps> = new BehaviorSubject<IOptionSteps>({
     forObjects: null,
     askFrom: null,
     specialRights: null,
     documents: null,
   });
+
+  get resList(): ResListType {
+    return this.resList$.getValue();
+  }
+  set resList(value: ResListType) {
+    this.resList$.next(value);
+  }
 
   get doneSteps(): IOptionSteps {
     return this.doneSteps$.getValue();
@@ -48,7 +62,12 @@ export class RequestFormService {
     this._documentsForDownload$.next(list);
   }
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private auth: AuthService) {
+    // const petition = this.getApiList();
+    // console.log('petition', petition);
+    this.auth.token$.pipe(filter(token => (token !== null))).subscribe((token: string) => {
+      this.takeResList(token);
+    })
     // Инициализируем новую форм группу
     this.myGroup = new FormGroup({
       firstName: new FormControl(
@@ -286,4 +305,21 @@ export class RequestFormService {
         );
     }
   }
+
+  // return this.http.get(`${environment.apiFB}/?api_token=${environment.api_token}`)
+  getApiList(token: string): Observable<any>{
+    return this.http.get(`${environment.apiFB}?token=${token}`)
+      .pipe(
+        map(response => response)
+      )
+  }
+
+  takeResList(inputToken: string) {
+    this.http.get(`${environment.apiFB}branches?token=${inputToken}`).subscribe(
+      (res: ResListType) => {
+        console.log("res", res)
+        this.resList = res;
+      },console.error,)
+  }
+
 }

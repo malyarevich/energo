@@ -18,6 +18,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
+import { AuthService } from './services/auth.service';
 
 // @ts-ignore
 @NgModule({
@@ -42,7 +43,7 @@ import { MainNavComponent } from './main-nav/main-nav.component';
     MatSelectModule,
     MatCheckboxModule,
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

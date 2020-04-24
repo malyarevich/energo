@@ -1,19 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 
 import { RequestFormService } from '../services/request-form.service';
 import {
-  sectionFields,
-  firstChecklist,
-  secChecklist,
-  specialRights,
-  documentsForDownload,
-  ignoredDocumentsForDownloadId,
-  refDocument,
-  strategyForDownload,
-  StepRadioEnum,
   radioApplicationList
 } from '../models/form.model';
 

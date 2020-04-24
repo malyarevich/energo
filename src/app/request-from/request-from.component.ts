@@ -1,26 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
-  FormControl,
-  FormGroup,
-  FormGroupDirective,
-  NgForm,
-  Validators
+  FormGroup
 } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
 import {
-  sectionFields,
-  firstChecklist,
-  secChecklist,
-  specialRights,
-  documentsForDownload,
-  ignoredDocumentsForDownloadId,
-  refDocument,
-  strategyForDownload
+  sectionFields
 } from './models/form.model';
 import { RequestFormService } from './services/request-form.service';
-import { element } from 'protractor';
-import { takeUntil } from 'rxjs/operators';
-import { BehaviorSubject, Observable } from "rxjs";
 
 @Component({
   selector: 'app-request-from',
