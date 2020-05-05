@@ -7,6 +7,7 @@ import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 })
 export class FormWrapperComponent implements OnInit {
   pageTitle = "ПОДАННЯ ЗАЯВИ НА ПРИЄДНАННЯ В ЕЛЕКТРОННОМУ ВИГЛЯДІ";
+  backgroundImage = "assets/image/zoeWriteGirl.jpg";
   @ViewChild("content") content: ElementRef;
 
   constructor() { }
