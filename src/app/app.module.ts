@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgAnimateScrollService } from 'ng-animate-scroll';
 
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatMenuModule } from '@angular/material/menu';
@@ -43,7 +44,7 @@ import { AuthService } from './services/auth.service';
     MatSelectModule,
     MatCheckboxModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, NgAnimateScrollService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

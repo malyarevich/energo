@@ -12,7 +12,7 @@ body{
 .container{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   padding: 0;
 
   width: 2450px;
@@ -58,72 +58,3 @@ body{
 //  font-size: 2rem;
 //}
 
-.head_banner{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: auto;
-  height: 93vh;
-
-
-  &__dark{
-    display: flex;
-    height: 100%;
-    background: black;
-  }
-
-  &__image{
-    display: flex;
-    height: 100%;
-    opacity: .7;
-  }
-
-  &__title{
-    display: flex;
-    background: rgba(0, 0, 0, .5);
-    height: auto;
-    margin-top: -3rem;
-    padding: 1rem;
-    z-index: 3;
-    color: #FFF;
-    font-size: .85rem;
-    font-weight: 700;
-    line-height: 1rem;
-    text-transform: uppercase;
-  }
-
-}
-.head_menu{
-  display: flex;
-  width: 100%;
-}
-//.widget-area{
-//  display: flex;
-//  flex-direction: row;
-//  -webkit-order: 0;
-//  -ms-flex-order: 0;
-//  order: 0;
-//  -webkit-flex: 1 0 auto;
-//  -ms-flex: 1 0 auto;
-//  flex: 1 0 auto;
-//  -webkit-align-self: auto;
-//  -ms-flex-item-align: auto;
-//  align-self: auto;
-//}
-
-.content-area{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  -webkit-order: 0;
-  -ms-flex-order: 0;
-  order: 0;
-  -webkit-flex: .2 0 auto;
-  -ms-flex: 1.2 0 auto;
-  flex: 1.2 0 auto;
-  -webkit-align-self: auto;
-  -ms-flex-item-align: auto;
-  align-self: auto;
-  padding: 1rem;
-}

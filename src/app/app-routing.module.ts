@@ -4,7 +4,7 @@ import { Routes, RouterModule } from "@angular/router";
 
 const routes: Routes = [
   {
-    path: "",
+    path: "energo",
     children: [
       {
         path: "request-from",
@@ -20,7 +20,7 @@ const routes: Routes = [
 
   {
     path: '**',
-    redirectTo: '',
+    redirectTo: 'energo',
   }
 ];
 

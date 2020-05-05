@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { Capability } from 'protractor';
 
 @Component({
   selector: 'app-root',

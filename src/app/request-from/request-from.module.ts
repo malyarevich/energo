@@ -25,6 +25,8 @@ import { StepDocumentComponent } from './step-document/step-document.component';
 import { FormStepperComponent } from './form-stepper/form-stepper.component';
 import { StepApplicationComponent } from './step-application/step-application.component';
 import { StepContactInfoComponent } from './step-contact-info/step-contact-info.component';
+import { FormWrapperComponent } from './form-wrapper/form-wrapper.component';
+import { NgAnimateScrollService } from 'ng-animate-scroll';
 
 
 // @ts-ignore
@@ -37,6 +39,7 @@ import { StepContactInfoComponent } from './step-contact-info/step-contact-info.
     FormStepperComponent,
     StepApplicationComponent,
     StepContactInfoComponent,
+    FormWrapperComponent,
   ],
   imports: [
     CommonModule,

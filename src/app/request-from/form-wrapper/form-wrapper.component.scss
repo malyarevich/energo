@@ -1,0 +1,78 @@
+body {
+  scroll-behavior: smooth
+}
+.head_banner{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 93vh;
+
+
+  &__dark{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+
+    height: 100%;
+    width: 100%;
+
+    background-image: url("/assets/image/zoeWriteGirl.jpg");
+    background-position: top;
+    background-size: cover;
+  }
+
+  &__title{
+    cursor: pointer;
+    display: flex;
+
+    border-radius: .5rem .5rem 0 0;
+    background: rgba(0, 0, 0, .5);
+    height: 2rem;
+    padding: 1rem;
+    margin: 0 auto;
+    
+
+    color: #FFF;
+    font-size: .85rem;
+    font-weight: 700;
+    line-height: 1rem;
+    text-transform: uppercase;
+  }
+
+}
+.head_menu{
+  display: flex;
+  width: 100%;
+}
+//.widget-area{
+//  display: flex;
+//  flex-direction: row;
+//  -webkit-order: 0;
+//  -ms-flex-order: 0;
+//  order: 0;
+//  -webkit-flex: 1 0 auto;
+//  -ms-flex: 1 0 auto;
+//  flex: 1 0 auto;
+//  -webkit-align-self: auto;
+//  -ms-flex-item-align: auto;
+//  align-self: auto;
+//}
+
+.content-area{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  -webkit-order: 0;
+  -ms-flex-order: 0;
+  order: 0;
+  -webkit-flex: .2 0 auto;
+  -ms-flex: 1.2 0 auto;
+  flex: 1.2 0 auto;
+  -webkit-align-self: auto;
+  -ms-flex-item-align: auto;
+  align-self: auto;
+  padding: 1rem;
+}

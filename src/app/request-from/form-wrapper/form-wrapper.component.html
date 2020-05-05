@@ -1,0 +1,11 @@
+<div class="head_banner">
+  <div class="head_banner__dark">
+    <h1 class="head_banner__title" (click)="scrollTo(content)">
+      <b>{{pageTitle}}</b>
+    </h1>
+  </div>
+</div>
+
+<div class="content-area" #content>
+  <app-request-from [title]="pageTitle"></app-request-from>
+</div>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {
   FormGroup
 } from '@angular/forms';
@@ -13,6 +13,7 @@ import { RequestFormService } from './services/request-form.service';
   styleUrls: ['./request-from.component.scss']
 })
 export class RequestFromComponent implements OnInit {
+  @Input("title") pageTitle = "Title";
 
   myGroup: FormGroup;
 
