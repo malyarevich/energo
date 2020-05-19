@@ -15,6 +15,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -43,6 +44,7 @@ import { AuthService } from './services/auth.service';
     MatInputModule,
     MatSelectModule,
     MatCheckboxModule,
+    MatTabsModule,
   ],
   providers: [AuthService, NgAnimateScrollService],
   bootstrap: [AppComponent]

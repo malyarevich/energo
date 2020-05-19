@@ -8,7 +8,8 @@ import { map, filter } from 'rxjs/operators';
 import { AuthService } from '~/app/services/auth.service';
 
 export interface IOptionSteps {
-  [StepRadioEnum.forObjects]?: string;
+  [StepRadioEnum.newOrOldConnection]?: string;
+  [StepRadioEnum.withOrWithoutPhotovoltaic]?: string;  
   [StepRadioEnum.askFrom]?: string;
   [StepRadioEnum.specialRights]?: string;
   [StepRadioEnum.documents]?: string;
@@ -27,7 +28,8 @@ export class RequestFormService {
   userDocFiles = {};
   resList$: BehaviorSubject<ResListType> = new BehaviorSubject<ResListType>(null); // options
   doneSteps$: BehaviorSubject<IOptionSteps> = new BehaviorSubject<IOptionSteps>({
-    forObjects: null,
+    newOrOldConnection: null,
+    withOrWithoutPhotovoltaic: null,
     askFrom: null,
     specialRights: null,
     documents: null,
@@ -72,7 +74,7 @@ export class RequestFormService {
     this.myGroup = new FormGroup({
       firstName: new FormControl(
         {
-          value: '1111', // state
+          value: '123456789101', // state
           disabled: false // off/on
         },
         Validators.compose([
@@ -83,7 +85,7 @@ export class RequestFormService {
       ),
       pibName: new FormControl(
         {
-          value: '1111', // state
+          value: 'Іванов Іван Іванович', // state
           disabled: false // off/on
         },
         Validators.compose([
@@ -94,7 +96,7 @@ export class RequestFormService {
       ),
       addressUr: new FormControl(
         {
-          value: '1111', // state
+          value: 'вул. Каховська 3а', // state
           disabled: false // off/on
         },
         Validators.compose([
@@ -105,7 +107,7 @@ export class RequestFormService {
       ),
       addressPost: new FormControl(
         {
-          value: '1', // state
+          value: 'вул. Добролюбова 18', // state
           disabled: false // off/on
         },
         Validators.compose([
@@ -115,7 +117,7 @@ export class RequestFormService {
 
       email: new FormControl(
         {
-          value: 'qwe@er', // state
+          value: 'ivanov@zoe.com.ua', // state
           disabled: false // off/on
         },
         Validators.compose([
@@ -125,7 +127,7 @@ export class RequestFormService {
       ),
       phone: new FormControl(
         {
-          value: '2222', // state
+          value: '+380777696663', // state
           disabled: false // off/on
         },
         Validators.compose([
@@ -145,7 +147,7 @@ export class RequestFormService {
       ),
       address: new FormControl(
         {
-          value: '1', // state
+          value: 'вул. Кияшка 7', // state
           disabled: false // off/on
         },
         Validators.compose([
@@ -161,7 +163,16 @@ export class RequestFormService {
           Validators.required // обязательное поле
         ]) // Validations
       ),
-      [StepRadioEnum.forObjects]: new FormControl(
+      [StepRadioEnum.withOrWithoutPhotovoltaic]: new FormControl(
+        {
+          value: null, // from who
+          disabled: false // off/on
+        },
+        Validators.compose([
+          Validators.required // обязательное поле
+        ]) // Validations
+      ),
+      [StepRadioEnum.newOrOldConnection]: new FormControl(
         {
           value: null, // is by self
           disabled: false // off/on
@@ -182,11 +193,11 @@ export class RequestFormService {
     this.myGroup.statusChanges.subscribe(result => {
       // console.log(result);
     });
-
+    
     this.doneSteps$
     .subscribe((data) => {
-      if(this.doneSteps.specialRights && this.doneSteps.askFrom) {
-        this.filterDocumentsForDownload(this.doneSteps.specialRights + this.doneSteps.askFrom);
+      if(this.doneSteps.specialRights && this.doneSteps.askFrom && this.doneSteps.withOrWithoutPhotovoltaic ) {
+        this.filterDocumentsForDownload(this.doneSteps.specialRights + this.doneSteps.askFrom + this.doneSteps.withOrWithoutPhotovoltaic);
       }
     }); // name is group
   }
@@ -282,8 +293,8 @@ export class RequestFormService {
     const data = {
       form: {
         ...this.filtrationForBackend(this.myGroup.value), // 2 & 3 main form information
-        petitionTo: this.myGroup.value.forObjects, // 4.1 For objects
-        petitionFrom: this.myGroup.value.specialRights + this.myGroup.value.askFrom, // 4.2 From smb
+        petitionTo: this.myGroup.value.newOrOldConnection, // 4.1 For objects
+        petitionFrom: this.myGroup.value.specialRights + this.myGroup.value.askFrom + this.myGroup.value.withOrWithoutPhotovoltaic, // 4.2 From smb
       },
       documentsForDownload: this.userDocFiles // 5 documentsForDownload pdf_only
     };

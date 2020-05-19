@@ -16,7 +16,6 @@
       </ng-container>
     </app-form-stepper>
   </ng-container>
-
   <!-- Fill of Application -->
   <app-form-stepper stepNumber="4" legend="Подання заяви">
     <app-step-application></app-step-application>
@@ -28,7 +27,6 @@
       <app-step-document></app-step-document>
     </app-form-stepper>
   </ng-container>
-
   <div class="button_container">
     <button mat-raised-button color="warn" class="submit_button" type="submit" (click)="send()"
       [disabled]="myGroup.invalid || !isDocumentsSelected()">
