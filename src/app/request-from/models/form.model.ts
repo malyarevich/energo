@@ -13,23 +13,19 @@ export enum DocumentsEnem {
   finansoviRekviziti = 'finansoviRekviziti', // 11
   situationDocument = 'situationDocument', // 12
   dovirenyst = 'dovirenyst', // 13
-  wPTechUmov = 'wPTechUmov', // 14
-  wPDogovirPostochanya = 'wPDogovirPostochanya', // 15
-  wPVityagEd = 'wPVityagEd', // 16
-  wPUstanovchiDocument = 'wPUstanovchiDocument', // 17
-  wPPriznachKerivnika = 'wPPriznachKerivnika', // 18
-  wPPlatnikPDV = 'wPPlatnikPDV', // 19
-  wPPlatnikPNP = 'wPPlatnikPNP', // 20
-  wPPlatnikStatus = 'wPPlatnikStatus', // 21
-  wPORPravoVlasnosti = 'wPORPravoVlasnosti', // 22
-  wPORSituationPlan = 'wPORSituationPlan', // 23
-  wPORVityagRp = 'wPORVityagRp', // 24
-  wPORReestraciyniyNomerPP = 'wPORReestraciyniyNomerPP' // 25
+  powerTechUmov = 'wPTechUmov', // 14
+  powerDogovirPostochanya = 'wPDogovirPostochanya', // 15
+  powerVityagEd = 'wPVityagEd', // 16
+  powerUstanovchiDocument = 'wPUstanovchiDocument', // 17
+  powerPriznachKerivnika = 'wPPriznachKerivnika', // 18
+  powerPlatnikPDV = 'wPPlatnikPDV', // 19
+  powerPlatnikPNP = 'wPPlatnikPNP', // 20
+  powerPlatnikStatus = 'wPPlatnikStatus', // 21
+  inshi = 'inshi' // 22
 }
 
 export enum StepRadioEnum {
-  newOrOldConnection = 'newOrOldConnection',
-  withOrWithoutPhotovoltaic = 'withOrWithoutPhotovoltaic',
+  typeConnection = 'typeConnection',
   askFrom = 'askFrom',
   specialRights = 'specialRights',
   documents = 'documents'
@@ -81,29 +77,18 @@ export const sectionFields = [
 ];
 
 
-export const newOrOldConnectionChecklist = [
+export const typeConnectionChecklist = [
   {
-    id: 'Нове приєднання',
+    id: 'new',
     description: 'Які приєднуються до електричних мереж уперше'
   },
   {
-    id: 'Зміна технічних параметри',
+    id: 'change',
     description: 'Які змінюють технічні параметри'
-  }
-];
-
-export const withOrWithoutPhotovoltaicChecklist = [
-  {
-    id: 'withoutPhotovoltaic',
-    description: 'Потужності'
   },
   {
-    id: 'withPhotovoltaic',
-    description: 'Потужності і фотоелектричні станції'
-  },
-  {
-    id: `withPhotovoltaicOnRoof`,
-    description: `Потужності і фотоелектричні станції (що розташовані на об'єкті архітектури)`
+    id: 'power',
+    description: 'Які приєднуються в рахунок потужності'
   }
 ];
 
@@ -138,13 +123,8 @@ export const specialRightsChecklist = [
 export const radioApplicationList = [
   {
     title: "Для об’єктів:",
-    chooseList: newOrOldConnectionChecklist,
-    step: StepRadioEnum.newOrOldConnection
-  },
-  {
-    title: "Приєднання в рахунок:",
-    chooseList: withOrWithoutPhotovoltaicChecklist,
-    step: StepRadioEnum.withOrWithoutPhotovoltaic
+    chooseList: typeConnectionChecklist,
+    step: StepRadioEnum.typeConnection
   },
   {
     title: "Звернення від:",
@@ -215,57 +195,43 @@ export const documentsForDownload = [
     id: DocumentsEnem.dovirenyst,
     description: `Довіреність на особу, яка буде передавати/получати документи, представляти інтереси основного замовника та/або підписувати договір про приєднання`
   },
-  // for withPhotovoltaic
+  // for power
   {
-    id: DocumentsEnem.wPTechUmov,
+    id: DocumentsEnem.powerTechUmov,
     description: `Технічні умови або лист – згода власника мереж`
   },
   {
-    id: DocumentsEnem.wPDogovirPostochanya,
+    id: DocumentsEnem.powerDogovirPostochanya,
     description: `Копія Договору про постачання електричної енергії власника мереж (перша та остання сторінка договору, додатки щодо дозволеної потужності, категорії з надійності, однолінійна схема, та акт про розмежування балансової належності)`
   },
   {
-    id: DocumentsEnem.wPVityagEd,
-    description: `Копія  витягу з Єдиного державного реєстру юридичних осіб`
+    id: DocumentsEnem.powerVityagEd,
+    description: `Копія  витягу з Єдиного державного реєстру юридичних осіб власника мереж`
   },
   {
-    id: DocumentsEnem.wPUstanovchiDocument,
-    description: `Копії установчих документів (статут, положення тощо)`
+    id: DocumentsEnem.powerUstanovchiDocument,
+    description: `Копії установчих документів (статут, положення тощо) власника мереж`
   },
   {
-    id: DocumentsEnem.wPPriznachKerivnika,
-    description: `Копія наказу про призначення керівника`
+    id: DocumentsEnem.powerPriznachKerivnika,
+    description: `Копія наказу про призначення керівника власника мереж`
   },
   {
-    id: DocumentsEnem.wPPlatnikPDV,
-    description: `Копія свідоцтва про реєстрацію платника ПДВ (за потреби)`
+    id: DocumentsEnem.powerPlatnikPDV,
+    description: `Копія свідоцтва про реєстрацію платника ПДВ власника мереж (за потреби)`
   },
   {
-    id: DocumentsEnem.wPPlatnikPNP,
-    description: `Копія свідоцтва платника податку на прибуток (за потреби)`
+    id: DocumentsEnem.powerPlatnikPNP,
+    description: `Копія свідоцтва платника податку на прибуток власника мереж (за потреби)`
   },
   {
-    id: DocumentsEnem.wPPlatnikStatus,
-    description: `Довідку про банківські реквізити та статус платника податку`
+    id: DocumentsEnem.powerPlatnikStatus,
+    description: ` Довідку про банківські реквізити та статус платника податку власника мереж`
   },
 
-  // for withPhotovoltaicOnRoof
-
   {
-    id: DocumentsEnem.wPORPravoVlasnosti,
-    description: `Копія документа, що підтверджує право власності чи користування об'єктом архітектури або право власності чи користування частиною об'єкта архітектури (дах, фасад)`
-  },
-  {
-    id: DocumentsEnem.wPORSituationPlan,
-    description: `Копія ситуаційного плану із зазначенням прогнозної точки приєднання`
-  },
-  {
-    id: DocumentsEnem.wPORVityagRp,
-    description: `Копію витягу з Реєстру платників єдиного податку або копію свідоцтва платника податку на додану вартість (далі – ПДВ)`
-  },
-  {
-    id: DocumentsEnem.wPORReestraciyniyNomerPP,
-    description: `Реєстраційний номер облікової картки платника податків (для фізичних осіб, які через свої релігійні переконання відмовляються від прийняття реєстраційного номера облікової картки платника податків та повідомили про це відповідний орган і мають відмітку в паспорті (або слово «відмова» у разі, якщо паспорт виготовлений у формі картки) – серія та номер паспорта)`
+    id: DocumentsEnem.inshi,
+    description: `Інші`
   }
 ];
 
@@ -273,33 +239,34 @@ export const ignoredDocumentsForDownloadId = [
   DocumentsEnem.teo,
   DocumentsEnem.dogovirPostochanya,
   DocumentsEnem.dekilkaSpivlastnikiv,
-  DocumentsEnem.wPPlatnikPDV,
-  DocumentsEnem.wPPlatnikPNP
+  DocumentsEnem.powerPlatnikPDV,
+  DocumentsEnem.powerPlatnikPNP,
+  DocumentsEnem.inshi
 ];
 
 export const strategyForDownload = [
-  { id: 'self_ur_withoutPhotovoltaic', numberList: [0, 1, 2, 7, 8, 9, 10, 11, 4, 5 ] },
-  { id: 'presenter_ur_withoutPhotovoltaic', numberList: [0, 1, 2, 7, 8, 9, 10, 11, 4, 5, 13] },
-  { id: 'self_phis_o_withoutPhotovoltaic', numberList: [0, 1, 2, 3, 4, 5, 6] },
-  { id: 'presenter_phis_o_withoutPhotovoltaic', numberList: [0, 1, 2, 3, 4, 5, 6, 13] },
-  { id: 'self_fop_withoutPhotovoltaic', numberList: [0, 1, 2, 3, 7, 10, 4, 5] },
-  { id: 'presenter_fop_withoutPhotovoltaic', numberList: [0, 1, 2, 3, 7, 10, 4, 5, 13] },
+  { id: 'self_ur_new', numberList: [0, 1, 2, 7, 8, 9, 10, 11, 4, 5, 22] },
+  { id: 'presenter_ur_new', numberList: [0, 1, 2, 7, 8, 9, 10, 11, 4, 5, 13, 22] },
+  { id: 'self_phis_o_new', numberList: [0, 1, 2, 3, 4, 5, 6, 22] },
+  { id: 'presenter_phis_o_new', numberList: [0, 1, 2, 3, 4, 5, 6, 13, 22] },
+  { id: 'self_fop_new', numberList: [0, 1, 2, 3, 7, 10, 4, 5, 22] },
+  { id: 'presenter_fop_new', numberList: [0, 1, 2, 3, 7, 10, 4, 5, 13, 22] },
+  
+  { id: 'self_ur_change', numberList: [0, 1, 2, 7, 8, 9, 10, 11, 4, 5, 22] },
+  { id: 'presenter_ur_change', numberList: [0, 1, 2, 7, 8, 9, 10, 11, 4, 5, 13, 22] },
+  { id: 'self_phis_o_change', numberList: [0, 1, 2, 3, 4, 5, 6, 22] },
+  { id: 'presenter_phis_o_change', numberList: [0, 1, 2, 3, 4, 5, 6, 13, 22] },
+  { id: 'self_fop_change', numberList: [0, 1, 2, 3, 7, 10, 4, 5, 22] },
+  { id: 'presenter_fop_change', numberList: [0, 1, 2, 3, 7, 10, 4, 5, 13, 22] },
 
   
-  { id: 'self_ur_withPhotovoltaic', numberList: [0, 1, 2, 7, 8, 9, 10, 11, 4, 5, 14, 15, 16, 17, 18, 19, 20, 21] },
-  { id: 'presenter_ur_withPhotovoltaic', numberList: [0, 1, 2, 7, 8, 9, 10, 11, 4, 5, 13, 14, 15, 16, 17, 18, 19, 20, 21] },
-  { id: 'self_phis_o_withPhotovoltaic', numberList: [0, 1, 2, 3, 4, 5, 6, 14, 15, 16, 17, 18, 19, 20, 21] },
-  { id: 'presenter_phis_o_withPhotovoltaic', numberList: [0, 1, 2, 3, 4, 5, 6, 13, 14, 15, 16, 17, 18, 19, 20, 21] },
-  { id: 'self_fop_withPhotovoltaic', numberList: [0, 1, 2, 3, 7, 10, 4, 5, 14, 15, 16, 17, 18, 19, 20, 21] },
-  { id: 'presenter_fop_withPhotovoltaic', numberList: [0, 1, 2, 3, 7, 10, 4, 5, 13, 14, 15, 16, 17, 18, 19, 20, 21] },
+  { id: 'self_ur_power', numberList: [0, 1, 2, 7, 8, 9, 10, 11, 4, 5, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
+  { id: 'presenter_ur_power', numberList: [0, 1, 2, 7, 8, 9, 10, 11, 4, 5, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
+  { id: 'self_phis_o_power', numberList: [0, 1, 2, 3, 4, 5, 6, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
+  { id: 'presenter_phis_o_power', numberList: [0, 1, 2, 3, 4, 5, 6, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
+  { id: 'self_fop_power', numberList: [0, 1, 2, 3, 7, 10, 4, 5, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
+  { id: 'presenter_fop_power', numberList: [0, 1, 2, 3, 7, 10, 4, 5, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
 
-  { id: 'self_ur_withPhotovoltaicOnRoof', numberList: [0, 1, 2, 7, 8, 9, 10, 11, 4, 5, 22, 23, 24, 25] },
-  { id: 'presenter_ur_withPhotovoltaicOnRoof', numberList: [0, 1, 2, 7, 8, 9, 10, 11, 4, 5, 13, 22, 23, 24, 25] },
-  { id: 'self_phis_o_withPhotovoltaicOnRoof', numberList: [0, 1, 2, 3, 4, 5, 6, 22, 23, 24, 25] },
-  { id: 'presenter_phis_o_withPhotovoltaicOnRoof', numberList: [0, 1, 2, 3, 4, 5, 6, 13, 22, 23, 24, 25] },
-  { id: 'self_fop_withPhotovoltaicOnRoof', numberList: [0, 1, 2, 3, 7, 10, 4, 5, 22, 23, 24, 25] },
-  { id: 'presenter_fop_withPhotovoltaicOnRoof', numberList: [0, 1, 2, 3, 7, 10, 4, 5, 13, 22, 23, 24, 25] },
-  
 ];
 
 export const refDocument =

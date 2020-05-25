@@ -8,8 +8,7 @@ import { map, filter } from 'rxjs/operators';
 import { AuthService } from '~/app/services/auth.service';
 
 export interface IOptionSteps {
-  [StepRadioEnum.newOrOldConnection]?: string;
-  [StepRadioEnum.withOrWithoutPhotovoltaic]?: string;  
+  [StepRadioEnum.typeConnection]?: string;
   [StepRadioEnum.askFrom]?: string;
   [StepRadioEnum.specialRights]?: string;
   [StepRadioEnum.documents]?: string;
@@ -28,8 +27,7 @@ export class RequestFormService {
   userDocFiles = {};
   resList$: BehaviorSubject<ResListType> = new BehaviorSubject<ResListType>(null); // options
   doneSteps$: BehaviorSubject<IOptionSteps> = new BehaviorSubject<IOptionSteps>({
-    newOrOldConnection: null,
-    withOrWithoutPhotovoltaic: null,
+    typeConnection: null,
     askFrom: null,
     specialRights: null,
     documents: null,
@@ -163,16 +161,7 @@ export class RequestFormService {
           Validators.required // обязательное поле
         ]) // Validations
       ),
-      [StepRadioEnum.withOrWithoutPhotovoltaic]: new FormControl(
-        {
-          value: null, // from who
-          disabled: false // off/on
-        },
-        Validators.compose([
-          Validators.required // обязательное поле
-        ]) // Validations
-      ),
-      [StepRadioEnum.newOrOldConnection]: new FormControl(
+      [StepRadioEnum.typeConnection]: new FormControl(
         {
           value: null, // is by self
           disabled: false // off/on
@@ -196,8 +185,8 @@ export class RequestFormService {
     
     this.doneSteps$
     .subscribe((data) => {
-      if(this.doneSteps.specialRights && this.doneSteps.askFrom && this.doneSteps.withOrWithoutPhotovoltaic ) {
-        this.filterDocumentsForDownload(this.doneSteps.specialRights + this.doneSteps.askFrom + this.doneSteps.withOrWithoutPhotovoltaic);
+      if(this.doneSteps.specialRights && this.doneSteps.askFrom && this.doneSteps.typeConnection ) {
+        this.filterDocumentsForDownload(this.doneSteps.specialRights + this.doneSteps.askFrom + this.doneSteps.typeConnection);
       }
     }); // name is group
   }
@@ -293,8 +282,8 @@ export class RequestFormService {
     const data = {
       form: {
         ...this.filtrationForBackend(this.myGroup.value), // 2 & 3 main form information
-        petitionTo: this.myGroup.value.newOrOldConnection, // 4.1 For objects
-        petitionFrom: this.myGroup.value.specialRights + this.myGroup.value.askFrom + this.myGroup.value.withOrWithoutPhotovoltaic, // 4.2 From smb
+        petitionTo: this.myGroup.value.typeConnection, // 4.1 For objects
+        petitionFrom: this.myGroup.value.specialRights + this.myGroup.value.askFrom + this.myGroup.value.typeConnection, // 4.2 From smb
       },
       documentsForDownload: this.userDocFiles // 5 documentsForDownload pdf_only
     };
