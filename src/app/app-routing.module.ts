@@ -7,12 +7,12 @@ const routes: Routes = [
     path: "",
     children: [
       {
-        path: "request-from",
+        path: "",
         loadChildren: () => import("~/app/request-from/request-from.module").then((m) => m.RequestFromModule),
       },
       {
         path: '**',
-        redirectTo: "request-from",
+        redirectTo: "",
       },
     ]
   },

@@ -21,7 +21,8 @@ export enum DocumentsEnem {
   powerPlatnikPDV = 'wPPlatnikPDV', // 19
   powerPlatnikPNP = 'wPPlatnikPNP', // 20
   powerPlatnikStatus = 'wPPlatnikStatus', // 21
-  inshi = 'inshi' // 22
+  inshi = 'inshi', // 22
+  powersituationPlan = 'powersituationPlan' // 23
 }
 
 export enum StepRadioEnum {
@@ -232,7 +233,11 @@ export const documentsForDownload = [
   {
     id: DocumentsEnem.inshi,
     description: `Інші`
-  }
+  },
+  {
+    id: DocumentsEnem.powersituationPlan,
+    description: `Копія ситуаційного плану та копія викопіювання з топографо-геодезичного плану в масштабі 1:2000 (1:1000, 1:500 або 1:200) із зазначенням місця розташування об'єкта (об'єктів) замовника, земельної ділянки замовника або прогнозної точки приєднання (для об'єктів, що приєднуються до електричних мереж уперше)`
+  },
 ];
 
 export const ignoredDocumentsForDownloadId = [
@@ -241,7 +246,8 @@ export const ignoredDocumentsForDownloadId = [
   DocumentsEnem.dekilkaSpivlastnikiv,
   DocumentsEnem.powerPlatnikPDV,
   DocumentsEnem.powerPlatnikPNP,
-  DocumentsEnem.inshi
+  DocumentsEnem.inshi,
+  DocumentsEnem.powersituationPlan
 ];
 
 export const strategyForDownload = [
@@ -260,12 +266,12 @@ export const strategyForDownload = [
   { id: 'presenter_fop_change', numberList: [0, 1, 2, 3, 7, 10, 4, 5, 13, 22] },
 
   
-  { id: 'self_ur_power', numberList: [0, 1, 2, 7, 8, 9, 10, 11, 4, 5, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
-  { id: 'presenter_ur_power', numberList: [0, 1, 2, 7, 8, 9, 10, 11, 4, 5, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
-  { id: 'self_phis_o_power', numberList: [0, 1, 2, 3, 4, 5, 6, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
-  { id: 'presenter_phis_o_power', numberList: [0, 1, 2, 3, 4, 5, 6, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
-  { id: 'self_fop_power', numberList: [0, 1, 2, 3, 7, 10, 4, 5, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
-  { id: 'presenter_fop_power', numberList: [0, 1, 2, 3, 7, 10, 4, 5, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
+  { id: 'self_ur_power', numberList: [0, 1, 23, 7, 8, 9, 10, 11, 4, 5, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
+  { id: 'presenter_ur_power', numberList: [0, 1, 23, 7, 8, 9, 10, 11, 4, 5, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
+  { id: 'self_phis_o_power', numberList: [0, 1, 23, 3, 4, 5, 6, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
+  { id: 'presenter_phis_o_power', numberList: [0, 1, 23, 3, 4, 5, 6, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
+  { id: 'self_fop_power', numberList: [0, 1, 23, 3, 7, 10, 4, 5, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
+  { id: 'presenter_fop_power', numberList: [0, 1, 23, 3, 7, 10, 4, 5, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
 
 ];
 
