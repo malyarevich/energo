@@ -1,28 +1,28 @@
 export enum DocumentsEnem {
-  consentEcp = 'consentECP', // 0
-  pravoVlasnosti = 'pravoVlasnosti', // 1
+  onsentEcp = 'onsentEcp', // 0
+  propertyRights = 'propertyRights', // 1
   situationPlan = 'situationPlan', // 2
   passport = 'passport', // 3
   teo = 'teo', // 4
-  dogovirPostochanya = 'dogovirPostochanya', // 5
-  dekilkaSpivlastnikiv = 'dekilkaSpivlastnikiv', // 6
-  vityagEd = 'vityagEd', // 7
-  ustanovchiDocument = 'ustanovchiDocument', // 8
-  priznachKerivnika = 'priznachKerivnika', // 9
-  vityagRp = 'vityagRp', // 10
-  finansoviRekviziti = 'finansoviRekviziti', // 11
+  supplyСontract = 'supplyСontract', // 5
+  severalOwners = 'severalOwners', // 6
+  extractEd = 'extractEd', // 7
+  foundingDocument = 'foundingDocument', // 8
+  appointmentManager = 'appointmentManager', // 9
+  extractRp = 'extractRp', // 10
+  financialDetails = 'financialDetails', // 11
   situationDocument = 'situationDocument', // 12
-  dovirenyst = 'dovirenyst', // 13
-  powerTechUmov = 'wPTechUmov', // 14
-  powerDogovirPostochanya = 'wPDogovirPostochanya', // 15
-  powerVityagEd = 'wPVityagEd', // 16
-  powerUstanovchiDocument = 'wPUstanovchiDocument', // 17
-  powerPriznachKerivnika = 'wPPriznachKerivnika', // 18
-  powerPlatnikPDV = 'wPPlatnikPDV', // 19
-  powerPlatnikPNP = 'wPPlatnikPNP', // 20
-  powerPlatnikStatus = 'wPPlatnikStatus', // 21
-  inshi = 'inshi', // 22
-  powersituationPlan = 'powersituationPlan' // 23
+  proxy = 'proxy', // 13
+  powerTechConditions = 'powerTechConditions', // 14
+  powersupplyСontract = 'powersupplyСontract', // 15
+  powerExtractEd = 'powerExtractEd', // 16
+  powerFoundingDocument = 'powerFoundingDocument', // 17
+  powerAppointmentManager = 'powerAppointmentManager', // 18
+  powerPayerPDV = 'powerPayerPDV', // 19
+  powerPayerPNP = 'powerPayerPNP', // 20
+  powerPayerStatus = 'powerPayerStatus', // 21
+  another = 'another', // 22
+  powerSituationPlan = 'powerSituationPlan' // 23
 }
 
 export enum StepRadioEnum {
@@ -37,11 +37,11 @@ export const sectionFields = [
     legend: 'Контактні дані',
     fields: [
       {
-        name: 'firstName',
+        name: 'edrpouIpn',
         placeholder: 'ЄДРПОУ / IПН'
       },
       {
-        name: 'pibName',
+        name: 'NamePib',
         placeholder: 'Найменування юридичної особи / ПІБ фізичної особи'
       },
       {
@@ -141,11 +141,11 @@ export const radioApplicationList = [
 
 export const documentsForDownload = [
   {
-    id: DocumentsEnem.consentEcp,
+    id: DocumentsEnem.onsentEcp,
     description: `Заява про приєднання (з ЕЦП)` // ` - for multi-rows
   },
   {
-    id: DocumentsEnem.pravoVlasnosti,
+    id: DocumentsEnem.propertyRights,
     description: `Копія документа, що підтверджує право власності чи користування цим об'єктом, або копія витягу з Державного реєстру речових прав на нерухоме майно, або, за відсутності об'єкта, копія документа, що підтверджує право власності чи користування земельною ділянкою, або копія витягу з Державного реєстру речових прав на нерухоме майно. У разі відсутності кадастрового номера у свідоцтві про право власності на земельну ділянку – викопіювання з топографо-геодезичного плану або плану забудови території із зазначенням місця розташування земельної ділянки`
   },
   {
@@ -161,31 +161,31 @@ export const documentsForDownload = [
     description: `ТЕО (за наявності)`
   },
   {
-    id: DocumentsEnem.dogovirPostochanya,
+    id: DocumentsEnem.supplyСontract,
     description: `Копія Договору про постачання електричної енергії власника мереж (перша та остання сторінка договору, додатки щодо дозволеної потужності, категорії з надійності, однолінійна схема, та акт про розмежування балансової належності) (за наявності)`
   },
   {
-    id: DocumentsEnem.dekilkaSpivlastnikiv,
+    id: DocumentsEnem.severalOwners,
     description: `У разі наявності декілька співвласників: виділення в натурі частини нерухомого майна, або нотаріально-завірена копія дозволу від інших співвласників на право заключити Договір про приєднання всього будинку`
   },
   {
-    id: DocumentsEnem.vityagEd,
+    id: DocumentsEnem.extractEd,
     description: `Копія  витягу з Єдиного державного реєстру юридичних осіб та фізичних осіб-підприємців та громадських формувань`
   },
   {
-    id: DocumentsEnem.ustanovchiDocument,
+    id: DocumentsEnem.foundingDocument,
     description: `Копії установчих документів (статут, положення тощо)`
   },
   {
-    id: DocumentsEnem.priznachKerivnika,
+    id: DocumentsEnem.appointmentManager,
     description: `Копія наказу про призначення керівника`
   },
   {
-    id: DocumentsEnem.vityagRp,
+    id: DocumentsEnem.extractRp,
     description: `Копія витягу з Реєстру платників єдиного податку або копію свідоцтва платника податку на додану вартість (далі – ПДВ)`
   },
   {
-    id: DocumentsEnem.finansoviRekviziti,
+    id: DocumentsEnem.financialDetails,
     description: `Довідка про фінансові реквізити та статус платника податку`
   },
   {
@@ -193,61 +193,61 @@ export const documentsForDownload = [
     description: `Статутний документ`
   },
   {
-    id: DocumentsEnem.dovirenyst,
+    id: DocumentsEnem.proxy,
     description: `Довіреність на особу, яка буде передавати/получати документи, представляти інтереси основного замовника та/або підписувати договір про приєднання`
   },
   // for power
   {
-    id: DocumentsEnem.powerTechUmov,
+    id: DocumentsEnem.powerTechConditions,
     description: `Технічні умови або лист – згода власника мереж`
   },
   {
-    id: DocumentsEnem.powerDogovirPostochanya,
+    id: DocumentsEnem.powersupplyСontract,
     description: `Копія Договору про постачання електричної енергії власника мереж (перша та остання сторінка договору, додатки щодо дозволеної потужності, категорії з надійності, однолінійна схема, та акт про розмежування балансової належності)`
   },
   {
-    id: DocumentsEnem.powerVityagEd,
+    id: DocumentsEnem.powerExtractEd,
     description: `Копія  витягу з Єдиного державного реєстру юридичних осіб власника мереж`
   },
   {
-    id: DocumentsEnem.powerUstanovchiDocument,
+    id: DocumentsEnem.powerFoundingDocument,
     description: `Копії установчих документів (статут, положення тощо) власника мереж`
   },
   {
-    id: DocumentsEnem.powerPriznachKerivnika,
+    id: DocumentsEnem.powerAppointmentManager,
     description: `Копія наказу про призначення керівника власника мереж`
   },
   {
-    id: DocumentsEnem.powerPlatnikPDV,
+    id: DocumentsEnem.powerPayerPDV,
     description: `Копія свідоцтва про реєстрацію платника ПДВ власника мереж (за потреби)`
   },
   {
-    id: DocumentsEnem.powerPlatnikPNP,
+    id: DocumentsEnem.powerPayerPNP,
     description: `Копія свідоцтва платника податку на прибуток власника мереж (за потреби)`
   },
   {
-    id: DocumentsEnem.powerPlatnikStatus,
+    id: DocumentsEnem.powerPayerStatus,
     description: ` Довідку про банківські реквізити та статус платника податку власника мереж`
   },
 
   {
-    id: DocumentsEnem.inshi,
+    id: DocumentsEnem.another,
     description: `Інші`
   },
   {
-    id: DocumentsEnem.powersituationPlan,
+    id: DocumentsEnem.powerSituationPlan,
     description: `Копія ситуаційного плану та копія викопіювання з топографо-геодезичного плану в масштабі 1:2000 (1:1000, 1:500 або 1:200) із зазначенням місця розташування об'єкта (об'єктів) замовника, земельної ділянки замовника або прогнозної точки приєднання (для об'єктів, що приєднуються до електричних мереж уперше)`
   },
 ];
 
 export const ignoredDocumentsForDownloadId = [
   DocumentsEnem.teo,
-  DocumentsEnem.dogovirPostochanya,
-  DocumentsEnem.dekilkaSpivlastnikiv,
-  DocumentsEnem.powerPlatnikPDV,
-  DocumentsEnem.powerPlatnikPNP,
-  DocumentsEnem.inshi,
-  DocumentsEnem.powersituationPlan
+  DocumentsEnem.supplyСontract,
+  DocumentsEnem.severalOwners,
+  DocumentsEnem.powerPayerPDV,
+  DocumentsEnem.powerPayerPNP,
+  DocumentsEnem.another,
+  DocumentsEnem.powerSituationPlan
 ];
 
 export const strategyForDownload = [
