@@ -70,7 +70,33 @@ export class RequestFormService {
     })
     // Инициализируем новую форм группу
     this.myGroup = new FormGroup({
-      firstName: new FormControl(
+      // sectionRequest Fields
+      
+      reqNameUrPib: new FormControl(
+        {
+          value: 'ПАТ "Запоріжжяобленерго"', // state
+          disabled: false // off/on
+        },
+        Validators.compose([
+          Validators.required, // обязательное поле
+          Validators.minLength(3), // мин длина строки
+          Validators.maxLength(7) // max length
+        ]) // Validations
+      ),
+      reqRegistryNumber: new FormControl(
+        {
+          value: 'АА123456', // state
+          disabled: false // off/on
+        },
+        Validators.compose([
+          Validators.required, // обязательное поле
+          Validators.minLength(3), // мин длина строки
+          Validators.maxLength(7) // max length
+        ]) // Validations
+      ),
+
+      // sectionFields Fields
+      edrpouIpn: new FormControl(
         {
           value: '123456789101', // state
           disabled: false // off/on
@@ -81,7 +107,7 @@ export class RequestFormService {
           Validators.maxLength(7) // max length
         ]) // Validations
       ),
-      pibName: new FormControl(
+      namePib: new FormControl(
         {
           value: 'Іванов Іван Іванович', // state
           disabled: false // off/on
@@ -134,7 +160,7 @@ export class RequestFormService {
           Validators.maxLength(12) // max length
         ]) // Validations
       ),
-      addressSelect: new FormControl(
+      addressBranch: new FormControl(
         {
           value: null, // state
           disabled: false // off/on

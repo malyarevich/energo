@@ -4,9 +4,19 @@
   </h1>
 
   <!-- Document Step -->
-  <app-form-stepper stepNumber="1" legend="Заповненя заяви">
-    <app-step-download></app-step-download>
+  <ng-container *ngFor="let section of sectionRequest; let i = index">  
+    <app-form-stepper stepNumber="1" legend="Заповненя заяви">
+      <ng-container *ngFor="let fieldItem of section.fields">
+        <app-step-download [fieldItem]="fieldItem"></app-step-download>
+        
+      </ng-container>
+      <br />
+      <button mat-raised-button color="warn" style="font-size: 1rem">
+        <a [href]="refDocument">Завантажити</a>
+      </button>
   </app-form-stepper>
+  </ng-container>
+
 
   <!-- Contact Information -->
   <ng-container *ngFor="let section of sectionFields; let i = index">

@@ -32,16 +32,32 @@ export enum StepRadioEnum {
   documents = 'documents'
 }
 
+export const sectionRequest = [
+  {
+    legend: 'Контактні дані',
+    fields: [
+      {
+        name: 'reqNameUrPib',
+        placeholder: 'Найменування/ПІБ'
+      },
+      {
+        name: 'reqRegistryNumber',
+        placeholder: 'ЄДРПОУ/РНОКПП(ІПН)/Серія та номер паспорта.'
+      }
+    ]
+  },
+];
+
 export const sectionFields = [
   {
     legend: 'Контактні дані',
     fields: [
       {
         name: 'edrpouIpn',
-        placeholder: 'ЄДРПОУ / IПН'
+        placeholder: 'ЄДРПОУ / РНОКПП(ІПН)'
       },
       {
-        name: 'NamePib',
+        name: 'namePib',
         placeholder: 'Найменування юридичної особи / ПІБ фізичної особи'
       },
       {
@@ -67,7 +83,7 @@ export const sectionFields = [
     legend: 'Адреса об’єкта',
     fields: [
       {
-        name: 'addressSelect',
+        name: 'addressBranch',
         placeholder: 'Місто / район',
         type: 'select',
         options: []

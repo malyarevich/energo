@@ -1,8 +1,27 @@
-<div style="font-size: 1rem">
-  Завантажте, роздрукуйте та заповніть заяву про приєднання електроустановки
+<div [formGroup]="myGroup">
+  <ng-container *ngIf="fieldItem.type === 'select'; else defaultInput">
+    <mat-form-field class="example-full-width">
+      <mat-label>{{ fieldItem.placeholder }}</mat-label>
+      <mat-select [formControlName]="fieldItem.name" required>
+        <mat-option *ngFor="let option of options" [value]="option.id">{{ option.label }}</mat-option>
+      </mat-select>
+      <mat-hint></mat-hint>
+      <mat-error>
+        <app-error-list [fieldId]="fieldItem.name"></app-error-list>
+      </mat-error>
+    </mat-form-field>
+  </ng-container>
+
+  <ng-template #defaultInput>
+    <mat-form-field class="example-full-width">
+      <mat-label> {{ fieldItem.placeholder }}</mat-label>
+      <input type="text" matInput [errorStateMatcher]="matcher" [formControlName]="fieldItem.name"
+        [placeholder]="fieldItem.placeholder" />
+      <mat-hint></mat-hint>
+      <mat-error>
+        <app-error-list [fieldId]="fieldItem.name"></app-error-list>
+      </mat-error>
+    </mat-form-field>
+  </ng-template>
 </div>
 
-<br />
-<button mat-raised-button color="warn" style="font-size: 1rem">
-  <a [href]="refDocument">Завантажити</a>
-</button>

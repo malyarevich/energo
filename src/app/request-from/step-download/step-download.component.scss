@@ -1,1 +1,9 @@
 @import "../request-from.component.scss";
+
+.example-full-width {
+    align-items: stretch;
+    align-self: stretch;
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+  }

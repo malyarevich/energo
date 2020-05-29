@@ -3,6 +3,7 @@ import {
   FormGroup
 } from '@angular/forms';
 import {
+  sectionRequest,
   sectionFields
 } from './models/form.model';
 import { RequestFormService } from './services/request-form.service';
@@ -21,6 +22,9 @@ export class RequestFromComponent implements OnInit {
     return this.reqForm.documentsForDownload$;
   }
 
+  get sectionRequest(): any {
+    return sectionRequest;
+  }
   get sectionFields(): any {
     return sectionFields;
   }
