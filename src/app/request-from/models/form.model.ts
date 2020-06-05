@@ -47,8 +47,8 @@ export const sectionRequest = [
     ]
   },
 ];
-
-export const sectionFields = [
+// sectionContacts
+export const sectionContacts = [
   {
     legend: 'Контактні дані',
     fields: [
@@ -78,8 +78,10 @@ export const sectionFields = [
         placeholder: 'Телефон'
       }
     ]
-  },
-  {
+  }
+];
+  export const sectionAddressObject = [
+    {
     legend: 'Адреса об’єкта',
     fields: [
       {

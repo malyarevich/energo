@@ -40,6 +40,7 @@ export class StepDownloadComponent implements OnInit {
 
 
   public myGroup: FormGroup;
+
   public matcher = new MyErrorStateMatcher();
 
   constructor(private reqForm: RequestFormService) {

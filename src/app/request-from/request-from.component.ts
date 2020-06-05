@@ -4,7 +4,8 @@ import {
 } from '@angular/forms';
 import {
   sectionRequest,
-  sectionFields
+  sectionContacts,
+  sectionAddressObject
 } from './models/form.model';
 import { RequestFormService } from './services/request-form.service';
 
@@ -17,6 +18,7 @@ export class RequestFromComponent implements OnInit {
   @Input("title") pageTitle = "Title";
 
   myGroup: FormGroup;
+//  firstFormGroup: FormGroup;
 
   get documentsForDownload$() {
     return this.reqForm.documentsForDownload$;
@@ -25,9 +27,13 @@ export class RequestFromComponent implements OnInit {
   get sectionRequest(): any {
     return sectionRequest;
   }
-  get sectionFields(): any {
-    return sectionFields;
+  get sectionContacts(): any {
+    return sectionContacts;
   }
+  get sectionAddressObject(): any {
+    return sectionAddressObject;
+  }
+  
 
   constructor(private reqForm: RequestFormService) { }
 

@@ -22,7 +22,10 @@ export type ResListType = {
   providedIn: 'root'
 })
 export class RequestFormService {
+
   myGroup: FormGroup;
+  sectionRequestFormGroup: FormGroup;
+  sectionContactsFormGroup: FormGroup;
   isSubmitted = false;
   userDocFiles = {};
   resList$: BehaviorSubject<ResListType> = new BehaviorSubject<ResListType>(null); // options
@@ -69,9 +72,37 @@ export class RequestFormService {
       this.takeResList(token);
     })
     // Инициализируем новую форм группу
+
     this.myGroup = new FormGroup({
-      // sectionRequest Fields
-      
+      [StepRadioEnum.askFrom]: new FormControl(
+        {
+          value: null, // from who
+          disabled: false // off/on
+        },
+        Validators.compose([
+          Validators.required // обязательное поле
+        ]) // Validations
+      ),
+      [StepRadioEnum.typeConnection]: new FormControl(
+        {
+          value: null, // is by self
+          disabled: false // off/on
+        },
+      ),
+      [StepRadioEnum.specialRights]: new FormControl(
+        {
+          value: null, // from who
+          disabled: false // off/on
+        },
+        Validators.compose([
+          Validators.required // обязательное поле
+        ]) // Validations
+      )
+    });
+
+
+    // ******************************** sectionRequest Fields ********************************
+    this.sectionRequestFormGroup = new FormGroup({
       reqNameUrPib: new FormControl(
         {
           value: 'ПАТ "Запоріжжяобленерго"', // state
@@ -94,8 +125,10 @@ export class RequestFormService {
           Validators.maxLength(7) // max length
         ]) // Validations
       ),
+    });
+    // ******************************** sectionContacts Fields ********************************
+    this.sectionContactsFormGroup = new FormGroup({
 
-      // sectionFields Fields
       edrpouIpn: new FormControl(
         {
           value: '123456789101', // state
@@ -160,6 +193,9 @@ export class RequestFormService {
           Validators.maxLength(12) // max length
         ]) // Validations
       ),
+
+    });
+    this.sectionRequestFormGroup = new FormGroup({
       addressBranch: new FormControl(
         {
           value: null, // state
@@ -178,46 +214,26 @@ export class RequestFormService {
           Validators.required // обязательное поле
         ]) // Validations
       ),
-      [StepRadioEnum.askFrom]: new FormControl(
-        {
-          value: null, // from who
-          disabled: false // off/on
-        },
-        Validators.compose([
-          Validators.required // обязательное поле
-        ]) // Validations
-      ),
-      [StepRadioEnum.typeConnection]: new FormControl(
-        {
-          value: null, // is by self
-          disabled: false // off/on
-        },
-      ),
-      [StepRadioEnum.specialRights]: new FormControl(
-        {
-          value: null, // from who
-          disabled: false // off/on
-        },
-        Validators.compose([
-          Validators.required // обязательное поле
-        ]) // Validations
-      )
     });
+
+
+
+
 
     // вкл функцию слежения за изменениями ЗНАЧЕНИЙ в форме
     this.myGroup.statusChanges.subscribe(result => {
       // console.log(result);
     });
-    
+
     this.doneSteps$
-    .subscribe((data) => {
-      if(this.doneSteps.specialRights && this.doneSteps.askFrom && this.doneSteps.typeConnection ) {
-        this.filterDocumentsForDownload(this.doneSteps.specialRights + this.doneSteps.askFrom + this.doneSteps.typeConnection);
-      }
-    }); // name is group
+      .subscribe((data) => {
+        if (this.doneSteps.specialRights && this.doneSteps.askFrom && this.doneSteps.typeConnection) {
+          this.filterDocumentsForDownload(this.doneSteps.specialRights + this.doneSteps.askFrom + this.doneSteps.typeConnection);
+        }
+      }); // name is group
   }
 
-  
+
   filterDocumentsForDownload(strategyId: string) {
     const documents = [];
     const { numberList } = strategyForDownload.find(elem => (strategyId === elem.id));
@@ -229,7 +245,7 @@ export class RequestFormService {
   }
 
   isPreviousStepDone(step: string, index: number = 0) {
-    
+
     if (Object.values(StepRadioEnum)[index - 1] && (index > 0)) {
       return this.doneSteps[Object.values(StepRadioEnum)[index - 1]] !== null;
     }
@@ -333,7 +349,7 @@ export class RequestFormService {
   }
 
   // return this.http.get(`${environment.apiFB}/?api_token=${environment.api_token}`)
-  getApiList(token: string): Observable<any>{
+  getApiList(token: string): Observable<any> {
     return this.http.get(`${environment.apiFB}?token=${token}`)
       .pipe(
         map(response => response)
@@ -345,7 +361,7 @@ export class RequestFormService {
       (res: ResListType) => {
         console.log("res", res)
         this.resList = res;
-      },console.error,)
+      }, console.error)
   }
 
 }

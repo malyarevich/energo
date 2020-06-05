@@ -27,6 +27,7 @@ import { StepApplicationComponent } from './step-application/step-application.co
 import { StepContactInfoComponent } from './step-contact-info/step-contact-info.component';
 import { FormWrapperComponent } from './form-wrapper/form-wrapper.component';
 import { NgAnimateScrollService } from 'ng-animate-scroll';
+import { MatStepperModule } from '@angular/material/stepper';
 
 
 // @ts-ignore
@@ -58,6 +59,7 @@ import { NgAnimateScrollService } from 'ng-animate-scroll';
     MatInputModule,
     MatSelectModule,
     MatCheckboxModule,
+    MatStepperModule
   ],
   providers: [],
   schemas: [
