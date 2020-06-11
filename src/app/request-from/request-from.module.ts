@@ -26,8 +26,8 @@ import { FormStepperComponent } from './form-stepper/form-stepper.component';
 import { StepApplicationComponent } from './step-application/step-application.component';
 import { StepContactInfoComponent } from './step-contact-info/step-contact-info.component';
 import { FormWrapperComponent } from './form-wrapper/form-wrapper.component';
-import { NgAnimateScrollService } from 'ng-animate-scroll';
 import { MatStepperModule } from '@angular/material/stepper';
+import { StepAddressInfoComponent } from './step-address-info/step-address-info.component';
 
 
 // @ts-ignore
@@ -41,6 +41,7 @@ import { MatStepperModule } from '@angular/material/stepper';
     StepApplicationComponent,
     StepContactInfoComponent,
     FormWrapperComponent,
+    StepAddressInfoComponent,
   ],
   imports: [
     CommonModule,

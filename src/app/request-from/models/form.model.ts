@@ -37,11 +37,11 @@ export const sectionRequest = [
     legend: 'Контактні дані',
     fields: [
       {
-        name: 'reqNameUrPib',
+        name: 'nameUrPib',
         placeholder: 'Найменування/ПІБ'
       },
       {
-        name: 'reqRegistryNumber',
+        name: 'registryNumber',
         placeholder: 'ЄДРПОУ/РНОКПП(ІПН)/Серія та номер паспорта.'
       }
     ]
@@ -80,12 +80,12 @@ export const sectionContacts = [
     ]
   }
 ];
-  export const sectionAddressObject = [
+  export const sectionAddress = [
     {
     legend: 'Адреса об’єкта',
     fields: [
       {
-        name: 'addressBranch',
+        name: 'branchId',
         placeholder: 'Місто / район',
         type: 'select',
         options: []
@@ -269,7 +269,8 @@ export const ignoredDocumentsForDownloadId = [
 ];
 
 export const strategyForDownload = [
-  { id: 'self_ur_new', numberList: [0, 1, 2, 7, 8, 9, 10, 11, 4, 5, 22] },
+  // { id: 'self_ur_new', numberList: [0, 1, 2, 7, 8, 9, 10, 11, 4, 5, 22] },
+  { id: 'self_ur_new', numberList: [0, 22] },
   { id: 'presenter_ur_new', numberList: [0, 1, 2, 7, 8, 9, 10, 11, 4, 5, 13, 22] },
   { id: 'self_phis_o_new', numberList: [0, 1, 2, 3, 4, 5, 6, 22] },
   { id: 'presenter_phis_o_new', numberList: [0, 1, 2, 3, 4, 5, 6, 13, 22] },
@@ -295,3 +296,65 @@ export const strategyForDownload = [
 
 export const refDocument =
   'http://www.zoe.com.ua/wp-content/uploads/2019/05/%D0%97%D0%B0%D1%8F%D0%B2%D0%B0-%D0%BD%D0%B0-%D0%BF%D1%80%D0%B8%D1%81.doc';
+
+export interface IPetInit {
+  "EDRPOU": string;
+  "Password": string;
+  "Name": string;
+  "Post_addr": string;
+  "Email": string;
+  "Phone": string; 
+  "Status": any;
+  "Type": any;
+  "Initiator": any;
+  "Dover": any;
+  "Branch": any;
+  "Addr": string,
+  "consentEcp": any;
+  "pravoVlasnosti": any;
+  "copySituationPlan": any;
+  "passport": any;
+  "teo": any;
+  "dogovirPostochanya": any;
+  "dekilkaSpivlastnikiv": any;
+  "buildingPassport": any;
+  "edrpou": any;
+  "situationDocument": any;
+  "vityagEd": any;
+  "ustanovchiDocument": any;
+  "priznachKerivnika": any;
+  "vityagRp": any;
+  "finansoviRekviziti": any;
+  "dovirenyst": any;
+}
+
+export const defaultPetInit: IPetInit = {
+  "EDRPOU": "",
+  "Password": "",
+  "Name": "",
+  "Post_addr": "",
+  "Email": "",
+  "Phone": "",
+  "Status": null,
+  "Type": null,
+  "Initiator": null,
+  "Dover": null,
+  "Branch": null,
+  "Addr": "",
+  "consentEcp": null,
+  "pravoVlasnosti": null,
+  "copySituationPlan": null,
+  "passport": null,
+  "teo": null,
+  "dogovirPostochanya": null,
+  "dekilkaSpivlastnikiv": null,
+  "buildingPassport": null,
+  "edrpou": null,
+  "situationDocument": null,
+  "vityagEd": null,
+  "ustanovchiDocument": null,
+  "priznachKerivnika": null,
+  "vityagRp": null,
+  "finansoviRekviziti": null,
+  "dovirenyst": null
+}

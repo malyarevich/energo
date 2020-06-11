@@ -3,28 +3,22 @@ import { FormGroup } from '@angular/forms';
 import { filter } from 'rxjs/operators';
 
 import { RequestFormService, ResListType } from '../services/request-form.service';
-import { refDocument } from '../models/form.model';
 
 import { MyErrorStateMatcher } from '../error-list/error-list.component';
 
-
 @Component({
-  selector: 'app-step-download',
-  templateUrl: './step-download.component.html',
-  styleUrls: ['./step-download.component.scss']
+  selector: 'app-step-address-info',
+  templateUrl: './step-address-info.component.html',
+  styleUrls: ['./step-address-info.component.scss']
 })
-export class StepDownloadComponent implements OnInit {
+export class StepAddressInfoComponent implements OnInit {
   @Input() fieldItem: any;
   @Input() fg: FormGroup;
-
-  get refDocument(): string {
-    return refDocument;
-  }
+  _options: [] = [];
 
   get options(): any {
     return this._options;
   }
-  _options: [] = [];
 
   public matcher = new MyErrorStateMatcher();
 

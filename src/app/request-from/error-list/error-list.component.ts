@@ -1,10 +1,25 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AbstractControl } from '@angular/forms';
+import { AbstractControl, FormGroup, FormGroupDirective, NgForm, FormControl } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
 
 import { RequestFormService } from '../services/request-form.service';
 
 import { COMMON_ERRORS } from './common-errors';
+import { ErrorStateMatcher } from '@angular/material/core';
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(
+    control: FormControl | null,
+    form: FormGroupDirective | NgForm | null
+  ): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(
+      control &&
+      control.invalid &&
+      (control.dirty || control.touched || isSubmitted)
+    );
+  }
+}
 
 @Component({
   selector: 'app-error-list',
@@ -13,6 +28,7 @@ import { COMMON_ERRORS } from './common-errors';
 })
 export class ErrorListComponent implements OnInit {
   @Input() fieldId: string;
+  @Input() fg: FormGroup;
   fieldControl: AbstractControl;
 
   public $errorList: BehaviorSubject<string[]> = new BehaviorSubject([]);
@@ -38,7 +54,7 @@ export class ErrorListComponent implements OnInit {
   constructor(private reqForm: RequestFormService) { }
 
   ngOnInit(): void {
-    this.fieldControl = this.reqForm.getFieldControlById(this.fieldId);
+    this.fieldControl = this.reqForm.getFieldControlById(this.fieldId, this.fg);
     this.errorList = this.getParsedErrors();
     this.fieldControl.statusChanges.subscribe(s => {
       if (s === 'INVALID') {

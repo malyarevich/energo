@@ -1,4 +1,4 @@
-<div [formGroup]="myGroup">
+<div [formGroup]="fg">
   <ng-container *ngIf="fieldItem.type === 'select'; else defaultInput">
     <mat-form-field class="example-full-width">
       <mat-label>{{ fieldItem.placeholder }}</mat-label>
@@ -7,7 +7,7 @@
       </mat-select>
       <mat-hint></mat-hint>
       <mat-error>
-        <app-error-list [fieldId]="fieldItem.name"></app-error-list>
+        <app-error-list [fieldId]="fieldItem.name" [fg]="fg"></app-error-list>
       </mat-error>
     </mat-form-field>
   </ng-container>
@@ -19,7 +19,7 @@
         [placeholder]="fieldItem.placeholder" required />
       <mat-hint></mat-hint>
       <mat-error>
-        <app-error-list [fieldId]="fieldItem.name"></app-error-list>
+        <app-error-list [fieldId]="fieldItem.name" [fg]="fg"></app-error-list>
       </mat-error>
     </mat-form-field>
   </ng-template>

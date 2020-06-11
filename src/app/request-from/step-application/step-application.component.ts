@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Subject } from 'rxjs';
 
@@ -13,9 +13,9 @@ import {
   styleUrls: ['./step-application.component.scss']
 })
 export class StepApplicationComponent implements OnInit, OnDestroy {
+  @Input() fg: FormGroup;
 
   destroy$: Subject<boolean> = new Subject<boolean>();
-  public myGroup: FormGroup;
 
   get radioApplicationList() {
     return radioApplicationList;
@@ -24,7 +24,6 @@ export class StepApplicationComponent implements OnInit, OnDestroy {
   constructor(private reqForm: RequestFormService) { }
 
   ngOnInit(): void {
-    this.myGroup = this.reqForm.getFormGroup();
   }
 
   isPreviousStepDone(step: string, index: number): boolean {
@@ -45,7 +44,6 @@ export class StepApplicationComponent implements OnInit, OnDestroy {
   setChoose(id: string, step: string) {
     this.doneStep(step, id);
   }
-
 
   ngOnDestroy(): void {
     this.destroy$.next(true);

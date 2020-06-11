@@ -1,52 +1,51 @@
-<form class="request_form" [formGroup]="myGroup">
+<form class="request_form" [formGroup]="requestFormGroup">
   <h1 class="request_form__title">
     <b>{{pageTitle}}</b>
   </h1>
-  
-  <mat-vertical-stepper *ngFor="let section of sectionRequest; let i = index" linear #stepper>
-      <!-- Document Step -->
-    <mat-step label="Заповненя заяви" editable="false">
-      <ng-container *ngFor="let section of sectionRequest; let i = index">  
+
+  <mat-vertical-stepper *ngFor="let section of sectionRequest; let i = index" linear="true" #stepper>
+    <!-- Document Step -->
+    <mat-step label="Заповненя заяви" editable="true" [stepControl]="personalInfo">
+      <ng-container *ngFor="let section of sectionRequest; let i = index">
         <app-form-stepper stepNumber="1" legend="Заповненя заяви">
           <ng-container *ngFor="let fieldItem of section.fields">
-            <app-step-download [fieldItem]="fieldItem"></app-step-download>
-            
+            <app-step-download [fieldItem]="fieldItem" [fg]="personalInfo"></app-step-download>
+
           </ng-container>
           <br />
 
-      </app-form-stepper> 
+        </app-form-stepper>
       </ng-container>
       <div>
         <button mat-raised-button matStepperNext type="button" color="warn" style="font-size: 1rem">
           <!-- <a [href]="refDocument">Завантажити</a> -->
-          <a >Взяти на підпис</a>
-       </button>
+          <a>Взяти на підпис</a>
+        </button>
       </div>
     </mat-step>
-      <!-- Contact Information -->
-    <mat-step label="Контактні дані" editable="false">
+    <!-- Contact Information -->
+    <mat-step label="Контактні дані" editable="true" [stepControl]="contacts">
       <ng-container *ngFor="let section of sectionContacts; let i = index">
         <app-form-stepper [stepNumber]="i + 2" [legend]="section.legend">
           <ng-container *ngFor="let fieldItem of section.fields">
-            <app-step-contact-info [fieldItem]="fieldItem"></app-step-contact-info>
+            <app-step-contact-info [fieldItem]="fieldItem" [fg]="contacts"></app-step-contact-info>
           </ng-container>
         </app-form-stepper>
       </ng-container>
       <div>
         <button mat-raised-button matStepperPrevious type="button">Назад</button>
-        <button mat-raised-button matStepperNext type="button">Назад</button>
         <button mat-raised-button matStepperNext type="button" color="warn" style="font-size: 1rem">
           <!-- <a [href]="refDocument">Завантажити</a> -->
           Далі
-       </button>
+        </button>
       </div>
     </mat-step>
     <!-- Address Object -->
-    <mat-step label="Адреса об’єкта" editable="false">
-      <ng-container *ngFor="let section of sectionAddressObject; let i = index">
+    <mat-step label="Адреса об’єкта" editable="true" [stepControl]="location">
+      <ng-container *ngFor="let section of sectionAddress; let i = index">
         <app-form-stepper [stepNumber]="i + 2" [legend]="section.legend">
           <ng-container *ngFor="let fieldItem of section.fields">
-            <app-step-contact-info [fieldItem]="fieldItem"></app-step-contact-info>
+            <app-step-address-info [fieldItem]="fieldItem" [fg]="location"></app-step-address-info>
           </ng-container>
         </app-form-stepper>
       </ng-container>
@@ -54,42 +53,42 @@
         <button mat-raised-button matStepperPrevious type="button">Назад</button>
         <button mat-raised-button matStepperNext type="button" color="warn" style="font-size: 1rem">
           <!-- <a [href]="refDocument">Завантажити</a> -->
-          <a >Далі</a>
-       </button>
+          <a>Далі</a>
+        </button>
       </div>
     </mat-step>
     <!-- Fill of Application -->
-    <mat-step label="Додаткова інформація" editable="false">
-        <!-- Fill of Application -->
-  <app-form-stepper stepNumber="4" legend="Подання заяви">
-    <app-step-application></app-step-application>
-  </app-form-stepper>
+    <mat-step label="Додаткова інформація" editable="true" [stepControl]="clientType">
+      <!-- Fill of Application -->
+      <app-form-stepper stepNumber="4" legend="Подання заяви">
+        <app-step-application [fg]="clientType"></app-step-application>
+      </app-form-stepper>
 
       <div>
         <button mat-raised-button matStepperPrevious type="button">Назад</button>
         <button mat-raised-button matStepperNext type="button" color="warn" style="font-size: 1rem">
           <!-- <a [href]="refDocument">Завантажити</a> -->
-          <a >Далі</a>
-       </button>
+          <a>Далі</a>
+        </button>
       </div>
     </mat-step>
     <!-- Document List -->
-    <mat-step label="Документи" editable="false">
-        <!-- Document List -->
-  <ng-container *ngIf="(documentsForDownload$ | async).length > 0">
-    <app-form-stepper stepNumber="5" legend="Перелік документів для завантаження">
-      <app-step-document></app-step-document>
-    </app-form-stepper>
-  </ng-container>
-  <div>
-    <button mat-raised-button matStepperPrevious type="button">Назад</button>
-  </div>
+    <mat-step label="Документи" editable="true">
+      <!-- Document List -->
+      <ng-container *ngIf="(documentsForDownload$ | async).length > 0">
+        <app-form-stepper stepNumber="5" legend="Перелік документів для завантаження">
+          <app-step-document></app-step-document>
+        </app-form-stepper>
+      </ng-container>
+      <div>
+        <button mat-raised-button matStepperPrevious type="button">Назад</button>
+      </div>
     </mat-step>
   </mat-vertical-stepper>
 
   <div class="button_container">
     <button mat-raised-button color="warn" class="submit_button" type="submit" (click)="send()"
-      [disabled]="myGroup.invalid || !isDocumentsSelected()">
+      [disabled]="requestFormGroup.invalid || !isDocumentsSelected()">
       Відправити
     </button>
   </div>
