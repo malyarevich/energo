@@ -14,7 +14,7 @@ import { MyErrorStateMatcher } from '../error-list/error-list.component';
 export class StepAddressInfoComponent implements OnInit {
   @Input() fieldItem: any;
   @Input() fg: FormGroup;
-  _options: [] = [];
+  _options: any[] = [];
 
   get options(): any {
     return this._options;

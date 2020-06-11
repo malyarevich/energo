@@ -15,7 +15,76 @@ export interface IOptionSteps {
 }
 
 export type ResListType = {
-  options: []
+  options: any[]
+}
+
+export const defaultBranches: ResListType = {
+  options: [
+    {
+      "id": 0,
+      "label": "м.Запоріжжя"
+    },
+    {
+        "id": 1,
+        "label": "Бердянський"
+    },
+    {
+        "id": 2,
+        "label": "Більмацький"
+    },
+    {
+        "id": 3,
+        "label": "Василівський"
+    },
+    {
+        "id": 4,
+        "label": "Веселівський"
+    },
+    {
+        "id": 5,
+        "label": "Вільнянський"
+    },
+    {
+        "id": 6,
+        "label": "Гуляйпольский"
+    },
+    {
+        "id": 7,
+        "label": "Запорізький"
+    },
+    {
+        "id": 8,
+        "label": "Кам`янсько-Дніпровський"
+    },
+    {
+        "id": 9,
+        "label": "Мелітопольский"
+    },
+    {
+        "id": 10,
+        "label": "Оріхівський"
+    },
+    {
+        "id": 11,
+        "label": "Пологівський"
+    },
+    {
+        "id": 12,
+        "label": "Приазовський"
+    },
+    {
+        "id": 13,
+        "label": "Приморський"
+    },
+    {
+        "id": 14,
+        "label": "Токмацький"
+    },
+    {
+        "id": 15,
+        "label": "Якимівський"
+    }
+  ]
 }
 
 @Injectable({
@@ -28,7 +97,7 @@ export class RequestFormService {
   sectioncontacts: FormGroup;
   isSubmitted = false;
   userDocFiles = {};
-  resList$: BehaviorSubject<ResListType> = new BehaviorSubject<ResListType>(null); // options
+  resList$: BehaviorSubject<ResListType> = new BehaviorSubject<ResListType>(defaultBranches); // options
   doneSteps$: BehaviorSubject<IOptionSteps> = new BehaviorSubject<IOptionSteps>({
     typeConnection: null,
     askFrom: null,
