@@ -31,6 +31,7 @@ import { AuthService } from './services/auth.service';
   ],
   imports: [
     BrowserAnimationsModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,

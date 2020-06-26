@@ -15,7 +15,7 @@ export class StepDownloadComponent implements OnInit {
   @Input() fieldItem: any;
   @Input() fg: FormGroup;
 
-  get refDocument(): string {
+  get refDocument(): any {
     return refDocument;
   }
 

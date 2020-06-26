@@ -268,9 +268,9 @@ export const ignoredDocumentsForDownloadId = [
   DocumentsEnem.powerSituationPlan
 ];
 
-export const strategyForDownload = [
-  // { id: 'self_ur_new', numberList: [0, 1, 2, 7, 8, 9, 10, 11, 4, 5, 22] },
-  { id: 'self_ur_new', numberList: [0, 22] },
+export const customerTypeToConnect = [
+  { id: 'self_ur_new', numberList: [0, 1, 2, 7, 8, 9, 10, 11, 4, 5, 22] },
+  //{ id: 'self_ur_new', numberList: [0, 22] },
   { id: 'presenter_ur_new', numberList: [0, 1, 2, 7, 8, 9, 10, 11, 4, 5, 13, 22] },
   { id: 'self_phis_o_new', numberList: [0, 1, 2, 3, 4, 5, 6, 22] },
   { id: 'presenter_phis_o_new', numberList: [0, 1, 2, 3, 4, 5, 6, 13, 22] },
@@ -295,7 +295,7 @@ export const strategyForDownload = [
 ];
 
 export const refDocument =
-  'http://www.zoe.com.ua/wp-content/uploads/2019/05/%D0%97%D0%B0%D1%8F%D0%B2%D0%B0-%D0%BD%D0%B0-%D0%BF%D1%80%D0%B8%D1%81.doc';
+  "https://zakon.rada.gov.ua/laws/file/text/76/f490366n267.doc";
 
 export interface IPetInit {
   "EDRPOU": string;
@@ -310,21 +310,32 @@ export interface IPetInit {
   "Dover": any;
   "Branch": any;
   "Addr": string,
-  "consentEcp": any;
-  "pravoVlasnosti": any;
-  "copySituationPlan": any;
-  "passport": any;
-  "teo": any;
-  "dogovirPostochanya": any;
-  "dekilkaSpivlastnikiv": any;
-  "buildingPassport": any;
-  "edrpou": any;
-  "situationDocument": any;
-  "vityagEd": any;
-  "ustanovchiDocument": any;
-  "priznachKerivnika": any;
-  "vityagRp": any;
-  "finansoviRekviziti": any;
+
+  // documents
+  'onsentEcp': any;
+  'propertyRights': any;
+  'situationPlan': any;
+  'passport': any;
+  'teo': any;
+  'supplyСontract': any;
+  'severalOwners': any;
+  'extractEd': any;
+  'foundingDocument': any;
+  'appointmentManager': any;
+  'extractRp': any;
+  'financialDetails': any;
+  'situationDocument': any;
+  'proxy': any;
+  'powerTechConditions': any;
+  'powersupplyСontract': any;
+  'powerExtractEd': any;
+  'powerFoundingDocument': any;
+  'powerAppointmentManager': any;
+  'powerPayerPDV': any;
+  'powerPayerPNP': any;
+  'powerPayerStatus': any;
+  'another': any;
+  'powerSituationPlan': any;
   "dovirenyst": any;
 }
 
@@ -341,20 +352,30 @@ export const defaultPetInit: IPetInit = {
   "Dover": null,
   "Branch": null,
   "Addr": "",
-  "consentEcp": null,
-  "pravoVlasnosti": null,
-  "copySituationPlan": null,
-  "passport": null,
-  "teo": null,
-  "dogovirPostochanya": null,
-  "dekilkaSpivlastnikiv": null,
-  "buildingPassport": null,
-  "edrpou": null,
-  "situationDocument": null,
-  "vityagEd": null,
-  "ustanovchiDocument": null,
-  "priznachKerivnika": null,
-  "vityagRp": null,
-  "finansoviRekviziti": null,
-  "dovirenyst": null
+  // documents
+  'onsentEcp': null,
+  'propertyRights': null,
+  'situationPlan': null,
+  'passport': null,
+  'teo': null,
+  'supplyСontract': null,
+  'severalOwners': null,
+  'extractEd': null,
+  'foundingDocument': null,
+  'appointmentManager': null,
+  'extractRp': null,
+  'financialDetails': null,
+  'situationDocument': null,
+  'proxy': null,
+  'powerTechConditions': null,
+  'powersupplyСontract': null,
+  'powerExtractEd': null,
+  'powerFoundingDocument': null,
+  'powerAppointmentManager': null,
+  'powerPayerPDV': null,
+  'powerPayerPNP': null,
+  'powerPayerStatus': null,
+  'another': null,
+  'powerSituationPlan': null,
+  "dovirenyst": null,
 }

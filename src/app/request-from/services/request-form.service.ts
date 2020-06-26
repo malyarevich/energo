@@ -3,7 +3,7 @@ import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/fo
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from "rxjs";
 import { environment } from '~/environments/environment';
-import { ignoredDocumentsForDownloadId, StepRadioEnum, strategyForDownload, documentsForDownload, IPetInit, defaultPetInit } from '../models/form.model';
+import { ignoredDocumentsForDownloadId, StepRadioEnum, customerTypeToConnect, documentsForDownload, IPetInit, defaultPetInit } from '../models/form.model';
 import { map, filter } from 'rxjs/operators';
 import { AuthService } from '~/app/services/auth.service';
 
@@ -306,7 +306,7 @@ export class RequestFormService {
 
   filterDocumentsForDownload(strategyId: string) {
     const documents = [];
-    const { numberList } = strategyForDownload.find(elem => (strategyId === elem.id));
+    const { numberList } = customerTypeToConnect.find(elem => (strategyId === elem.id));
     numberList.forEach(id => {
       documents.push(documentsForDownload[id]);
     });
