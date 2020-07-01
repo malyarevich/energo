@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgAnimateScrollService } from 'ng-animate-scroll';
+import { CookieService } from 'ngx-cookie-service';
 
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatMenuModule } from '@angular/material/menu';
@@ -49,7 +50,7 @@ import { AuthService } from './services/auth.service';
     MatTabsModule,
     MatStepperModule
   ],
-  providers: [AuthService, NgAnimateScrollService],
+  providers: [AuthService, CookieService, NgAnimateScrollService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

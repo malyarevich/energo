@@ -330,23 +330,21 @@ export class RequestFormService {
     const target: any = event.target; // for compilation clear
     this.userDocFiles[target.id] = target.files[0];
 
-    // console.log('target.files -> ', target.files[0])
-    // 1) endPoint + PUT/POST 
-    //  for uploading files
-    //  return link_for_file
-    // TODO: Implement this in FUTURE
-    // const urlLoadingUserDocFiles = `${environment.urlUploadFiles}${target.id}`;
-    // this.http.put(urlLoadingUserDocFiles, target.files[0]).subscribe(
-    //   // success
-    //   (successResponse: any) => {
-    //     this.userDocFiles[target.id] = successResponse.fileName;
-    //     console.log(successResponse);
-    //   },
-    //   // error
-    //   error => {
-    //     console.log('error of loading to serverSide', error);
-    //   }
-    // );
+    const formdata = new FormData()
+    formdata.append('pdf', target.files[0]);
+
+    const urlLoadingUserDocFiles = `${environment.urlUploadFiles}`;
+    this.http.post(`${urlLoadingUserDocFiles}?token=${this.auth.token}`, formdata).subscribe(
+      // success
+      (successResponse: any) => {
+        this.userDocFiles[target.id] = successResponse.filename;
+        console.log(successResponse);
+      },
+      // error
+      error => {
+        console.log('error of loading to serverSide', error);
+      }
+    );
   }
 
   getFieldControlById(id: string, fg: FormGroup = null): AbstractControl {
@@ -385,47 +383,100 @@ export class RequestFormService {
     return isAllSelected;
   }
 
-  // Place where we could change, remove, add some values or even fields BEFORE send this to back-end  
-  filtrationForBackend(values: any): any {
-    // console.log('values: ', values);
-    return values;
+  mergeByServerModel(form: any, files: any): any {
+    // console.log('values', form)
+    // console.log('files', files)
+    return {
+      "EDRPOU": form.contacts.edrpouIpn,
+      "Password": "", // NOT SURE
+      "NamePib": form.personalInfo.nameUrPib,
+      "addressUr": form.contacts.addressUr,
+      "AddressPost": form.contacts.addressPost,
+      "Email": form.contacts.email,
+      "Phone": form.contacts.phone,
+      "Status": form.clientType.specialRights + form.clientType.askFrom, // NOT SURE
+      "CustomerTypeToConnect": form.clientType.typeConnection,
+      "BranchId": form.location.branchId,
+      "Address": form.location.address,
+      "onsentEcp": files.onsentEcp,
+      "propertyRights": files.propertyRights,
+      "situationPlan": files.situationPlan,
+      "passport": files.passport,
+      "teo": files.teo,
+      "supplyContract": files.supplyContract,
+      "severalOwners": files.severalOwners,
+      "extractEd": files.extractEd,
+      "foundingDocument": files.foundingDocument,
+      "appointmentManager": files.appointmentManager,
+      "extractRp": files.extractRp,
+      "financialDetails": files.financialDetails,
+      "situationDocument": files.situationDocument,
+      "proxy": files.proxy,
+      "powerTechConditions": files.powerTechConditions,
+      "powersupplyContract": files.powersupplyContract,
+      "powerExtractE": files.powerExtractE,
+      "powerFoundingDocument": files.powerFoundingDocument,
+      "powerAppointmentManager": files.powerAppointmentManager,
+      "powerPayerPDV": files.powerPayerPDV,
+      "powerPayerPNP": files.powerPayerPNP,
+      "powerPayerStatus": files.powerPayerStatus,
+      "another": files.another,
+      "powerSituationPlan": files.powerSituationPlan
+    };
   }
+
   // Pet Init List
-  getComposedDataForBackend(): any | IPetInit {
-    // const dataForBackend: IPetInit = defaultPetInit;
-
-    const dataFromFrontend = this.requestFormGroup.value;
-    dataFromFrontend.documentsForDownload = {};
-
-
-    
-    Object.keys(this.userDocFiles).map((key) => {
-      // TODO: SAVE STRING like a File 
-      // dataFromFrontend.documentsForDownload[key] = this.userDocFiles[key];
-      this.userDocFiles[key].arrayBuffer().then(resolve => {
-        dataFromFrontend.documentsForDownload[key] = resolve;
-      });
-    });
-    dataFromFrontend.clientType = dataFromFrontend.clientType.specialRights + dataFromFrontend.clientType.askFrom + dataFromFrontend.clientType.typeConnection;
-    
-    // console.log('dataFromFrontend', dataFromFrontend);
-    // console.log('dataFromFrontend', JSON.stringify(dataFromFrontend));
-    // console.log('documentsForDownload', this.userDocFiles);
-
-
-    return dataFromFrontend;
+  getComposedDataForBackend(form: any, files: any): any | IPetInit {
+    return {
+      "EDRPOU": form.contacts.edrpouIpn,
+      "Password": "", // NOT SURE
+      "NamePib": form.personalInfo.nameUrPib,
+      "addressUr": form.contacts.addressUr,
+      "AddressPost": form.contacts.addressPost,
+      "Email": form.contacts.email,
+      "Phone": form.contacts.phone,
+      "Status": form.clientType.typeConnection, // NOT SURE
+      "CustomerTypeToConnect": form.clientType.specialRights + form.clientType.askFrom, // NOT SURE
+      "BranchId": form.location.branchId,
+      "Address": form.location.address,
+      // documents
+      "onsentEcp": files.onsentEcp ? files.onsentEcp : '',
+      "propertyRights": files.propertyRights ? files.propertyRights : '',
+      "situationPlan": files.situationPlan ? files.situationPlan : '',
+      "passport": files.passport ? files.passport : '',
+      "teo": files.teo ? files.teo : '',
+      "supplyContract": files.supplyContract ? files.supplyContract : '',
+      "severalOwners": files.severalOwners ? files.severalOwners : '',
+      "extractEd": files.extractEd ? files.extractEd : '',
+      "foundingDocument": files.foundingDocument ? files.foundingDocument : '',
+      "appointmentManager": files.appointmentManager ? files.appointmentManager : '',
+      "extractRp": files.extractRp ? files.extractRp : '',
+      "financialDetails": files.financialDetails ? files.financialDetails : '',
+      "situationDocument": files.situationDocument ? files.situationDocument : '',
+      "proxy": files.proxy ? files.proxy : '',
+      "powerTechConditions": files.powerTechConditions ? files.powerTechConditions : '',
+      "powersupplyContract": files.powersupplyContract ? files.powersupplyContract : '',
+      "powerExtractE": files.powerExtractE ? files.powerExtractE : '',
+      "powerFoundingDocument": files.powerFoundingDocument ? files.powerFoundingDocument : '',
+      "powerAppointmentManager": files.powerAppointmentManager ? files.powerAppointmentManager : '',
+      "powerPayerPDV": files.powerPayerPDV ? files.powerPayerPDV : '',
+      "powerPayerPNP": files.powerPayerPNP ? files.powerPayerPNP : '',
+      "powerPayerStatus": files.powerPayerStatus ? files.powerPayerStatus : '',
+      "another": files.another ? files.another : '',
+      "powerSituationPlan": files.powerSituationPlan ? files.powerSituationPlan : ''
+    };
   }
 
   sendForm() {
     
-    const data = this.getComposedDataForBackend();
+    const data = this.getComposedDataForBackend(this.requestFormGroup.value, this.userDocFiles);
 
     // console.log('data this.requestFormGroup', this.requestFormGroup);
     // if (this.requestFormGroup.valid && this.petitionTo && this.petitionFrom) {
     if (this.requestFormGroup.valid) {
       // console.log('data from front', data);
       this.http
-        .post(environment.urlSendForm, data)
+        .post(`${environment.urlSendForm}?token=${this.auth.token}`, data)
         .subscribe(
           item => {
             console.log('success, response by server', item);
@@ -447,7 +498,7 @@ export class RequestFormService {
   }
 
   takeResList(inputToken: string) {
-    this.http.get(`${environment.apiFB}branches?token=${inputToken}`).subscribe(
+    this.http.get(`${environment.apiFB}branches/?token=${inputToken}`).subscribe(
       (res: ResListType) => {
         // console.log("res", res)
         this.resList = res;

@@ -300,60 +300,58 @@ export const refDocument =
 export interface IPetInit {
   "EDRPOU": string;
   "Password": string;
-  "Name": string;
-  "Post_addr": string;
+  "NamePib": string;
+  "addressUr": string;
+  "AddressPost": string;
   "Email": string;
-  "Phone": string; 
+  "Phone": string;
   "Status": any;
-  "Type": any;
-  "Initiator": any;
-  "Dover": any;
-  "Branch": any;
-  "Addr": string,
+  "CustomerTypeToConnect": any;
+  "BranchId": any;
+  "Address": string,
 
   // documents
-  'onsentEcp': any;
-  'propertyRights': any;
-  'situationPlan': any;
-  'passport': any;
-  'teo': any;
-  'supplyСontract': any;
-  'severalOwners': any;
-  'extractEd': any;
-  'foundingDocument': any;
-  'appointmentManager': any;
-  'extractRp': any;
-  'financialDetails': any;
-  'situationDocument': any;
-  'proxy': any;
-  'powerTechConditions': any;
-  'powersupplyСontract': any;
-  'powerExtractEd': any;
-  'powerFoundingDocument': any;
-  'powerAppointmentManager': any;
-  'powerPayerPDV': any;
-  'powerPayerPNP': any;
-  'powerPayerStatus': any;
-  'another': any;
-  'powerSituationPlan': any;
-  "dovirenyst": any;
+  'onsentEcp'?: string;
+  'propertyRights'?: string;
+  'situationPlan'?: string;
+  'passport'?: string;
+  'teo'?: string;
+  'supplyСontract'?: string;
+  'severalOwners'?: string;
+  'extractEd'?: string;
+  'foundingDocument'?: string;
+  'appointmentManager'?: string;
+  'extractRp'?: string;
+  'financialDetails'?: string;
+  'situationDocument'?: string;
+  'proxy'?: string;
+  'powerTechConditions'?: string;
+  'powersupplyСontract'?: string;
+  'powerExtractEd'?: string;
+  'powerFoundingDocument'?: string;
+  'powerAppointmentManager'?: string;
+  'powerPayerPDV'?: string;
+  'powerPayerPNP'?: string;
+  'powerPayerStatus'?: string;
+  'another'?: string;
+  'powerSituationPlan'?: string;
+  "dovirenyst"?: string;
 }
 
 export const defaultPetInit: IPetInit = {
-  "EDRPOU": "",
-  "Password": "",
-  "Name": "",
-  "Post_addr": "",
-  "Email": "",
-  "Phone": "",
+  "EDRPOU": '',
+  "Password": '',
+  "NamePib": '',
+  "addressUr": '',
+  "AddressPost": '',
+  "Email": '',
+  "Phone": '',
   "Status": null,
-  "Type": null,
-  "Initiator": null,
-  "Dover": null,
-  "Branch": null,
-  "Addr": "",
+  "CustomerTypeToConnect": '',
+  "BranchId": '',
+  "Address": '',
   // documents
-  'onsentEcp': null,
+  'onsentEcp': '',
   'propertyRights': null,
   'situationPlan': null,
   'passport': null,

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlUploadFiles: 'https://www.zoe.com.ua/loading-pdf-file/',
+  urlUploadFiles: 'http://www.zoe.com.ua/connection/api/api/v1/uploadPDF/',
   urlSendForm: 'http://www.zoe.com.ua/connection/api/api/v1/pet_init/',
   apiFB: 'http://www.zoe.com.ua/connection/api/api/v1/',
   api_token: '123',
