@@ -53,6 +53,11 @@ export const sectionContacts = [
     legend: 'Контактні дані',
     fields: [
       {
+        name: 'passwordCustomer',
+        type: 'password',
+        placeholder: 'Пароль для безпеки вашої інформації'
+      },
+      {
         name: 'edrpouIpn',
         placeholder: 'ЄДРПОУ / РНОКПП(ІПН)'
       },

@@ -199,6 +199,18 @@ export class RequestFormService {
 
       // ******************************** sectionContacts Fields ********************************
       contacts: new FormGroup({
+        passwordCustomer: new FormControl(
+          {
+            value: '12345678', // state
+            disabled: false // off/on
+            
+          },
+          Validators.compose([
+            Validators.required, // обязательное поле
+            Validators.minLength(8)
+          ]) // Validations
+        ),
+
         edrpouIpn: new FormControl(
           {
             value: '123456789101', // state
@@ -388,14 +400,14 @@ export class RequestFormService {
     // console.log('files', files)
     return {
       "EDRPOU": form.contacts.edrpouIpn,
-      "Password": "", // NOT SURE
+      "password": form.contacts.passwordCustomer, // NOT SURE
       "NamePib": form.personalInfo.nameUrPib,
       "addressUr": form.contacts.addressUr,
       "AddressPost": form.contacts.addressPost,
       "Email": form.contacts.email,
       "Phone": form.contacts.phone,
-      "Status": form.clientType.specialRights + form.clientType.askFrom, // NOT SURE
-      "CustomerTypeToConnect": form.clientType.typeConnection,
+      "Status": 1, // NOT SURE
+      "CustomerTypeToConnect": form.clientType.specialRights + form.clientType.askFrom + form.clientType.typeConnection,
       "BranchId": form.location.branchId,
       "Address": form.location.address,
       "onsentEcp": files.onsentEcp,
@@ -429,14 +441,14 @@ export class RequestFormService {
   getComposedDataForBackend(form: any, files: any): any | IPetInit {
     return {
       "EDRPOU": form.contacts.edrpouIpn,
-      "Password": "", // NOT SURE
+      "password": form.contacts.passwordCustomer, // NOT SURE
       "NamePib": form.personalInfo.nameUrPib,
       "addressUr": form.contacts.addressUr,
       "AddressPost": form.contacts.addressPost,
       "Email": form.contacts.email,
       "Phone": form.contacts.phone,
-      "Status": form.clientType.typeConnection, // NOT SURE
-      "CustomerTypeToConnect": form.clientType.specialRights + form.clientType.askFrom, // NOT SURE
+      "Status": 1, // NOT SURE
+      "CustomerTypeToConnect": form.clientType.specialRights + form.clientType.askFrom + form.clientType.typeConnection, // NOT SURE
       "BranchId": form.location.branchId,
       "Address": form.location.address,
       // documents
