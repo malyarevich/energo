@@ -21,7 +21,7 @@ export class AuthService {
   }
 
   getToken() {
-    this.http.post(`http://www.zoe.com.ua/connection/api/api-token-auth/`, {username: "malyarevich", password: "malyarevich"}).subscribe(
+    this.http.post(`https://www.zoe.com.ua/connection/api/api-token-auth/`, {username: "malyarevich", password: "malyarevich"}).subscribe(
       (res) => {
         this.token = res['token'];
         this.cookie.set('csrftoken', this.token, 365);

@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  urlUploadFiles: 'http://www.zoe.com.ua/connection/api/api/v1/uploadPDF/',
-  urlSendForm: 'http://www.zoe.com.ua/connection/api/api/v1/pet_init/',
-  apiFB: 'http://www.zoe.com.ua/connection/api/api/v1/',
+  urlUploadFiles: 'https://www.zoe.com.ua/connection/api/api/v1/uploadPDF/',
+  urlSendForm: 'https://www.zoe.com.ua/connection/api/api/v1/pet_init/',
+  apiFB: 'https://www.zoe.com.ua/connection/api/api/v1/',
   api_token: '123',
 };
 // urlUploadFiles - endPoint for uploading files

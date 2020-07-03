@@ -201,7 +201,7 @@ export class RequestFormService {
       contacts: new FormGroup({
         passwordCustomer: new FormControl(
           {
-            value: '12345678', // state
+            value: '', // state
             disabled: false // off/on
             
           },
@@ -213,7 +213,7 @@ export class RequestFormService {
 
         edrpouIpn: new FormControl(
           {
-            value: '123456789101', // state
+            value: '', // state
             disabled: false // off/on
           },
           Validators.compose([
@@ -224,7 +224,7 @@ export class RequestFormService {
         ),
         namePib: new FormControl(
           {
-            value: 'Іванов Іван Іванович', // state
+            value: '', // state
             disabled: false // off/on
           },
           Validators.compose([
@@ -235,7 +235,7 @@ export class RequestFormService {
         ),
         addressUr: new FormControl(
           {
-            value: 'вул. Каховська 3а', // state
+            value: '', // state
             disabled: false // off/on
           },
           Validators.compose([
@@ -246,7 +246,7 @@ export class RequestFormService {
         ),
         addressPost: new FormControl(
           {
-            value: 'вул. Добролюбова 18', // state
+            value: '', // state
             disabled: false // off/on
           },
           Validators.compose([
@@ -256,7 +256,7 @@ export class RequestFormService {
   
         email: new FormControl(
           {
-            value: 'ivanov@zoe.com.ua', // state
+            value: '', // state
             disabled: false // off/on
           },
           Validators.compose([
@@ -266,7 +266,7 @@ export class RequestFormService {
         ),
         phone: new FormControl(
           {
-            value: '+380777696663', // state
+            value: '', // state
             disabled: false // off/on
           },
           Validators.compose([
@@ -290,7 +290,7 @@ export class RequestFormService {
         ),
         address: new FormControl(
           {
-            value: 'вул. Кияшка 7', // state
+            value: '', // state
             disabled: false // off/on
           },
           Validators.compose([
@@ -400,7 +400,7 @@ export class RequestFormService {
     // console.log('files', files)
     return {
       "EDRPOU": form.contacts.edrpouIpn,
-      "password": form.contacts.passwordCustomer, // NOT SURE
+      "Password": form.contacts.passwordCustomer, // NOT SURE
       "NamePib": form.personalInfo.nameUrPib,
       "addressUr": form.contacts.addressUr,
       "AddressPost": form.contacts.addressPost,
@@ -441,7 +441,7 @@ export class RequestFormService {
   getComposedDataForBackend(form: any, files: any): any | IPetInit {
     return {
       "EDRPOU": form.contacts.edrpouIpn,
-      "password": form.contacts.passwordCustomer, // NOT SURE
+      "Password": form.contacts.passwordCustomer, // NOT SURE
       "NamePib": form.personalInfo.nameUrPib,
       "addressUr": form.contacts.addressUr,
       "AddressPost": form.contacts.addressPost,
