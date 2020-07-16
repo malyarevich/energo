@@ -175,13 +175,15 @@ export class RequestFormService {
       personalInfo: new FormGroup({
         nameUrPib: new FormControl(
           {
-            value: 'ПАТ "Запоріжжяобленерго"', // state
+            value: 'ПАТ "Запоріжжяобленерго"',
+            // aPx: 150,
+            // aPy: '167', // state
             disabled: false // off/on
           },
           Validators.compose([
             Validators.required, // обязательное поле
             Validators.minLength(3), // мин длина строки
-            Validators.maxLength(100) // max length
+            Validators.maxLength(30) // max length
           ]) // Validations
         ),
         registryNumber: new FormControl(
@@ -192,7 +194,7 @@ export class RequestFormService {
           Validators.compose([
             Validators.required, // обязательное поле
             Validators.minLength(3), // мин длина строки
-            Validators.maxLength(100) // max length
+            Validators.maxLength(30) // max length
           ]) // Validations
         ),
       }),
@@ -481,7 +483,7 @@ export class RequestFormService {
 
   sendForm() {
     
-    const data = this.getComposedDataForBackend(this.requestFormGroup.value, this.userDocFiles);
+    const data: any | IPetInit = this.getComposedDataForBackend(this.requestFormGroup.value, this.userDocFiles);
 
     // console.log('data this.requestFormGroup', this.requestFormGroup);
     // if (this.requestFormGroup.valid && this.petitionTo && this.petitionFrom) {

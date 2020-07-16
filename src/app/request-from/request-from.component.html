@@ -17,11 +17,11 @@
         </app-form-stepper>
       </ng-container>
       <div>
-
-        <p>Завантажте файл, роздрукуйте та заповніть його.</p> 
-        <button mat-raised-button matStepperNext type="button" color="warn" style="font-size: 1rem">
+        <!-- <p>Завантажте файл, роздрукуйте та заповніть його.</p>  -->
+        <button mat-raised-button matStepperNext type="button" color="warn" style="font-size: 1rem" (click)="generatePdf(getInputs())" >
           <!-- <a [href]="refDocument">Завантажити</a> -->
-          <a href="https://zakon.rada.gov.ua/laws/file/text/76/f490366n267.doc">Взяти на заповнення</a> <!-- Взяти на підпис -->
+          <!-- <a href="https://zakon.rada.gov.ua/laws/file/text/76/f490366n267.doc">Взяти на заповнення</a> Взяти на підпис -->
+          Взяти на підпис
           
         </button>
       </div>
