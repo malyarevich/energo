@@ -5,20 +5,28 @@ import {
 import {
   sectionRequest,
   sectionContacts,
-  sectionAddress
+  sectionAddress,
+  listPdfCoords
 } from './models/form.model';
 import { RequestFormService } from './services/request-form.service';
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-request-from',
   templateUrl: './request-from.component.html',
   styleUrls: ['./request-from.component.scss']
+
 })
 export class RequestFromComponent implements OnInit {
+
   @Input("title") pageTitle = "Title";
+  base64data: string | ArrayBuffer = null;
 
   requestFormGroup: FormGroup;
-//  firstFormGroup: FormGroup;
+  //  firstFormGroup: FormGroup;
 
   get documentsForDownload$() {
     return this.reqForm.documentsForDownload$;
@@ -50,9 +58,17 @@ export class RequestFromComponent implements OnInit {
     return this.reqForm.getFormGroup().controls['clientType'] as FormGroup;
   }
 
-  constructor(private reqForm: RequestFormService) { }
+  constructor(private reqForm: RequestFormService, private http: HttpClient) { }
 
   ngOnInit() {
+    this.http.get('../../assets/image/0001.jpg', { responseType: 'blob' })
+      .subscribe(res => {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          this.base64data = reader.result;
+        }
+        reader.readAsDataURL(res);
+      });
     this.requestFormGroup = this.reqForm.getFormGroup();
   }
 
@@ -62,5 +78,50 @@ export class RequestFromComponent implements OnInit {
 
   send() {
     this.reqForm.sendForm();
+  }
+
+  getInputs(): any {
+    return {
+      nameUrPib: this.requestFormGroup.value.personalInfo.nameUrPib,
+      registryNumber: this.requestFormGroup.value.personalInfo.registryNumber
+    };
+  }
+
+
+  generatePdf(values: {
+    nameUrPib: string;
+    registryNumber: string;
+  }) {
+
+    const content = Object.keys(values).map(key => {
+      return {
+        text: values[key],
+        fontSize: 5.5,
+        background: 'yellow',
+        maxwidth: 20,
+        absolutePosition: listPdfCoords[key]
+      }
+    });
+
+
+    const documentDefinition = {
+      pageSize: 'A4',
+      pageOrientation: 'landscape',
+      background: function (page) {
+        if (page !== 2) {
+          return [
+            {
+              image: 'ooo1',
+              width: 210 * 4
+            }
+          ];
+        }
+      },
+      content,
+      images: {
+        ooo1: this.base64data
+      }
+    };
+    pdfMake.createPdf(documentDefinition).download();
   }
 }

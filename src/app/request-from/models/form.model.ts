@@ -303,17 +303,17 @@ export const refDocument =
   "https://zakon.rada.gov.ua/laws/file/text/76/f490366n267.doc";
 
 export interface IPetInit {
-  "EDRPOU": string;
-  "Password": string;
-  "NamePib": string;
-  "addressUr": string;
-  "AddressPost": string;
-  "Email": string;
-  "Phone": string;
-  "Status": any;
-  "CustomerTypeToConnect": any;
-  "BranchId": any;
-  "Address": string,
+  "EDRPOU"?: string;
+  "Password"?: string;
+  "NamePib"?: string;
+  "addressUr"?: string;
+  "AddressPost"?: string;
+  "Email"?: string;
+  "Phone"?: string;
+  "Status"?: any;
+  "CustomerTypeToConnect"?: any;
+  "BranchId"?: any;
+  "Address"?: string,
 
   // documents
   'onsentEcp'?: string;
@@ -381,4 +381,15 @@ export const defaultPetInit: IPetInit = {
   'another': null,
   'powerSituationPlan': null,
   "dovirenyst": null,
+}
+
+export const listPdfCoords = {
+  nameUrPib: {
+    x: 147,
+    y: 168
+  },
+  registryNumber: {
+    x: 147,
+    y: 188
+  }
 }
