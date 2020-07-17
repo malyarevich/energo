@@ -82,15 +82,63 @@ export class RequestFromComponent implements OnInit {
 
   getInputs(): any {
     return {
-      nameUrPib: this.requestFormGroup.value.personalInfo.nameUrPib,
-      registryNumber: this.requestFormGroup.value.personalInfo.registryNumber
+      cellPdf1: this.requestFormGroup.value.personalInfo.cellPdf1,
+      cellPdf2: this.requestFormGroup.value.personalInfo.cellPdf2,
+      cellPdf3: this.requestFormGroup.value.personalInfo.cellPdf3,
+      cellPdf4: this.requestFormGroup.value.personalInfo.cellPdf4,
+      cellPdf5: this.requestFormGroup.value.personalInfo.cellPdf5,
+      cellPdf6: this.requestFormGroup.value.personalInfo.cellPdf6,
+      cellPdf7: this.requestFormGroup.value.personalInfo.cellPdf7,
+      cellPdf8: this.requestFormGroup.value.personalInfo.cellPdf8,
+      cellPdf9: this.requestFormGroup.value.personalInfo.cellPdf9,
+      cellPdf10: this.requestFormGroup.value.personalInfo.cellPdf10,
+      cellPdf11: this.requestFormGroup.value.personalInfo.cellPdf11,
+      cellPdf12: this.requestFormGroup.value.personalInfo.cellPdf12,
+      cellPdf13: this.requestFormGroup.value.personalInfo.cellPdf13,
+      cellPdf14: this.requestFormGroup.value.personalInfo.cellPdf14,
+      cellPdf15: this.requestFormGroup.value.personalInfo.cellPdf15,
+      cellPdf16: this.requestFormGroup.value.personalInfo.cellPdf16,
+      cellPdf17: this.requestFormGroup.value.personalInfo.cellPdf17,
+      cellPdf18: this.requestFormGroup.value.personalInfo.cellPdf18,
+      cellPdf19: this.requestFormGroup.value.personalInfo.cellPdf19,
+      cellPdf20: this.requestFormGroup.value.personalInfo.cellPdf20,
+      cellPdf21: this.requestFormGroup.value.personalInfo.cellPdf21,
+      cellPdf22: this.requestFormGroup.value.personalInfo.cellPdf22,
+      cellPdf23: this.requestFormGroup.value.personalInfo.cellPdf23,
+      cellPdf24: this.requestFormGroup.value.personalInfo.cellPdf24,
+      cellPdf25: this.requestFormGroup.value.personalInfo.cellPdf25,
+      cellPdf26: this.requestFormGroup.value.personalInfo.cellPdf26,
     };
   }
 
 
   generatePdf(values: {
-    nameUrPib: string;
-    registryNumber: string;
+    cellPdf1: string;
+    cellPdf2: string;
+    cellPdf3: string;
+    cellPdf4: string;
+    cellPdf5: string;
+    cellPdf6: string;
+    cellPdf7: string;
+    cellPdf8: string;
+    cellPdf9: string;
+    cellPdf10: string;
+    cellPdf11: string;
+    cellPdf12: string;
+    cellPdf13: string;
+    cellPdf14: string;
+    cellPdf15: string;
+    cellPdf16: string;
+    cellPdf17: string;
+    cellPdf18: string;
+    cellPdf19: string;
+    cellPdf20: string;
+    cellPdf21: string;
+    cellPdf22: string;
+    cellPdf23: string;
+    cellPdf24: string;
+    cellPdf25: string;
+    cellPdf26: string;
   }) {
 
     const content = Object.keys(values).map(key => {

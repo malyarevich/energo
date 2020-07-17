@@ -1,8 +1,12 @@
 <div [formGroup]="fg">
+  
+  <p style="font-weight: bold; margin-top: 1rem; margin-bottom: 0;" >{{ fieldItem.placeholder }}</p>
 <mat-form-field class="example-full-width">
-  <mat-label> {{ fieldItem.placeholder }}</mat-label>
+  
+  <!-- <mat-label> {{ fieldItem.placeholder }}</mat-label> -->
   <input type="text" matInput [errorStateMatcher]="matcher" [formControlName]="fieldItem.name"
-    [placeholder]="fieldItem.placeholder" required />
+     required /> 
+     <!-- [placeholder]="fieldItem.placeholder" -->
   <mat-hint></mat-hint>
   <mat-error>
     <app-error-list [fieldId]="fieldItem.name" [fg]="fg"></app-error-list>
