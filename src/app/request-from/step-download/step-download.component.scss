@@ -7,3 +7,16 @@
     flex: 1 1 auto;
     flex-direction: column;
   }
+.inputAndSelect-width {
+  align-self: stretch;
+  display: flex;
+  flex-direction: row;
+  }
+ .input-width{
+    align-items: auto;
+    align-self: stretch;
+    flex: 9 0 auto;
+ }
+ .select-width{
+
+}

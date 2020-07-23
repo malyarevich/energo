@@ -80,10 +80,11 @@ export class RequestFromComponent implements OnInit {
     this.reqForm.sendForm();
   }
 
+
   getInputs(): any {
     return {
-      cellPdf1: this.requestFormGroup.value.personalInfo.cellPdf1,
-      cellPdf2: this.requestFormGroup.value.personalInfo.cellPdf2,
+      cellPdf1: this.requestFormGroup.value.contacts.namePib,
+      cellPdf2: this.requestFormGroup.value.contacts.edrpouIpn,
       cellPdf3: this.requestFormGroup.value.personalInfo.cellPdf3,
       cellPdf4: this.requestFormGroup.value.personalInfo.cellPdf4,
       cellPdf5: this.requestFormGroup.value.personalInfo.cellPdf5,
@@ -103,11 +104,6 @@ export class RequestFromComponent implements OnInit {
       cellPdf19: this.requestFormGroup.value.personalInfo.cellPdf19,
       cellPdf20: this.requestFormGroup.value.personalInfo.cellPdf20,
       cellPdf21: this.requestFormGroup.value.personalInfo.cellPdf21,
-      cellPdf22: this.requestFormGroup.value.personalInfo.cellPdf22,
-      cellPdf23: this.requestFormGroup.value.personalInfo.cellPdf23,
-      cellPdf24: this.requestFormGroup.value.personalInfo.cellPdf24,
-      cellPdf25: this.requestFormGroup.value.personalInfo.cellPdf25,
-      cellPdf26: this.requestFormGroup.value.personalInfo.cellPdf26,
     };
   }
 
@@ -134,11 +130,6 @@ export class RequestFromComponent implements OnInit {
     cellPdf19: string;
     cellPdf20: string;
     cellPdf21: string;
-    cellPdf22: string;
-    cellPdf23: string;
-    cellPdf24: string;
-    cellPdf25: string;
-    cellPdf26: string;
   }) {
 
     const content = Object.keys(values).map(key => {
