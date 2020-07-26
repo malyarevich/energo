@@ -1,3 +1,5 @@
+import { Input } from '@angular/core';
+
 export enum DocumentsEnem {
   onsentEcp = 'onsentEcp', // 0
   propertyRights = 'propertyRights', // 1
@@ -36,13 +38,160 @@ export const sectionRequest = [
   {
     legend: 'Контактні дані',
     fields: [
+      // {
+      //   name: 'cellPdf3',
+      //   type:'input', 
+      //   placeholder: "Назва, місце розташування та функціональне призначення об'єкта замовника:"
+      // },
       {
-        name: 'nameUrPib',
-        placeholder: 'Найменування/ПІБ'
+        name: 'cellPdf3',
+        sublegend: "Назва, місце розташування та функціональне призначення об'єкта замовника:",
+        type: 'input'
       },
       {
-        name: 'registryNumber',
-        placeholder: 'ЄДРПОУ/РНОКПП(ІПН)/Серія та номер паспорта.'
+        name: 'cellPdf4',
+        sublegend: 'Мета приєднання(нове приєднання/зміна технічних параметрів):',
+        type: 'input'
+      },
+      {
+        name: 'cellPdf5',
+        sublegend: 'Існуюча дозволена (приєднана) потужність відповідно до умов договору про постачання (користування) електричної енергії (електричною енергією) (вказати дату укладення та номер Договору):',
+        type: 'input',
+      },
+      {
+        name: 'cellPdf6',
+        sublegend: 'Величина максимального розрахункового (прогнозованого) навантаження з урахуванням існуючої дозволеної (приєднаної) потужності, кВт. І категорія надійності електропостачання: ',
+        type: 'inputAndSelect',
+        placeholder: "Категорія",
+        subplaceholder: "Значення", //
+        options: [
+          {
+            "id": 0,
+            "label": "I"
+          },
+          {
+            "id": 1,
+            "label": "II"
+          },
+          {
+            "id": 2,
+            "label": "III"
+          }
+        ]
+      },
+      {
+        name: 'cellPdf7',
+        type: 'input',
+        sublegend: 'Ступінь напруги в точці приєднання, кВ:'
+      },
+      {
+        name: 'cellPdf8',
+        type: 'input',
+        sublegend: 'Графік уведення потужностей за роками (заповнюється винятково замовниками – юридичними особами та фізичними особами-підприємцями). Рік уведення потужності:'
+      },
+      {
+        name: 'cellPdf9',
+        type: 'input',
+        sublegend: 'Величина максимального розрахункового (прогнозованого) навантаження з урахуванням існуючої дозволеної (приєднаної) потужності, кВт:'
+      },
+      {
+        name: 'cellPdf10',
+        sublegend: 'Категорія надійності електропостачання: ',
+        type: 'inputAndSelect',
+        placeholder: "Категорія",
+        subplaceholder: "Значення", //
+        options: [
+          {
+            "id": 0,
+            "label": "I"
+          },
+          {
+            "id": 1,
+            "label": "II"
+          },
+          {
+            "id": 2,
+            "label": "III"
+          }
+        ]
+      },
+      {
+        name: 'cellPdf11',
+        type: 'input',
+        sublegend: "Прогнозована дата введення об'єкта замовника в експлуатацію:"
+      },
+      {
+        name: 'cellPdf12',
+        type: 'input',
+        sublegend: 'Режим роботи електроустановок замовника:'
+      },
+      {
+        name: 'cellPdf13',
+        type: 'input',
+        sublegend: 'Відомості щодо встановленої потужності електроопалювальних та електронагрівальних установок, кухонних електроплит тощо:'
+      },
+      {
+        name: 'cellPdf14',
+        type: 'input',
+        sublegend: 'Відомості щодо встановленої потужності генеруючих установок приватних домогосподарств (тип/потужність):'
+      },
+      {
+        name: 'cellPdf15',
+        type: 'select',
+        sublegend: 'Відомості щодо встановлення точки приєднання (межі балансової належності електроустановок замовника та ОСР) на території земельної ділянки замовника(ЗАПЕРЕЧУЮ/НЕ ЗАПЕРЕЧУЮ):',
+        placeholder: "ЗАПЕРЕЧУЮ/НЕ ЗАПЕРЕЧУЮ",
+        options: [
+          {
+            "id": 0,
+            "label": "ЗАПЕРЕЧУЮ"
+          },
+          {
+            "id": 1,
+            "label": "НЕ ЗАПЕРЕЧУЮ"
+          }
+        ]
+      },
+      {
+        name: 'cellPdf16',
+        type: 'input',
+        sublegend: 'Інформація про бажання замовника здійснювати проєктування лінійної частини приєднання (самостійно/Оператором системи розподілу (послуга «під ключ»)):'
+      },
+      {
+        name: 'cellPdf17',
+        type: 'input',
+        sublegend: 'Необхідність приєднання будівельних струмоприймачів ________ кВт.'
+      },
+      {
+        name: 'cellPdf18',
+        sublegend: 'Відомості щодо необхідності встановлення багатофункціонального приладу обліку електричної енергії (ТАК/НІ) та відомості щодо вибору постачальника послуги комерційного обліку (ОСР/інший ППККО):',
+        type: 'inputAndSelect',
+        placeholder: "ТАК/НІ",
+        subplaceholder: "ОСР/інший ППККО", //
+        options: [
+          {
+            "id": 0,
+            "label": "ТАК"
+          },
+          {
+            "id": 1,
+            "label": "НІ"
+          }
+        ]
+      },
+      {
+        name: 'cellPdf19',
+        type: 'input',
+        sublegend: 'Прошу надати послугу з приєднання електроустановок до електричних мереж та здійснити комплекс заходів з приєднання та первинного підключення електроустановок до електричних мереж. Оплату отриманих послуг гарантую:'
+      },
+      {
+        name: 'cellPdf20',
+        type: 'input',
+        sublegend: 'Дата'
+      },
+      {
+        name: 'cellPdf21',
+        type: 'input',
+        sublegend: 'ПІБ (заявника)'
       }
     ]
   },
@@ -85,8 +234,8 @@ export const sectionContacts = [
     ]
   }
 ];
-  export const sectionAddress = [
-    {
+export const sectionAddress = [
+  {
     legend: 'Адреса об’єкта',
     fields: [
       {
@@ -95,7 +244,7 @@ export const sectionContacts = [
         type: 'select',
         options: []
       },
-      { name: 'address', placeholder: 'Адреса об’єкта' }
+      { name: 'address', placeholder: 'Адреса об’єкта', type: 'input' },
     ]
   }
 ];
@@ -104,7 +253,7 @@ export const sectionContacts = [
 export const typeConnectionChecklist = [
   {
     id: 'new',
-    description: 'Які приєднуються до електричних мереж уперше'
+    description: 'Приєднуються до електричних мереж уперше'
   },
   {
     id: 'change',
@@ -281,7 +430,7 @@ export const customerTypeToConnect = [
   { id: 'presenter_phis_o_new', numberList: [0, 1, 2, 3, 4, 5, 6, 13, 22] },
   { id: 'self_fop_new', numberList: [0, 1, 2, 3, 7, 10, 4, 5, 22] },
   { id: 'presenter_fop_new', numberList: [0, 1, 2, 3, 7, 10, 4, 5, 13, 22] },
-  
+
   { id: 'self_ur_change', numberList: [0, 1, 2, 7, 8, 9, 10, 11, 4, 5, 22] },
   { id: 'presenter_ur_change', numberList: [0, 1, 2, 7, 8, 9, 10, 11, 4, 5, 13, 22] },
   { id: 'self_phis_o_change', numberList: [0, 1, 2, 3, 4, 5, 6, 22] },
@@ -289,7 +438,7 @@ export const customerTypeToConnect = [
   { id: 'self_fop_change', numberList: [0, 1, 2, 3, 7, 10, 4, 5, 22] },
   { id: 'presenter_fop_change', numberList: [0, 1, 2, 3, 7, 10, 4, 5, 13, 22] },
 
-  
+
   { id: 'self_ur_power', numberList: [0, 1, 23, 7, 8, 9, 10, 11, 4, 5, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
   { id: 'presenter_ur_power', numberList: [0, 1, 23, 7, 8, 9, 10, 11, 4, 5, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
   { id: 'self_phis_o_power', numberList: [0, 1, 23, 3, 4, 5, 6, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
@@ -303,17 +452,17 @@ export const refDocument =
   "https://zakon.rada.gov.ua/laws/file/text/76/f490366n267.doc";
 
 export interface IPetInit {
-  "EDRPOU": string;
-  "Password": string;
-  "NamePib": string;
-  "addressUr": string;
-  "AddressPost": string;
-  "Email": string;
-  "Phone": string;
-  "Status": any;
-  "CustomerTypeToConnect": any;
-  "BranchId": any;
-  "Address": string,
+  "EDRPOU"?: string;
+  "Password"?: string;
+  "NamePib"?: string;
+  "addressUr"?: string;
+  "AddressPost"?: string;
+  "Email"?: string;
+  "Phone"?: string;
+  "Status"?: any;
+  "CustomerTypeToConnect"?: any;
+  "BranchId"?: any;
+  "Address"?: string,
 
   // documents
   'onsentEcp'?: string;
@@ -381,4 +530,125 @@ export const defaultPetInit: IPetInit = {
   'another': null,
   'powerSituationPlan': null,
   "dovirenyst": null,
+}
+
+export const listPdfCoords = {
+  cellPdf1: [{
+    x: 147,
+    y: 168
+  }],
+  cellPdf2: [{
+    x: 240,
+    y: 168
+  }],
+  cellPdf3: [{
+    x: 705,
+    y: 168
+  }],
+  cellPdf4: [{
+    x: 147,
+    y: 203
+  }],
+  cellPdf5: [{
+    x: 240,
+    y: 203
+  }],
+  cellPdf6: [
+    {
+      x: 474, // 474 || 552 || 628
+      y: 220
+    },
+    {
+      x: 552, // 474 || 552 || 628
+      y: 220
+    },
+    {
+      x: 628, // 474 || 552 || 628
+      y: 220
+    }
+  ],
+  cellPdf7: [{
+    x: 705,
+    y: 203
+  }],
+  cellPdf8: [{
+    x: 54,
+    y: 269 // 269 || 277 || 284
+  }],
+  cellPdf9: [{
+    x: 240,
+    y: 277
+  }],
+  cellPdf10: [{
+    x: 474,
+    y: 284
+  }],
+  cellPdf11: [{
+    x: 705,
+    y: 262
+  }],
+  cellPdf12: [{
+    x: 54,
+    y: 313
+  }],
+  cellPdf13: [{
+    x: 240,
+    y: 313
+  }],
+  cellPdf14: [{
+    x: 398,
+    y: 313
+  }],
+  cellPdf15: [{
+    x: 552,
+    y: 313
+  }],
+  cellPdf16: [{
+    x: 54,
+    y: 344
+  }],
+  cellPdf17: [{
+    x: 372,
+    y: 348
+  }],
+  cellPdf18: [{
+    x: 552,
+    y: 344
+  }],
+  cellPdf19: [{
+    x: 662,
+    y: 431
+  }],
+  cellPdf20: [{
+    x: 70,
+    y: 537
+  }],
+  cellPdf21: [{
+    x: 608,
+    y: 532
+  }]
+}
+
+export interface IGenerationPDFCells {
+  cellPdf1: string;
+  cellPdf2: string;
+  cellPdf3: string;
+  cellPdf4: string;
+  cellPdf5: string;
+  cellPdf6: string;
+  cellPdf7: string;
+  cellPdf8: string;
+  cellPdf9: string;
+  cellPdf10: string;
+  cellPdf11: string;
+  cellPdf12: string;
+  cellPdf13: string;
+  cellPdf14: string;
+  cellPdf15: string;
+  cellPdf16: string;
+  cellPdf17: string;
+  cellPdf18: string;
+  cellPdf19: string;
+  cellPdf20: string;
+  cellPdf21: string;
 }

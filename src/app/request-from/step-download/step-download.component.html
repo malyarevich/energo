@@ -1,12 +1,58 @@
-<!-- <div [formGroup]="fg">
-  <mat-form-field class="example-full-width">
-    <mat-label> {{ fieldItem.placeholder }}</mat-label>
-    <input type="text" matInput [errorStateMatcher]="matcher" [formControlName]="fieldItem.name"
-      [placeholder]="fieldItem.placeholder" required />
-    <mat-hint></mat-hint>
-    <mat-error>
-      <app-error-list [fieldId]="fieldItem.name" [fg]="fg"></app-error-list>
-    </mat-error>
-  </mat-form-field>
-</div> -->
+<div [formGroup]="fg">
+  <!-- <ng-container *ngIf="fieldItem.type === 'select'; else defaultInput"> -->
+  <ng-container *ngIf="fieldItem.type === 'select'">
+    <p style="font-weight: bold;  margin-bottom: 1rem;" >{{ fieldItem.sublegend }}</p>
+    <mat-form-field class="example-full-width">
+      <mat-select [formControlName]="fieldItem.name" required [placeholder]="fieldItem.placeholder">
+        <mat-option *ngFor="let option of fieldItem.options"  [value]="option.id">{{ option.label }}</mat-option>
+      </mat-select>
+      <mat-hint></mat-hint>
+      <mat-error>
+        <app-error-list [fieldId]="fieldItem.name" [fg]="fg"></app-error-list>
+      </mat-error>
+    </mat-form-field>
+  </ng-container>
+
+
+  <ng-container *ngIf="fieldItem.type === 'inputAndSelect'">
+
+    <p style="font-weight: bold;  margin-bottom: 1rem;" >{{ fieldItem.sublegend }}</p> 
+      <div class="inputAndSelect-width">
+        <mat-form-field class="select-width" [formGroup]="getOptionsGroup()">
+      <!-- `option${fieldItem.name}` === "option" + fieldItem.name -->
+          <mat-select [placeholder]="fieldItem.placeholder" [formControlName]="fieldItem.name"> 
+            <mat-option *ngFor="let option of fieldItem.options" [value]="option.id" >{{ option.label }}</mat-option>
+          </mat-select>
+          <mat-hint></mat-hint>
+          <mat-error>
+            <app-error-list [fieldId]="fieldItem.name" [fg]="fg"></app-error-list>
+          </mat-error>
+        </mat-form-field>
+      <br>
+    <mat-form-field class="input-width">      
+      <input  type="text" matInput [errorStateMatcher]="matcher" [formControlName]="fieldItem.name" [placeholder]="fieldItem.subplaceholder"/>
+      <mat-hint></mat-hint>
+      <mat-error>
+        <app-error-list [fieldId]="fieldItem.name" [fg]="fg"></app-error-list>
+      </mat-error>
+    </mat-form-field>
+  
+    
+  </div>
+  </ng-container>
+
+  <ng-container *ngIf="fieldItem.type === 'input'">
+    <mat-form-field class="example-full-width">
+      <p style="font-weight: bold;  margin-bottom: 1rem;" >{{ fieldItem.sublegend }}</p>
+      <input type="text" matInput [errorStateMatcher]="matcher" [formControlName]="fieldItem.name"/>
+      <mat-hint></mat-hint>
+      <mat-error>
+        <app-error-list [fieldId]="fieldItem.name" [fg]="fg"></app-error-list>
+      </mat-error>
+    </mat-form-field>
+</ng-container>
+
+  
+  
+</div>
 
