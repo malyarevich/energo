@@ -18,9 +18,9 @@
 
     <p style="font-weight: bold;  margin-bottom: 1rem;" >{{ fieldItem.sublegend }}</p> 
       <div class="inputAndSelect-width">
-        <mat-form-field class="select-width">
-      
-          <mat-select [placeholder]="fieldItem.placeholder">
+        <mat-form-field class="select-width" [formGroup]="getOptionsGroup()">
+      <!-- `option${fieldItem.name}` === "option" + fieldItem.name -->
+          <mat-select [placeholder]="fieldItem.placeholder" [formControlName]="fieldItem.name"> 
             <mat-option *ngFor="let option of fieldItem.options" [value]="option.id" >{{ option.label }}</mat-option>
           </mat-select>
           <mat-hint></mat-hint>

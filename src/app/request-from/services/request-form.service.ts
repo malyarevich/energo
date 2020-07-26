@@ -91,10 +91,7 @@ export const defaultBranches: ResListType = {
   providedIn: 'root'
 })
 export class RequestFormService {
-
   requestFormGroup: FormGroup;
-  sectionRequestFormGroup: FormGroup;
-  sectioncontacts: FormGroup;
   isSubmitted = false;
   userDocFiles = {};
   resList$: BehaviorSubject<ResListType> = new BehaviorSubject<ResListType>(defaultBranches); // options
@@ -378,6 +375,45 @@ export class RequestFormService {
             Validators.maxLength(100) // max length
           ]) // Validations
         )
+      }),
+
+      personalInfoOptions: new FormGroup({
+        cellPdf6: new FormControl(
+          {
+            value: 0, // state
+            disabled: false // off/on
+          },
+          Validators.compose([
+            Validators.required, // обязательное поле
+          ])
+        ),
+        cellPdf10: new FormControl(
+          {
+            value: 1, // state
+            disabled: false // off/on
+          },
+          Validators.compose([
+            Validators.required, // обязательное поле
+          ])
+        ),
+        cellPdf15: new FormControl(
+          {
+            value: 1, // state
+            disabled: false // off/on
+          },
+          Validators.compose([
+            Validators.required, // обязательное поле
+          ])
+        ),
+        cellPdf18: new FormControl(
+          {
+            value: 2, // state
+            disabled: false // off/on
+          },
+          Validators.compose([
+            Validators.required, // обязательное поле
+          ])
+        ),
       }),
 
       // ******************************** sectionContacts Fields ********************************

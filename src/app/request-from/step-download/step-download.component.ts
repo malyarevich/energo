@@ -26,4 +26,8 @@ export class StepDownloadComponent implements OnInit {
   ngOnInit() {
   }
 
+  getOptionsGroup(): FormGroup {
+    return this.fg.parent.controls['personalInfoOptions'];
+  }
+
 }

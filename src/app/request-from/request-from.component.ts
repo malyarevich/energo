@@ -6,7 +6,8 @@ import {
   sectionRequest,
   sectionContacts,
   sectionAddress,
-  listPdfCoords
+  listPdfCoords,
+  IGenerationPDFCells
 } from './models/form.model';
 import { RequestFormService } from './services/request-form.service';
 import pdfMake from 'pdfmake/build/pdfmake';
@@ -80,65 +81,30 @@ export class RequestFromComponent implements OnInit {
     this.reqForm.sendForm();
   }
 
+  getOptions(): any {
+    return this.requestFormGroup.get('personalInfoOptions').value;
+  }
 
-  getInputs(): any {
-    return {
-      cellPdf1: this.requestFormGroup.value.contacts.namePib,
-      cellPdf2: this.requestFormGroup.value.contacts.edrpouIpn,
-      cellPdf3: this.requestFormGroup.value.personalInfo.cellPdf3,
-      cellPdf4: this.requestFormGroup.value.personalInfo.cellPdf4,
-      cellPdf5: this.requestFormGroup.value.personalInfo.cellPdf5,
-      cellPdf6: this.requestFormGroup.value.personalInfo.cellPdf6,
-      cellPdf7: this.requestFormGroup.value.personalInfo.cellPdf7,
-      cellPdf8: this.requestFormGroup.value.personalInfo.cellPdf8,
-      cellPdf9: this.requestFormGroup.value.personalInfo.cellPdf9,
-      cellPdf10: this.requestFormGroup.value.personalInfo.cellPdf10,
-      cellPdf11: this.requestFormGroup.value.personalInfo.cellPdf11,
-      cellPdf12: this.requestFormGroup.value.personalInfo.cellPdf12,
-      cellPdf13: this.requestFormGroup.value.personalInfo.cellPdf13,
-      cellPdf14: this.requestFormGroup.value.personalInfo.cellPdf14,
-      cellPdf15: this.requestFormGroup.value.personalInfo.cellPdf15,
-      cellPdf16: this.requestFormGroup.value.personalInfo.cellPdf16,
-      cellPdf17: this.requestFormGroup.value.personalInfo.cellPdf17,
-      cellPdf18: this.requestFormGroup.value.personalInfo.cellPdf18,
-      cellPdf19: this.requestFormGroup.value.personalInfo.cellPdf19,
-      cellPdf20: this.requestFormGroup.value.personalInfo.cellPdf20,
-      cellPdf21: this.requestFormGroup.value.personalInfo.cellPdf21,
-    };
+  getInputs(): IGenerationPDFCells {
+    const cellList = {};
+    cellList['cellPdf1'] = this.requestFormGroup.get('contacts').get('namePib').value;
+    cellList['cellPdf2'] = this.requestFormGroup.get('contacts').get('edrpouIpn').value;
+    const personalInfoList = this.requestFormGroup.get('personalInfo').value;
+
+    console.log(this.requestFormGroup.get('personalInfo').value);
+    return Object.assign({}, cellList, personalInfoList) as IGenerationPDFCells;
   }
 
 
-  generatePdf(values: {
-    cellPdf1: string;
-    cellPdf2: string;
-    cellPdf3: string;
-    cellPdf4: string;
-    cellPdf5: string;
-    cellPdf6: string;
-    cellPdf7: string;
-    cellPdf8: string;
-    cellPdf9: string;
-    cellPdf10: string;
-    cellPdf11: string;
-    cellPdf12: string;
-    cellPdf13: string;
-    cellPdf14: string;
-    cellPdf15: string;
-    cellPdf16: string;
-    cellPdf17: string;
-    cellPdf18: string;
-    cellPdf19: string;
-    cellPdf20: string;
-    cellPdf21: string;
-  }) {
-
+  generatePdf(values: IGenerationPDFCells) {
+    const options = this.getOptions();
     const content = Object.keys(values).map(key => {
       return {
         text: values[key],
         fontSize: 5.5,
         background: 'yellow',
         maxwidth: 20,
-        absolutePosition: listPdfCoords[key]
+        absolutePosition: listPdfCoords[key].length > 1 ? listPdfCoords[key][options[key]] : listPdfCoords[key][0]
       }
     });
 
