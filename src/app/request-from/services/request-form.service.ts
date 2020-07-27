@@ -172,79 +172,65 @@ export class RequestFormService {
       personalInfo: new FormGroup({
         cellPdf3: new FormControl(
           {
-            value: "191919", // state
+            value: "", // state
             disabled: false // off/on
           },
           Validators.compose([
             Validators.required, // обязательное поле
             Validators.minLength(3), // мин длина строки
-            Validators.maxLength(100) // max length
+            Validators.maxLength(60) // max length
           ]) // Validations
         ),
         cellPdf4: new FormControl(
           {
-            value: "181818", // state
+            value: null, // state
             disabled: false // off/on
           },
           Validators.compose([
             Validators.required, // обязательное поле
-            Validators.minLength(3), // мин длина строки
-            Validators.maxLength(100) // max length
           ]) // Validations
         ),
         cellPdf5: new FormControl(
           {
-            value: "171717", // state
+            value: "", // state
             disabled: false // off/on
           },
           Validators.compose([
             Validators.required, // обязательное поле
             Validators.minLength(3), // мин длина строки
-            Validators.maxLength(100) // max length
+            Validators.maxLength(75) // max length
           ]) // Validations
         ),
         cellPdf6: new FormControl(
           {
-            value: "161616", // state
+            value: "", // state
             disabled: false // off/on
           },
           Validators.compose([
             Validators.required, // обязательное поле
             Validators.minLength(3), // мин длина строки
-            Validators.maxLength(100) // max length
+            Validators.maxLength(60) // max length
           ]) // Validations
         ),
         cellPdf7: new FormControl(
           {
-            value: "151515", // state
+            value: "", // state
             disabled: false // off/on
           },
           Validators.compose([
             Validators.required, // обязательное поле
             Validators.minLength(3), // мин длина строки
-            Validators.maxLength(100) // max length
+            Validators.maxLength(60) // max length
           ]) // Validations
         ),
         cellPdf8: new FormControl(
           {
-            value: "141414", // state
+            value: "", // state
             disabled: false // off/on
           },
           Validators.compose([
-            Validators.required, // обязательное поле
             Validators.minLength(3), // мин длина строки
-            Validators.maxLength(100) // max length
-          ]) // Validations
-        ),
-        cellPdf9: new FormControl(
-          {
-            value: "131313", // state
-            disabled: false // off/on
-          },
-          Validators.compose([
-            Validators.required, // обязательное поле
-            Validators.minLength(3), // мин длина строки
-            Validators.maxLength(100) // max length
+            Validators.maxLength(60) // max length
           ]) // Validations
         ),
         cellPdf10: new FormControl(
@@ -253,58 +239,57 @@ export class RequestFormService {
             disabled: false // off/on
           },
           Validators.compose([
-            Validators.required, // обязательное поле
             Validators.minLength(3), // мин длина строки
-            Validators.maxLength(100) // max length
+            Validators.maxLength(60) // max length
           ]) // Validations
         ),
         cellPdf11: new FormControl(
           {
-            value: "111111", // state
+            value: "", // state
             disabled: false // off/on
           },
           Validators.compose([
             Validators.required, // обязательное поле
             Validators.minLength(3), // мин длина строки
-            Validators.maxLength(100) // max length
+            Validators.maxLength(60) // max length
           ]) // Validations
         ),
         cellPdf12: new FormControl(
           {
-            value: "101010", // state
+            value: "", // state
             disabled: false // off/on
           },
           Validators.compose([
             Validators.required, // обязательное поле
             Validators.minLength(3), // мин длина строки
-            Validators.maxLength(100) // max length
+            Validators.maxLength(60) // max length
           ]) // Validations
         ),
         cellPdf13: new FormControl(
           {
-            value: "999", // state
+            value: "", // state
             disabled: false // off/on
           },
           Validators.compose([
             Validators.required, // обязательное поле
             Validators.minLength(3), // мин длина строки
-            Validators.maxLength(100) // max length
+            Validators.maxLength(60) // max length
           ]) // Validations
         ),
         cellPdf14: new FormControl(
           {
-            value: "888", // state
+            value: "", // state
             disabled: false // off/on
           },
           Validators.compose([
             Validators.required, // обязательное поле
             Validators.minLength(3), // мин длина строки
-            Validators.maxLength(100) // max length
+            Validators.maxLength(60) // max length
           ]) // Validations
         ),
         cellPdf15: new FormControl(
           {
-            value: "777", // state
+            value: null, // state
             disabled: false // off/on
           },
           Validators.compose([
@@ -313,27 +298,38 @@ export class RequestFormService {
         ),
         cellPdf16: new FormControl(
           {
-            value: "666", // state
+            value: "", // state
             disabled: false // off/on
           },
           Validators.compose([
             Validators.required, // обязательное поле
             Validators.minLength(3), // мин длина строки
-            Validators.maxLength(100) // max length
+            Validators.maxLength(60) // max length
           ]) // Validations
         ),
         cellPdf17: new FormControl(
           {
-            value: "555", // state
+            value: "", // state
             disabled: false // off/on
           },
           Validators.compose([
             Validators.required, // обязательное поле
             Validators.minLength(3), // мин длина строки
-            Validators.maxLength(100) // max length
+            Validators.maxLength(60) // max length
           ]) // Validations
         ),
         cellPdf18: new FormControl(
+          {
+            value: null, // state
+            disabled: false // off/on
+          },
+          Validators.compose([
+            Validators.required, // обязательное поле
+            Validators.minLength(3), // мин длина строки
+            Validators.maxLength(60) // max length
+          ]) // Validations
+        ),
+        cellPdf19: new FormControl(
           {
             value: "", // state
             disabled: false // off/on
@@ -342,42 +338,80 @@ export class RequestFormService {
             Validators.required, // обязательное поле
           ]) // Validations
         ),
-        cellPdf19: new FormControl(
-          {
-            value: "333", // state
-            disabled: false // off/on
-          },
-          Validators.compose([
-            Validators.required, // обязательное поле
-            Validators.minLength(3), // мин длина строки
-            Validators.maxLength(100) // max length
-          ]) // Validations
-        ),
         cellPdf20: new FormControl(
           {
-            value: "222", // state
+            value: null, // state
             disabled: false // off/on
           },
           Validators.compose([
             Validators.required, // обязательное поле
             Validators.minLength(3), // мин длина строки
-            Validators.maxLength(100) // max length
+            Validators.maxLength(60) // max length
+          ]) // Validations
+        ),cellPdf21: new FormControl(
+          {
+            value: "", // state
+            disabled: false // off/on
+          },
+          Validators.compose([
+            Validators.required, // обязательное поле
+            Validators.minLength(3), // мин длина строки
+            Validators.maxLength(60) // max length
+          ]) // Validations
+        ),cellPdf22: new FormControl(
+          {
+            value: "", // state
+            disabled: false // off/on
+          },
+          Validators.compose([
+            Validators.required, // обязательное поле
+            Validators.minLength(3), // мин длина строки
+            Validators.maxLength(60) // max length
           ]) // Validations
         ),
-        cellPdf21: new FormControl(
+        cellPdf23: new FormControl(
           {
-            value: "111", // state
+            value: "", // state
+            disabled: false // off/on
+          },
+          Validators.compose([
+            Validators.required, // обязательное поле
+          ]) // Validations
+        ),
+        cellPdf24: new FormControl(
+          {
+            value: "", // state
             disabled: false // off/on
           },
           Validators.compose([
             Validators.required, // обязательное поле
             Validators.minLength(3), // мин длина строки
-            Validators.maxLength(100) // max length
+            Validators.maxLength(60) // max length
+          ]) // Validations
+        ),
+        cellPdf26: new FormControl(
+          {
+            value: "", // state
+            disabled: false // off/on
+          },
+          Validators.compose([
+            Validators.required, // обязательное поле
+            Validators.minLength(3), // мин длина строки
+            Validators.maxLength(60) // max length
           ]) // Validations
         )
       }),
 
       personalInfoOptions: new FormGroup({
+        cellPdf4: new FormControl(
+          {
+            value: 0, // state
+            disabled: false // off/on
+          },
+          Validators.compose([
+            Validators.required, // обязательное поле
+          ])
+        ),
         cellPdf6: new FormControl(
           {
             value: 0, // state
@@ -389,7 +423,7 @@ export class RequestFormService {
         ),
         cellPdf10: new FormControl(
           {
-            value: 1, // state
+            value: 0, // state
             disabled: false // off/on
           },
           Validators.compose([
@@ -398,7 +432,16 @@ export class RequestFormService {
         ),
         cellPdf15: new FormControl(
           {
-            value: 1, // state
+            value: 0, // state
+            disabled: false // off/on
+          },
+          Validators.compose([
+            Validators.required, // обязательное поле
+          ])
+        ),
+        cellPdf16: new FormControl(
+          {
+            value: 0, // state
             disabled: false // off/on
           },
           Validators.compose([
@@ -407,7 +450,25 @@ export class RequestFormService {
         ),
         cellPdf18: new FormControl(
           {
-            value: 2, // state
+            value: 0, // state
+            disabled: false // off/on
+          },
+          Validators.compose([
+            Validators.required, // обязательное поле
+          ])
+        ),
+        cellPdf19: new FormControl(
+          {
+            value: 0, // state
+            disabled: false // off/on
+          },
+          Validators.compose([
+            Validators.required, // обязательное поле
+          ])
+        ),
+        cellPdf20: new FormControl(
+          {
+            value: 0, // state
             disabled: false // off/on
           },
           Validators.compose([
@@ -420,7 +481,7 @@ export class RequestFormService {
       contacts: new FormGroup({
         passwordCustomer: new FormControl(
           {
-            value: '12345678', // state
+            value: '', // state
             disabled: false // off/on
             
           },
@@ -432,7 +493,7 @@ export class RequestFormService {
 
         edrpouIpn: new FormControl(
           {
-            value: 'ЯЯ88776655', // state
+            value: '', // state
             disabled: false // off/on
           },
           Validators.compose([
@@ -443,7 +504,7 @@ export class RequestFormService {
         ),
         namePib: new FormControl(
           {
-            value: 'Иванов Иван Иванович', // state
+            value: '', // state
             disabled: false // off/on
           },
           Validators.compose([
@@ -454,7 +515,7 @@ export class RequestFormService {
         ),
         addressUr: new FormControl(
           {
-            value: 'Улица 1', // state
+            value: '', // state
             disabled: false // off/on
           },
           Validators.compose([
@@ -465,7 +526,7 @@ export class RequestFormService {
         ),
         addressPost: new FormControl(
           {
-            value: 'Улица 2', // state
+            value: '', // state
             disabled: false // off/on
           },
           Validators.compose([
@@ -475,7 +536,7 @@ export class RequestFormService {
   
         email: new FormControl(
           {
-            value: 'email@email.com', // state
+            value: '', // state
             disabled: false // off/on
           },
           Validators.compose([
@@ -485,7 +546,7 @@ export class RequestFormService {
         ),
         phone: new FormControl(
           {
-            value: '+380101102103', // state
+            value: '', // state
             disabled: false // off/on
           },
           Validators.compose([
@@ -509,7 +570,7 @@ export class RequestFormService {
         ),
         address: new FormControl(
           {
-            value: 'Улица 3', // state
+            value: '', // state
             disabled: false // off/on
           },
           Validators.compose([

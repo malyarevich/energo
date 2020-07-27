@@ -14,6 +14,7 @@ import pdfMake from 'pdfmake/build/pdfmake';
 import pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import { HttpClient } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-request-from',
@@ -25,6 +26,7 @@ export class RequestFromComponent implements OnInit {
 
   @Input("title") pageTitle = "Title";
   base64data: string | ArrayBuffer = null;
+  pipe = new DatePipe('en-US');
 
   requestFormGroup: FormGroup;
   //  firstFormGroup: FormGroup;
@@ -89,9 +91,14 @@ export class RequestFromComponent implements OnInit {
     const cellList = {};
     cellList['cellPdf1'] = this.requestFormGroup.get('contacts').get('namePib').value;
     cellList['cellPdf2'] = this.requestFormGroup.get('contacts').get('edrpouIpn').value;
+    cellList['cellPdf9'] = this.requestFormGroup.get('personalInfo').get('cellPdf10').value;
+    cellList['cellPdf25'] = this.pipe.transform(Date.now(), 'dd                  MM                   yy');
     const personalInfoList = this.requestFormGroup.get('personalInfo').value;
+    
 
-    console.log(this.requestFormGroup.get('personalInfo').value);
+    // console.log(this.requestFormGroup.get('personalInfo').value);
+    // console.log(this.pipe.transform(Date.now(), 'ddMMyy'));
+
     return Object.assign({}, cellList, personalInfoList) as IGenerationPDFCells;
   }
 
@@ -102,7 +109,7 @@ export class RequestFromComponent implements OnInit {
       return {
         text: values[key],
         fontSize: 5.5,
-        background: 'yellow',
+        // background: 'yellow',
         maxwidth: 20,
         absolutePosition: listPdfCoords[key].length > 1 ? listPdfCoords[key][options[key]] : listPdfCoords[key][0]
       }
