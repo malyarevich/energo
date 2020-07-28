@@ -56,13 +56,7 @@
 
     <!-- Document Step -->
         <mat-step label="Заповненя заяви" editable="true" [stepControl]="personalInfo">
-          <!-- <p>Завантажте файл, роздрукуйте та заповніть його.</p>  -->
-          <button mat-raised-button matStepperNext type="button" color="warn" style="font-size: 1rem" (click)="generatePdf(getInputs())" >
-            <!-- <a [href]="refDocument">Завантажити</a> -->
-            <!-- <a href="https://zakon.rada.gov.ua/laws/file/text/76/f490366n267.doc">Взяти на заповнення</a> Взяти на підпис -->
-            Взяти на підпис
-            
-          </button>
+          
           <ng-container *ngFor="let section of sectionRequest; let i = index">
             <app-form-stepper stepNumber="1" legend="Заповненя заяви">
               <ng-container *ngFor="let fieldItem of section.fields">
@@ -73,6 +67,14 @@
     
             </app-form-stepper>
           </ng-container>
+
+          <!-- <p>Завантажте файл, роздрукуйте та заповніть його.</p>  -->
+          <button mat-raised-button matStepperNext type="button" color="warn" style="font-size: 1rem" (click)="generatePdf(getInputs())" >
+            <!-- <a [href]="refDocument">Завантажити</a> -->
+            <!-- <a href="https://zakon.rada.gov.ua/laws/file/text/76/f490366n267.doc">Взяти на заповнення</a> Взяти на підпис -->
+            Взяти на підпис
+            
+          </button>
           <div>
             
 
