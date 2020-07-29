@@ -7,7 +7,7 @@
     <!-- Contact Information -->
     <mat-step label="Контактні дані" editable="true" [stepControl]="contacts">
       <ng-container *ngFor="let section of sectionContacts; let i = index">
-        <app-form-stepper [stepNumber]="i + 2" [legend]="section.legend">
+        <app-form-stepper [stepNumber]="i + 1" [legend]="section.legend">
           <ng-container *ngFor="let fieldItem of section.fields">
             <app-step-contact-info [fieldItem]="fieldItem" [fg]="contacts"></app-step-contact-info>
           </ng-container>
@@ -24,7 +24,7 @@
     <!-- Address Object -->
     <mat-step label="Адреса об’єкта" editable="true" [stepControl]="location">
       <ng-container *ngFor="let section of sectionAddress; let i = index">
-        <app-form-stepper [stepNumber]="i + 2" [legend]="section.legend">
+        <app-form-stepper [stepNumber]="i + 1" [legend]="section.legend">
           <ng-container *ngFor="let fieldItem of section.fields">
             <app-step-address-info [fieldItem]="fieldItem" [fg]="location"></app-step-address-info>
           </ng-container>
@@ -41,7 +41,7 @@
     <!-- Fill of Application -->
     <mat-step label="Додаткова інформація" editable="true" [stepControl]="clientType">
       <!-- Fill of Application -->
-      <app-form-stepper stepNumber="4" legend="Подання заяви">
+      <app-form-stepper stepNumber="3" legend="Подання заяви">
         <app-step-application [fg]="clientType"></app-step-application>
       </app-form-stepper>
       
@@ -58,7 +58,7 @@
         <mat-step label="Заповненя заяви" editable="true" [stepControl]="personalInfo">
           
           <ng-container *ngFor="let section of sectionRequest; let i = index">
-            <app-form-stepper stepNumber="1" legend="Заповненя заяви">
+            <app-form-stepper stepNumber="4" legend="Заповненя заяви">
               <ng-container *ngFor="let fieldItem of section.fields">
                 <app-step-download [fieldItem]="fieldItem" [fg]="personalInfo"></app-step-download>
     
@@ -69,17 +69,12 @@
           </ng-container>
 
           <!-- <p>Завантажте файл, роздрукуйте та заповніть його.</p>  -->
-          <button mat-raised-button matStepperNext type="button" color="warn" style="font-size: 1rem" (click)="generatePdf(getInputs())" >
+          <button mat-raised-button matStepperNext type="button" color="warn" style="font-size: 1rem" (click)="generatePdf(getInputs())">
             <!-- <a [href]="refDocument">Завантажити</a> -->
             <!-- <a href="https://zakon.rada.gov.ua/laws/file/text/76/f490366n267.doc">Взяти на заповнення</a> Взяти на підпис -->
             Взяти на підпис
             
           </button>
-          <div>
-            
-
-
-          </div>
         </mat-step>
 
     <!-- Document List -->

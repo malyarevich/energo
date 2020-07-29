@@ -64,7 +64,7 @@ export class RequestFromComponent implements OnInit {
   constructor(private reqForm: RequestFormService, private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get('../../assets/image/0001.jpg', { responseType: 'blob' })
+    this.http.get('assets/image/zayava.jpg', { responseType: 'blob' })
       .subscribe(res => {
         const reader = new FileReader();
         reader.onloadend = () => {
@@ -123,7 +123,7 @@ export class RequestFromComponent implements OnInit {
         if (page !== 2) {
           return [
             {
-              image: 'ooo1',
+              image: 'zayava',
               width: 210 * 4
             }
           ];
@@ -131,7 +131,7 @@ export class RequestFromComponent implements OnInit {
       },
       content,
       images: {
-        ooo1: this.base64data
+        zayava: this.base64data
       }
     };
     pdfMake.createPdf(documentDefinition).download();

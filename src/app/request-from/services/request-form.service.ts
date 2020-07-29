@@ -325,8 +325,6 @@ export class RequestFormService {
           },
           Validators.compose([
             Validators.required, // обязательное поле
-            Validators.minLength(3), // мин длина строки
-            Validators.maxLength(60) // max length
           ]) // Validations
         ),
         cellPdf19: new FormControl(
@@ -345,8 +343,6 @@ export class RequestFormService {
           },
           Validators.compose([
             Validators.required, // обязательное поле
-            Validators.minLength(3), // мин длина строки
-            Validators.maxLength(60) // max length
           ]) // Validations
         ),cellPdf21: new FormControl(
           {
@@ -380,7 +376,7 @@ export class RequestFormService {
         ),
         cellPdf24: new FormControl(
           {
-            value: "", // state
+            value: "ТАК", // state
             disabled: false // off/on
           },
           Validators.compose([
@@ -408,72 +404,48 @@ export class RequestFormService {
             value: 0, // state
             disabled: false // off/on
           },
-          Validators.compose([
-            Validators.required, // обязательное поле
-          ])
         ),
         cellPdf6: new FormControl(
           {
             value: 0, // state
             disabled: false // off/on
           },
-          Validators.compose([
-            Validators.required, // обязательное поле
-          ])
         ),
         cellPdf10: new FormControl(
           {
             value: 0, // state
             disabled: false // off/on
-          },
-          Validators.compose([
-            Validators.required, // обязательное поле
-          ])
+          },// обязательное поле
         ),
         cellPdf15: new FormControl(
           {
             value: 0, // state
             disabled: false // off/on
           },
-          Validators.compose([
-            Validators.required, // обязательное поле
-          ])
         ),
         cellPdf16: new FormControl(
           {
             value: 0, // state
             disabled: false // off/on
           },
-          Validators.compose([
-            Validators.required, // обязательное поле
-          ])
         ),
         cellPdf18: new FormControl(
           {
             value: 0, // state
             disabled: false // off/on
           },
-          Validators.compose([
-            Validators.required, // обязательное поле
-          ])
         ),
         cellPdf19: new FormControl(
           {
             value: 0, // state
             disabled: false // off/on
           },
-          Validators.compose([
-            Validators.required, // обязательное поле
-          ])
         ),
         cellPdf20: new FormControl(
           {
             value: 0, // state
             disabled: false // off/on
           },
-          Validators.compose([
-            Validators.required, // обязательное поле
-          ])
         ),
       }),
 
