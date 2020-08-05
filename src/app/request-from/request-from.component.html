@@ -4,6 +4,7 @@
   </h1>
 
   <mat-vertical-stepper *ngFor="let section of sectionRequest; let i = index" linear="true" #stepper>
+
     <!-- Contact Information -->
     <mat-step label="Контактні дані" editable="true" [stepControl]="contacts">
       <ng-container *ngFor="let section of sectionContacts; let i = index">
@@ -44,7 +45,7 @@
       <app-form-stepper stepNumber="3" legend="Подання заяви">
         <app-step-application [fg]="clientType"></app-step-application>
       </app-form-stepper>
-      
+
       <div>
         <button mat-raised-button matStepperPrevious type="button">Назад</button>
         <button mat-raised-button matStepperNext type="button" color="warn" style="font-size: 1rem">
@@ -55,27 +56,28 @@
     </mat-step>
 
     <!-- Document Step -->
-        <mat-step label="Заповненя заяви" editable="true" [stepControl]="personalInfo">
-          
-          <ng-container *ngFor="let section of sectionRequest; let i = index">
-            <app-form-stepper stepNumber="4" legend="Заповненя заяви">
-              <ng-container *ngFor="let fieldItem of section.fields">
-                <app-step-download [fieldItem]="fieldItem" [fg]="personalInfo"></app-step-download>
-    
-              </ng-container>
-              <br />
-    
-            </app-form-stepper>
-          </ng-container>
+    <mat-step label="Заповненя заяви" editable="true" [stepControl]="personalInfo">
 
-          <!-- <p>Завантажте файл, роздрукуйте та заповніть його.</p>  -->
-          <button mat-raised-button matStepperNext type="button" color="warn" style="font-size: 1rem" (click)="generatePdf(getInputs())">
-            <!-- <a [href]="refDocument">Завантажити</a> -->
-            <!-- <a href="https://zakon.rada.gov.ua/laws/file/text/76/f490366n267.doc">Взяти на заповнення</a> Взяти на підпис -->
-            Взяти на підпис
-            
-          </button>
-        </mat-step>
+      <ng-container *ngFor="let section of sectionRequest; let i = index">
+        <app-form-stepper stepNumber="4" legend="Заповненя заяви">
+          <ng-container *ngFor="let fieldItem of section.fields">
+            <app-step-download [fieldItem]="fieldItem" [fg]="personalInfo"></app-step-download>
+
+          </ng-container>
+          <br />
+
+        </app-form-stepper>
+      </ng-container>
+
+      <!-- <p>Завантажте файл, роздрукуйте та заповніть його.</p>  -->
+      <button mat-raised-button matStepperNext type="button" color="warn" style="font-size: 1rem"
+        (click)="generatePdf(getInputs())">
+        <!-- <a [href]="refDocument">Завантажити</a> -->
+        <!-- <a href="https://zakon.rada.gov.ua/laws/file/text/76/f490366n267.doc">Взяти на заповнення</a> Взяти на підпис -->
+        Взяти на підпис
+
+      </button>
+    </mat-step>
 
     <!-- Document List -->
     <mat-step label="Документи" editable="true">

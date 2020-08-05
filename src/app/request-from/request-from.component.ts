@@ -91,7 +91,7 @@ export class RequestFromComponent implements OnInit {
     const cellList = {};
     cellList['cellPdf1'] = this.requestFormGroup.get('contacts').get('namePib').value;
     cellList['cellPdf2'] = this.requestFormGroup.get('contacts').get('edrpouIpn').value;
-    cellList['cellPdf9'] = this.requestFormGroup.get('personalInfo').get('cellPdf10').value;
+    // cellList['cellPdf9'] = this.requestFormGroup.get('personalInfo').get('cellPdf10').value;
     cellList['cellPdf25'] = this.pipe.transform(Date.now(), 'dd                  MM                   yy');
     const personalInfoList = this.requestFormGroup.get('personalInfo').value;
     

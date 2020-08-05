@@ -3,7 +3,7 @@
   <ng-container *ngIf="fieldItem.type === 'select'">
     <p style="font-weight: bold;  margin-bottom: 1rem;" >{{ fieldItem.sublegend }}</p>
     <mat-form-field class="example-full-width">
-      <mat-select [formControlName]="fieldItem.name" required [placeholder]="fieldItem.placeholder">
+      <mat-select [formControlName]="fieldItem.name" [placeholder]="fieldItem.placeholder">
         <mat-option *ngFor="let option of fieldItem.options"  [value]="option.id">{{ option.label }}</mat-option>
       </mat-select>
       <mat-hint></mat-hint>
@@ -40,6 +40,28 @@
     
   </div>
   </ng-container>
+  
+  
+  <ng-container *ngIf="fieldItem.type === 'justSublegend'">
+    <p style="font-weight: bold;  margin-bottom: 1rem;" >{{ fieldItem.sublegend }}</p> 
+  </ng-container>
+  <ng-container *ngIf="fieldItem.type === 'justSublegendCenter'">
+    <div style="display: flex; flex-direction: column; align-items:center">  
+    <p>{{ fieldItem.sublegend }}</p> 
+  </div>
+  </ng-container>
+
+  <ng-container *ngIf="fieldItem.type === 'justInput'">
+    <mat-form-field class="example-full-width">
+    <!-- <mat-form-field class="example-full-width"> -->
+      <input type="text" matInput [errorStateMatcher]="matcher" [formControlName]="fieldItem.name" [placeholder]="fieldItem.placeholder"/>
+      
+      <mat-hint></mat-hint>
+      <mat-error>
+        <app-error-list [fieldId]="fieldItem.name" [fg]="fg"></app-error-list>
+      </mat-error>
+    </mat-form-field>
+  </ng-container>
 
   <ng-container *ngIf="fieldItem.type === 'input'">
     <mat-form-field class="example-full-width">
@@ -50,7 +72,7 @@
         <app-error-list [fieldId]="fieldItem.name" [fg]="fg"></app-error-list>
       </mat-error>
     </mat-form-field>
-</ng-container>
+  </ng-container>
 
   
   

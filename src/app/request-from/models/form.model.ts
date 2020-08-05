@@ -1,267 +1,385 @@
 import { Input } from '@angular/core';
 
 export enum DocumentsEnem {
-  onsentEcp = 'onsentEcp', // 0
-  propertyRights = 'propertyRights', // 1
-  situationPlan = 'situationPlan', // 2
-  passport = 'passport', // 3
-  teo = 'teo', // 4
-  supplyСontract = 'supplyСontract', // 5
-  severalOwners = 'severalOwners', // 6
-  extractEd = 'extractEd', // 7
-  foundingDocument = 'foundingDocument', // 8
-  appointmentManager = 'appointmentManager', // 9
-  extractRp = 'extractRp', // 10
-  financialDetails = 'financialDetails', // 11
-  situationDocument = 'situationDocument', // 12
-  proxy = 'proxy', // 13
-  powerTechConditions = 'powerTechConditions', // 14
-  powersupplyСontract = 'powersupplyСontract', // 15
-  powerExtractEd = 'powerExtractEd', // 16
-  powerFoundingDocument = 'powerFoundingDocument', // 17
-  powerAppointmentManager = 'powerAppointmentManager', // 18
-  powerPayerPDV = 'powerPayerPDV', // 19
-  powerPayerPNP = 'powerPayerPNP', // 20
-  powerPayerStatus = 'powerPayerStatus', // 21
-  another = 'another', // 22
-  powerSituationPlan = 'powerSituationPlan' // 23
+  onsentEcp = `onsentEcp`, // 0
+  propertyRights = `propertyRights`, // 1
+  situationPlan = `situationPlan`, // 2
+  passport = `passport`, // 3
+  teo = `teo`, // 4
+  supplyСontract = `supplyСontract`, // 5
+  severalOwners = `severalOwners`, // 6
+  extractEd = `extractEd`, // 7
+  foundingDocument = `foundingDocument`, // 8
+  appointmentManager = `appointmentManager`, // 9
+  extractRp = `extractRp`, // 10
+  financialDetails = `financialDetails`, // 11
+  situationDocument = `situationDocument`, // 12
+  proxy = `proxy`, // 13
+  powerTechConditions = `powerTechConditions`, // 14
+  powersupplyСontract = `powersupplyСontract`, // 15
+  powerExtractEd = `powerExtractEd`, // 16
+  powerFoundingDocument = `powerFoundingDocument`, // 17
+  powerAppointmentManager = `powerAppointmentManager`, // 18
+  powerPayerPDV = `powerPayerPDV`, // 19
+  powerPayerPNP = `powerPayerPNP`, // 20
+  powerPayerStatus = `powerPayerStatus`, // 21
+  another = `another`, // 22
+  powerSituationPlan = `powerSituationPlan` // 23
 }
 
 export enum StepRadioEnum {
-  typeConnection = 'typeConnection',
-  askFrom = 'askFrom',
-  specialRights = 'specialRights',
-  documents = 'documents'
+  typeConnection = `typeConnection`,
+  askFrom = `askFrom`,
+  specialRights = `specialRights`,
+  documents = `documents`
 }
 
 export const sectionRequest = [
   {
-    legend: 'Контактні дані',
+    legend: `Контактні дані`,
     fields: [
       // {
-      //   name: 'cellPdf3',
-      //   type:'input', 
-      //   placeholder: "Назва, місце розташування та функціональне призначення об'єкта замовника:"
+      //   name: `cellPdf3`,
+      //   type:`input`, 
+      //   placeholder: `Назва, місце розташування та функціональне призначення об'єкта замовника:`
       // },
       {
-        name: 'cellPdf3',
-        sublegend: "Назва, місце розташування та функціональне призначення об'єкта замовника:",
-        type: 'input'
+        name: `cellPdf3`,
+        sublegend: `Назва, місце розташування та функціональне призначення об'єкта замовника:`,
+        type: `input`
       },
       {
-        name: 'cellPdf4',
-        sublegend: 'Мета приєднання(нове приєднання/зміна технічних параметрів):',
-        type: 'select',
-        placeholder: "Нове приєднання/зміна технічних параметрів",
+        name: `cellPdf4`,
+        sublegend: `Мета приєднання(нове приєднання/зміна технічних параметрів):`,
+        type: `select`,
+        placeholder: `Нове приєднання/зміна технічних параметрів`,
         options: [
           {
-            "id": "Нове приєднання",
-            "label": "Нове приєднання"
+            "id": `Нове приєднання`,
+            "label": `Нове приєднання`
           },
           {
-            "id": "Зміна технічних параметрів",
-            "label": "Зміна технічних параметрів"
+            "id": `Зміна технічних параметрів`,
+            "label": `Зміна технічних параметрів`
           }
         ]
       },
       {
-        name: 'cellPdf5',
-        sublegend: 'Існуюча дозволена (приєднана) потужність відповідно до умов договору про постачання (користування) електричної енергії (електричною енергією) (вказати дату укладення та номер Договору):',
-        type: 'input',
+        name: `cellPdf5`,
+        sublegend: `Існуюча дозволена (приєднана) потужність відповідно до умов договору про постачання (користування) електричної енергії (електричною енергією) (вказати дату укладення та номер Договору):`,
+        type: `input`,
+      },
+      // {
+      //   name: `cellPdf6`,
+      //   sublegend: `Величина максимального розрахункового (прогнозованого) навантаження з урахуванням існуючої дозволеної (приєднаної) потужності, кВт. І категорія надійності електропостачання: `,
+      //   type: `inputAndSelect`,
+      //   placeholder: `Категорія`,
+      //   subplaceholder: `Значення`, //
+      //   options: [
+      //     {
+      //       "id": 0,
+      //       "label": `I`
+      //     },
+      //     {
+      //       "id": 1,
+      //       "label": `II`
+      //     },
+      //     {
+      //       "id": 2,
+      //       "label": `III`
+      //     }
+      //   ]
+      // },
+
+      {
+        name: `cellPdf6`,
+        sublegend: `Величина максимального розрахункового (прогнозованого) навантаження з урахуванням існуючої дозволеної (приєднаної) потужності, кВт. І категорія надійності електропостачання: `,
+        type: `justSublegend`
       },
       {
-        name: 'cellPdf6',
-        sublegend: 'Величина максимального розрахункового (прогнозованого) навантаження з урахуванням існуючої дозволеної (приєднаної) потужності, кВт. І категорія надійності електропостачання: ',
-        type: 'inputAndSelect',
-        placeholder: "Категорія",
-        subplaceholder: "Значення", //
+        name: `cellPdf61`,
+        type: `justInput`,
+        placeholder: `Категорія I`
+      },
+      {
+        name: `cellPdf62`,
+        type: `justInput`,
+        placeholder: `Категорія II`
+      },
+      {
+        name: `cellPdf63`,
+        type: `justInput`,
+        placeholder: `Категорія III`
+      },
+
+      {
+        name: `cellPdf7`,
+        type: `input`,
+        sublegend: `Ступінь напруги в точці приєднання, кВ:`
+      },
+      {
+        name: `cellPdf8`,
+        sublegend: `Графік уведення потужностей за роками`,
+        type: `justSublegend`
+      },
+      {
+        name: `sublegendCellPdf81`,
+        sublegend: `Перша дата та навантаження`,
+        type: `justSublegendCenter`
+      },
+      {
+        name: `cellPdf811`,
+        type: `justInput`,
+        placeholder: `Рік уведення потужності:`
+      },
+      {
+        name: `cellPdf812`,
+        type: `justInput`,
+        placeholder: `Величина максимального розрахункового навантаження, кВт`
+      },
+      {
+        name: `cellPdf813`,
+        type: `justInput`,
+        placeholder: `Категорія I`
+      },
+      {
+        name: `cellPdf814`,
+        type: `justInput`,
+        placeholder: `Категорія II`
+      },
+      {
+        name: `cellPdf815`,
+        type: `justInput`,
+        placeholder: `Категорія III`
+      },      
+      {
+        name: `sublegendCellPdf82`,
+        sublegend: `Друга дата та навантаження`,
+        type: `justSublegendCenter`
+      },
+      
+      {
+        name: `cellPdf821`,
+        type: `justInput`,
+        placeholder: `Рік уведення потужності:`
+      },
+      {
+        name: `cellPdf822`,
+        type: `justInput`,
+        placeholder: `Величина максимального розрахункового навантаження, кВт`
+      },
+      {
+        name: `cellPdf823`,
+        type: `justInput`,
+        placeholder: `Категорія I`
+      },
+      {
+        name: `cellPdf824`,
+        type: `justInput`,
+        placeholder: `Категорія II`
+      },
+      {
+        name: `cellPdf825`,
+        type: `justInput`,
+        placeholder: `Категорія III`
+      }, 
+      {
+        name: `sublegendCellPdf83`,
+        sublegend: `Третя дата та навантаження`,
+        type: `justSublegendCenter`
+      },
+      
+      {
+        name: `cellPdf831`,
+        type: `justInput`,
+        placeholder: `Рік уведення потужності:`
+      },
+      {
+        name: `cellPdf832`,
+        type: `justInput`,
+        placeholder: `Величина максимального розрахункового навантаження, кВт`
+      },
+      {
+        name: `cellPdf833`,
+        type: `justInput`,
+        placeholder: `Категорія I`
+      },
+      {
+        name: `cellPdf834`,
+        type: `justInput`,
+        placeholder: `Категорія II`
+      },
+      {
+        name: `cellPdf835`,
+        type: `justInput`,
+        placeholder: `Категорія III`
+      }, 
+
+
+
+      
+      // {
+      //   name: `cellPdf10`,
+      //   sublegend: `Категорія надійності електропостачання: `,
+      //   type: `inputAndSelect`,
+      //   placeholder: `Категорія`,
+      //   subplaceholder: `Значення`, //
+      //   options: [
+      //     {
+      //       "id": 0,
+      //       "label": `I`
+      //     },
+      //     {
+      //       "id": 1,
+      //       "label": `II`
+      //     },
+      //     {
+      //       "id": 2,
+      //       "label": `III`
+      //     }
+      //   ]
+      // },
+      {
+        name: `cellPdf11`,
+        type: `input`,
+        sublegend: `Прогнозована дата введення об'єкта замовника в експлуатацію:`
+      },
+      {
+        name: `cellPdf12`,
+        type: `input`,
+        sublegend: `Режим роботи електроустановок замовника:`
+      },
+      {
+        name: `cellPdf13`,
+        type: `input`,
+        sublegend: `Відомості щодо встановленої потужності електроопалювальних та електронагрівальних установок, кухонних електроплит тощо:`
+      },
+      {
+        name: `cellPdf14`,
+        type: `input`,
+        sublegend: `Відомості щодо встановленої потужності генеруючих установок приватних домогосподарств (тип/потужність):`
+      },
+      {
+        name: `cellPdf15`,
+        type: `select`,
+        sublegend: `Відомості щодо встановлення точки приєднання (межі балансової належності електроустановок замовника та ОСР) на території земельної ділянки замовника:`,
+        placeholder: `ЗАПЕРЕЧУЮ/НЕ ЗАПЕРЕЧУЮ`,
+        options: [
+          {
+            "id": `ЗАПЕРЕЧУЮ`,
+            "label": `ЗАПЕРЕЧУЮ`
+          },
+          {
+            "id": `НЕ ЗАПЕРЕЧУЮ`,
+            "label": `НЕ ЗАПЕРЕЧУЮ`
+          }
+        ]
+      },
+      {
+        name: `cellPdf16`,
+        type: `select`,
+        sublegend: `Інформація про бажання замовника здійснювати проєктування лінійної частини приєднання (самостійно/Оператором системи розподілу (послуга «під ключ»)):`,
+        placeholder: `Самостійно/Послуга «під ключ»`,
+        options: [
+          {
+            "id": `Самостійно`,
+            "label": `Самостійно`
+          },
+          {
+            "id": `Послуга «під ключ»`,
+            "label": `Послуга «під ключ»`
+          }
+        ]
+      },
+      {
+        name: `cellPdf17`,
+        type: `input`,
+        sublegend: `Необхідність приєднання будівельних струмоприймачів (кВт/Ні).`
+      },
+      {
+        name: `cellPdf18`,
+        type: `select`,
+        sublegend: `Живлення будівельних струмоприймачів передбачити від електроустановок зовнішнього електрозабезпечення об'єкта забудови після реалізації проєкту зовнішнього електропостачання об'єкта забудови.`,
+        placeholder: `ТАК/НІ`,
+        options: [
+          {
+            "id": `ТАК`,
+            "label": `ТАК`
+          },
+          {
+            "id": `НІ`,
+            "label": `НІ`
+          }
+        ]
+      },
+      {
+        name: `cellPdf19`,
+        sublegend: `Про результати розгляду цієї заяви прошу інформувати мене (оберіть один із запропонованих варіантів)`,
+        type: `inputAndSelect`,
+        placeholder: `Тип інформування`,
+        subplaceholder: `Значення`,
         options: [
           {
             "id": 0,
-            "label": "I"
+            "label": `За місцем подання заяви`
           },
           {
             "id": 1,
-            "label": "II"
+            "label": `Електронною поштою`
           },
           {
             "id": 2,
-            "label": "III"
-          }
-        ]
-      },
-      {
-        name: 'cellPdf7',
-        type: 'input',
-        sublegend: 'Ступінь напруги в точці приєднання, кВ:'
-      },
-      {
-        name: 'cellPdf8',
-        type: 'input',
-        sublegend: 'Рік уведення потужності (Лише для юридичних осіб та фізичних осіб-підприємців):'
-      },
-      {
-        name: 'cellPdf10',
-        sublegend: 'Категорія надійності електропостачання (Лише для юридичних осіб та фізичних осіб-підприємців): ',
-        type: 'inputAndSelect',
-        placeholder: "Категорія",
-        subplaceholder: "Значення", //
-        options: [
-          {
-            "id": 0,
-            "label": "I"
-          },
-          {
-            "id": 1,
-            "label": "II"
-          },
-          {
-            "id": 2,
-            "label": "III"
-          }
-        ]
-      },
-      {
-        name: 'cellPdf11',
-        type: 'input',
-        sublegend: "Прогнозована дата введення об'єкта замовника в експлуатацію:"
-      },
-      {
-        name: 'cellPdf12',
-        type: 'input',
-        sublegend: 'Режим роботи електроустановок замовника:'
-      },
-      {
-        name: 'cellPdf13',
-        type: 'input',
-        sublegend: 'Відомості щодо встановленої потужності електроопалювальних та електронагрівальних установок, кухонних електроплит тощо:'
-      },
-      {
-        name: 'cellPdf14',
-        type: 'input',
-        sublegend: 'Відомості щодо встановленої потужності генеруючих установок приватних домогосподарств (тип/потужність):'
-      },
-      {
-        name: 'cellPdf15',
-        type: 'select',
-        sublegend: 'Відомості щодо встановлення точки приєднання (межі балансової належності електроустановок замовника та ОСР) на території земельної ділянки замовника:',
-        placeholder: "ЗАПЕРЕЧУЮ/НЕ ЗАПЕРЕЧУЮ",
-        options: [
-          {
-            "id": "ЗАПЕРЕЧУЮ",
-            "label": "ЗАПЕРЕЧУЮ"
-          },
-          {
-            "id": "НЕ ЗАПЕРЕЧУЮ",
-            "label": "НЕ ЗАПЕРЕЧУЮ"
-          }
-        ]
-      },
-      {
-        name: 'cellPdf16',
-        type: 'select',
-        sublegend: 'Інформація про бажання замовника здійснювати проєктування лінійної частини приєднання (самостійно/Оператором системи розподілу (послуга «під ключ»)):',
-        placeholder: "Самостійно/Послуга «під ключ»",
-        options: [
-          {
-            "id": "Самостійно",
-            "label": "Самостійно"
-          },
-          {
-            "id": "Послуга «під ключ»",
-            "label": "Послуга «під ключ»"
-          }
-        ]
-      },
-      {
-        name: 'cellPdf17',
-        type: 'input',
-        sublegend: 'Необхідність приєднання будівельних струмоприймачів (кВт/Ні).'
-      },
-      {
-        name: 'cellPdf18',
-        type: 'select',
-        sublegend: "Живлення будівельних струмоприймачів передбачити від електроустановок зовнішнього електрозабезпечення об'єкта забудови після реалізації проєкту зовнішнього електропостачання об'єкта забудови.",
-        placeholder: "ТАК/НІ",
-        options: [
-          {
-            "id": "ТАК",
-            "label": "ТАК"
-          },
-          {
-            "id": "НІ",
-            "label": "НІ"
-          }
-        ]
-      },
-      {
-        name: 'cellPdf19',
-        sublegend: "Про результати розгляду цієї заяви прошу інформувати мене (оберіть один із запропонованих варіантів)",
-        type: 'inputAndSelect',
-        placeholder: "Тип інформування",
-        subplaceholder: "Значення",
-        options: [
-          {
-            "id": 0,
-            "label": "За місцем подання заяви"
-          },
-          {
-            "id": 1,
-            "label": "Електронною поштою"
-          },
-          {
-            "id": 2,
-            "label": "Факсом"
+            "label": `Факсом`
           },
           {
             "id": 3,
-            "label": "Поштою"
+            "label": `Поштою`
           },
           {
             "id": 4,
-            "label": "Телефоном"
+            "label": `Телефоном`
           },
           {
             "id": 5,
-            "label": "Інше"
+            "label": `Інше`
           }
         ]
       },
       {
-        name: 'cellPdf20',
-        type: 'select',
-        sublegend: "Необхідність відкриття особистого кабінету замовника на вебсайті ОСР",
-        placeholder: "ТАК/НІ",
+        name: `cellPdf20`,
+        type: `select`,
+        sublegend: `Необхідність відкриття особистого кабінету замовника на вебсайті ОСР`,
+        placeholder: `ТАК/НІ`,
         options: [
           {
-            "id": "ТАК",
-            "label": "ТАК"
+            "id": `ТАК`,
+            "label": `ТАК`
           },
           {
-            "id": "НІ",
-            "label": "НІ"
+            "id": `НІ`,
+            "label": `НІ`
           }
         ]
       },
       {
-        name: 'cellPdf21',
-        sublegend: "Адреса для листування:",
-        type: 'input',
+        name: `cellPdf21`,
+        sublegend: `Адреса для листування:`,
+        type: `input`,
       },
       {
-        name: 'cellPdf22',
-        sublegend: "Інше",
-        type: 'input',
+        name: `cellPdf22`,
+        sublegend: `Інше`,
+        type: `input`,
       },
       {
-        name: 'cellPdf23',
-        sublegend: 'Відомості щодо необхідності встановлення багатофункціонального приладу обліку електричної енергії (ТАК/НІ) та відомості щодо вибору постачальника послуги комерційного обліку (ОСР/інший ППККО):',
-        type: 'input',
+        name: `cellPdf23`,
+        sublegend: `Відомості щодо необхідності встановлення багатофункціонального приладу обліку електричної енергії (ТАК/НІ) та відомості щодо вибору постачальника послуги комерційного обліку (ОСР/інший ППККО):`,
+        type: `input`,
       },
       {
-        name: 'cellPdf26',
-        type: 'input',
-        sublegend: 'ПІБ (заявника)'
+        name: `cellPdf26`,
+        type: `input`,
+        sublegend: `ПІБ (заявника)`
       }
     ]
   },
@@ -269,52 +387,52 @@ export const sectionRequest = [
 // sectionContacts
 export const sectionContacts = [
   {
-    legend: 'Контактні дані',
+    legend: `Контактні дані`,
     fields: [
       {
-        name: 'passwordCustomer',
-        type: 'password',
-        placeholder: 'Пароль для безпеки вашої інформації'
+        name: `passwordCustomer`,
+        type: `password`,
+        placeholder: `Пароль для безпеки вашої інформації`
       },
       {
-        name: 'edrpouIpn',
-        placeholder: 'ЄДРПОУ / РНОКПП(ІПН)'
+        name: `edrpouIpn`,
+        placeholder: `ЄДРПОУ / РНОКПП(ІПН)`
       },
       {
-        name: 'namePib',
-        placeholder: 'Найменування юридичної особи / ПІБ фізичної особи'
+        name: `namePib`,
+        placeholder: `Найменування юридичної особи / ПІБ фізичної особи`
       },
       {
-        name: 'addressUr',
-        placeholder: 'Юридична адреса / адреса реєстрації для фізичної особи'
+        name: `addressUr`,
+        placeholder: `Юридична адреса / адреса реєстрації для фізичної особи`
       },
       {
-        name: 'addressPost',
-        placeholder: 'Поштова адреса / адреса для листування'
+        name: `addressPost`,
+        placeholder: `Поштова адреса / адреса для листування`
       },
       {
-        name: 'email',
-        type: 'email',
-        placeholder: 'E-mail'
+        name: `email`,
+        type: `email`,
+        placeholder: `E-mail`
       },
       {
-        name: 'phone',
-        placeholder: 'Телефон'
+        name: `phone`,
+        placeholder: `Телефон`
       }
     ]
   }
 ];
 export const sectionAddress = [
   {
-    legend: 'Адреса об’єкта',
+    legend: `Адреса об'єкта`,
     fields: [
       {
-        name: 'branchId',
-        placeholder: 'Місто / район',
-        type: 'select',
+        name: `branchId`,
+        placeholder: `Місто / район`,
+        type: `select`,
         options: []
       },
-      { name: 'address', placeholder: 'Адреса об’єкта', type: 'input' },
+      { name: `address`, placeholder: `Адреса об'єкта`, type: `input` },
     ]
   }
 ];
@@ -322,60 +440,60 @@ export const sectionAddress = [
 
 export const typeConnectionChecklist = [
   {
-    id: 'new',
-    description: 'Приєднуються до електричних мереж уперше'
+    id: `new`,
+    description: `Приєднуються до електричних мереж уперше`
   },
   {
-    id: 'change',
-    description: 'Які змінюють технічні параметри'
+    id: `change`,
+    description: `Які змінюють технічні параметри`
   },
   {
-    id: 'power',
-    description: 'Які приєднуються в рахунок потужності'
+    id: `power`,
+    description: `Які приєднуються в рахунок потужності`
   }
 ];
 
 export const askFromChecklist = [
   {
-    id: 'phis_o_',
-    description: 'Для фізичних осіб'
+    id: `phis_o_`,
+    description: `Для фізичних осіб`
   },
   {
-    id: 'fop_',
-    description: 'Для ФОП'
+    id: `fop_`,
+    description: `Для ФОП`
   },
   {
-    id: 'ur_',
-    description: 'Для юридичних осіб'
+    id: `ur_`,
+    description: `Для юридичних осіб`
   }
 ];
 
 export const specialRightsChecklist = [
   {
-    id: 'self_',
-    value: 'self_',
-    description: 'Власник'
+    id: `self_`,
+    value: `self_`,
+    description: `Власник`
   },
   {
-    id: 'presenter_',
-    value: 'presenter_',
-    description: 'Довірена особа'
+    id: `presenter_`,
+    value: `presenter_`,
+    description: `Довірена особа`
   }
 ];
 
 export const radioApplicationList = [
   {
-    title: "Для об’єктів:",
+    title: `Для об'єктів:`,
     chooseList: typeConnectionChecklist,
     step: StepRadioEnum.typeConnection
   },
   {
-    title: "Звернення від:",
+    title: `Звернення від:`,
     chooseList: askFromChecklist,
     step: StepRadioEnum.askFrom
   },
   {
-    title: "Заяву подає:",
+    title: `Заяву подає:`,
     chooseList: specialRightsChecklist,
     step: StepRadioEnum.specialRights
   }
@@ -493,33 +611,33 @@ export const ignoredDocumentsForDownloadId = [
 ];
 
 export const customerTypeToConnect = [
-  { id: 'self_ur_new', numberList: [0, 1, 2, 7, 8, 9, 10, 11, 4, 5, 22] },
-  //{ id: 'self_ur_new', numberList: [0, 22] },
-  { id: 'presenter_ur_new', numberList: [0, 1, 2, 7, 8, 9, 10, 11, 4, 5, 13, 22] },
-  { id: 'self_phis_o_new', numberList: [0, 1, 2, 3, 4, 5, 6, 22] },
-  { id: 'presenter_phis_o_new', numberList: [0, 1, 2, 3, 4, 5, 6, 13, 22] },
-  { id: 'self_fop_new', numberList: [0, 1, 2, 3, 7, 10, 4, 5, 22] },
-  { id: 'presenter_fop_new', numberList: [0, 1, 2, 3, 7, 10, 4, 5, 13, 22] },
+  { id: `self_ur_new`, numberList: [0, 1, 2, 7, 8, 9, 10, 11, 4, 5, 22] },
+  //{ id: `self_ur_new`, numberList: [0, 22] },
+  { id: `presenter_ur_new`, numberList: [0, 1, 2, 7, 8, 9, 10, 11, 4, 5, 13, 22] },
+  { id: `self_phis_o_new`, numberList: [0, 1, 2, 3, 4, 5, 6, 22] },
+  { id: `presenter_phis_o_new`, numberList: [0, 1, 2, 3, 4, 5, 6, 13, 22] },
+  { id: `self_fop_new`, numberList: [0, 1, 2, 3, 7, 10, 4, 5, 22] },
+  { id: `presenter_fop_new`, numberList: [0, 1, 2, 3, 7, 10, 4, 5, 13, 22] },
 
-  { id: 'self_ur_change', numberList: [0, 1, 2, 7, 8, 9, 10, 11, 4, 5, 22] },
-  { id: 'presenter_ur_change', numberList: [0, 1, 2, 7, 8, 9, 10, 11, 4, 5, 13, 22] },
-  { id: 'self_phis_o_change', numberList: [0, 1, 2, 3, 4, 5, 6, 22] },
-  { id: 'presenter_phis_o_change', numberList: [0, 1, 2, 3, 4, 5, 6, 13, 22] },
-  { id: 'self_fop_change', numberList: [0, 1, 2, 3, 7, 10, 4, 5, 22] },
-  { id: 'presenter_fop_change', numberList: [0, 1, 2, 3, 7, 10, 4, 5, 13, 22] },
+  { id: `self_ur_change`, numberList: [0, 1, 2, 7, 8, 9, 10, 11, 4, 5, 22] },
+  { id: `presenter_ur_change`, numberList: [0, 1, 2, 7, 8, 9, 10, 11, 4, 5, 13, 22] },
+  { id: `self_phis_o_change`, numberList: [0, 1, 2, 3, 4, 5, 6, 22] },
+  { id: `presenter_phis_o_change`, numberList: [0, 1, 2, 3, 4, 5, 6, 13, 22] },
+  { id: `self_fop_change`, numberList: [0, 1, 2, 3, 7, 10, 4, 5, 22] },
+  { id: `presenter_fop_change`, numberList: [0, 1, 2, 3, 7, 10, 4, 5, 13, 22] },
 
 
-  { id: 'self_ur_power', numberList: [0, 1, 23, 7, 8, 9, 10, 11, 4, 5, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
-  { id: 'presenter_ur_power', numberList: [0, 1, 23, 7, 8, 9, 10, 11, 4, 5, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
-  { id: 'self_phis_o_power', numberList: [0, 1, 23, 3, 4, 5, 6, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
-  { id: 'presenter_phis_o_power', numberList: [0, 1, 23, 3, 4, 5, 6, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
-  { id: 'self_fop_power', numberList: [0, 1, 23, 3, 7, 10, 4, 5, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
-  { id: 'presenter_fop_power', numberList: [0, 1, 23, 3, 7, 10, 4, 5, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
+  { id: `self_ur_power`, numberList: [0, 1, 23, 7, 8, 9, 10, 11, 4, 5, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
+  { id: `presenter_ur_power`, numberList: [0, 1, 23, 7, 8, 9, 10, 11, 4, 5, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
+  { id: `self_phis_o_power`, numberList: [0, 1, 23, 3, 4, 5, 6, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
+  { id: `presenter_phis_o_power`, numberList: [0, 1, 23, 3, 4, 5, 6, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
+  { id: `self_fop_power`, numberList: [0, 1, 23, 3, 7, 10, 4, 5, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
+  { id: `presenter_fop_power`, numberList: [0, 1, 23, 3, 7, 10, 4, 5, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22] },
 
 ];
 
 export const refDocument =
-  "https://zakon.rada.gov.ua/laws/file/text/76/f490366n267.doc";
+  `https://zakon.rada.gov.ua/laws/file/text/76/f490366n267.doc`;
 
 export interface IPetInit {
   "EDRPOU"?: string;
@@ -623,44 +741,114 @@ export const listPdfCoords = {
     x: 240,
     y: 203
   }],
-  cellPdf6: [
-    {
-      x: 474, // 474 || 552 || 628
-      y: 220
-    },
-    {
-      x: 552, // 474 || 552 || 628
-      y: 220
-    },
-    {
-      x: 628, // 474 || 552 || 628
-      y: 220
-    }
-  ],
+  // cellPdf6: [
+  //   {
+  //     x: 474, // 474 || 552 || 628
+  //     y: 220
+  //   },
+  //   {
+  //     x: 552, // 474 || 552 || 628
+  //     y: 220
+  //   },
+  //   {
+  //     x: 628, // 474 || 552 || 628
+  //     y: 220
+  //   }
+  // ],
+  cellPdf61: [{
+    x: 474,
+    y: 220
+  }],
+  cellPdf62: [{
+    x: 552,
+    y: 220
+  }],
+  cellPdf63: [{
+    x: 628,
+    y: 220
+  }],
+
   cellPdf7: [{
     x: 705,
     y: 203
   }],
-  cellPdf8: [{
+
+  // cellPdf10: [{
+  //   x: 474, // 474 || 552 || 628
+  //   y: 269
+  // },
+  // {
+  //   x: 552, // 474 || 552 || 628
+  //   y: 269
+  // },
+  // {
+  //   x: 628, // 474 || 552 || 628
+  //   y: 269
+  // }],
+  
+  cellPdf811: [{
     x: 54,
     y: 269 // 269 || 277 || 284
   }],
-  cellPdf9: [{
+  cellPdf812: [{
     x: 240,
     y: 269
   }],
-  cellPdf10: [{
-    x: 474, // 474 || 552 || 628
-    y: 269
-  },
-  {
-    x: 552, // 474 || 552 || 628
-    y: 269
-  },
-  {
-    x: 628, // 474 || 552 || 628
+  cellPdf813: [{
+    x: 474, 
     y: 269
   }],
+  cellPdf814: [{
+    x: 552, 
+    y: 269
+  }],
+  cellPdf815: [{
+    x: 628,
+    y: 269
+  }],
+
+  cellPdf821: [{
+    x: 54,
+    y: 277 // 269 || 277 || 284
+  }],
+  cellPdf822: [{
+    x: 240,
+    y: 277
+  }],
+  cellPdf823: [{
+    x: 474, 
+    y: 277
+  }],
+  cellPdf824: [{
+    x: 552, 
+    y: 277
+  }],
+  cellPdf825: [{
+    x: 628,
+    y: 277
+  }],
+    
+  cellPdf831: [{
+    x: 54,
+    y: 284 // 269 || 277 || 284
+  }],
+  cellPdf832: [{
+    x: 240,
+    y: 284
+  }],
+  cellPdf833: [{
+    x: 474, 
+    y: 284
+  }],
+  cellPdf834: [{
+    x: 552, 
+    y: 284
+  }],
+  cellPdf835: [{
+    x: 628,
+    y: 284
+  }],
+
   cellPdf11: [{
     x: 705,
     y: 262
@@ -694,30 +882,30 @@ export const listPdfCoords = {
     y: 360
   }],
   cellPdf19: [
-  {
-    x: 316,
-    y: 372
-  },
-  {
-    x: 368,
-    y: 378
-  },
-  {
-    x: 351,
-    y: 384
-  },
-  {
-    x: 360,
-    y: 389.5
-  },
-  {
-    x: 367,
-    y: 395
-  },
-  {
-    x: 296,
-    y: 401
-  }],
+    {
+      x: 316,
+      y: 372
+    },
+    {
+      x: 368,
+      y: 378
+    },
+    {
+      x: 351,
+      y: 384
+    },
+    {
+      x: 360,
+      y: 389.5
+    },
+    {
+      x: 367,
+      y: 395
+    },
+    {
+      x: 296,
+      y: 401
+    }],
   cellPdf20: [{
     x: 412,
     y: 407
@@ -775,5 +963,5 @@ export interface IGenerationPDFCells {
   cellPdf24: string;
   cellPdf25: string;
   cellPdf26: string;
-  
+
 }
