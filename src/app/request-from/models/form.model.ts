@@ -928,11 +928,11 @@ export const listPdfCoords = {
   }],
   cellPdf25: [{
     x: 75,
-    y: 536.5
+    y: 523
   }],
   cellPdf26: [{
     x: 608,
-    y: 532
+    y: 520
   }]
 }
 
