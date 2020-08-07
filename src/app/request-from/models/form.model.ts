@@ -378,6 +378,22 @@ export const sectionRequest = [
       },
       {
         name: `cellPdf26`,
+        type: `select`,
+        sublegend: `Відомості щодо наявності або відсутності намірів брати участь в аукціоні з розподілу річної квоти підтримки (ТАК/НІ)`,
+        placeholder: `ТАК/НІ`,
+        options: [
+          {
+            "id": `ТАК`,
+            "label": `ТАК`
+          },
+          {
+            "id": `НІ`,
+            "label": `НІ`
+          }
+        ]
+      },
+      {
+        name: `cellPdf27`,
         type: `input`,
         sublegend: `ПІБ (заявника)`
       }
@@ -931,6 +947,10 @@ export const listPdfCoords = {
     y: 523
   }],
   cellPdf26: [{
+    x: 552,
+    y: 396
+  }],
+  cellPdf27: [{
     x: 608,
     y: 520
   }]
@@ -963,5 +983,6 @@ export interface IGenerationPDFCells {
   cellPdf24: string;
   cellPdf25: string;
   cellPdf26: string;
+  cellPdf27: string;
 
 }

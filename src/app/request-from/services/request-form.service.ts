@@ -176,6 +176,8 @@ export class RequestFormService {
             disabled: false // off/on
           },
           Validators.compose([
+            Validators.minLength(1), // мин длина строки
+            Validators.maxLength(50) // max length
           ]) // Validations
         ),
         cellPdf4: new FormControl(
@@ -184,6 +186,8 @@ export class RequestFormService {
             disabled: false // off/on
           },
           Validators.compose([
+            Validators.minLength(1), // мин длина строки
+            Validators.minLength(50), // max length
           ]) // Validations
         ),
         cellPdf5: new FormControl(
@@ -192,6 +196,8 @@ export class RequestFormService {
             disabled: false // off/on
           },
           Validators.compose([
+            Validators.minLength(1), // мин длина строки
+            Validators.minLength(50), // max length
           ]) // Validations
         ),
         cellPdf61: new FormControl(
@@ -200,6 +206,8 @@ export class RequestFormService {
             disabled: false // off/on
           },
           Validators.compose([
+            Validators.minLength(1), // мин длина строки
+            Validators.minLength(50), // max length
           ]) // Validations
         ),
         cellPdf62: new FormControl(
@@ -208,6 +216,8 @@ export class RequestFormService {
             disabled: false // off/on
           },
           Validators.compose([
+            Validators.minLength(1), // мин длина строки
+            Validators.minLength(50), // max length
           ]) // Validations
         ),
         cellPdf63: new FormControl(
@@ -216,6 +226,8 @@ export class RequestFormService {
             disabled: false // off/on
           },
           Validators.compose([
+            Validators.minLength(1), // мин длина строки
+            Validators.minLength(50), // max length
           ]) // Validations
         ),
         cellPdf7: new FormControl(
@@ -224,6 +236,8 @@ export class RequestFormService {
             disabled: false // off/on
           },
           Validators.compose([
+            Validators.minLength(1), // мин длина строки
+            Validators.minLength(50), // max length
           ]) // Validations
         ),
         cellPdf811: new FormControl(
@@ -232,6 +246,8 @@ export class RequestFormService {
             disabled: false // off/on
           },
           Validators.compose([
+            Validators.minLength(1), // мин длина строки
+            Validators.minLength(50), // max length
           ]) // Validations
         ),
         cellPdf812: new FormControl(
@@ -240,6 +256,8 @@ export class RequestFormService {
             disabled: false // off/on
           },
           Validators.compose([
+            Validators.minLength(1), // мин длина строки
+            Validators.minLength(50), // max length
           ]) // Validations
         ),
         cellPdf813: new FormControl(
@@ -248,6 +266,8 @@ export class RequestFormService {
             disabled: false // off/on
           },
           Validators.compose([
+            Validators.minLength(1), // мин длина строки
+            Validators.minLength(50), // max length
           ]) // Validations
         ),
         cellPdf814: new FormControl(
@@ -256,6 +276,8 @@ export class RequestFormService {
             disabled: false // off/on
           },
           Validators.compose([
+            Validators.minLength(1), // мин длина строки
+            Validators.minLength(50), // max length
           ]) // Validations
         ),
         cellPdf815: new FormControl(
@@ -264,6 +286,8 @@ export class RequestFormService {
             disabled: false // off/on
           },
           Validators.compose([
+            Validators.minLength(1), // мин длина строки
+            Validators.minLength(50), // max length
           ]) // Validations
         ),
         cellPdf821: new FormControl(
@@ -272,6 +296,8 @@ export class RequestFormService {
             disabled: false // off/on
           },
           Validators.compose([
+            Validators.minLength(1), // мин длина строки
+            Validators.minLength(50), // max length
           ]) // Validations
         ),
         cellPdf822: new FormControl(
@@ -280,6 +306,8 @@ export class RequestFormService {
             disabled: false // off/on
           },
           Validators.compose([
+            Validators.minLength(1), // мин длина строки
+            Validators.minLength(50), // max length
           ]) // Validations
         ),
         cellPdf823: new FormControl(
@@ -288,6 +316,8 @@ export class RequestFormService {
             disabled: false // off/on
           },
           Validators.compose([
+            Validators.minLength(1), // мин длина строки
+            Validators.minLength(50), // max length
           ]) // Validations
         ),
         cellPdf824: new FormControl(
@@ -296,6 +326,8 @@ export class RequestFormService {
             disabled: false // off/on
           },
           Validators.compose([
+            Validators.minLength(1), // мин длина строки
+            Validators.minLength(50), // max length
           ]) // Validations
         ),
         cellPdf825: new FormControl(
@@ -304,6 +336,8 @@ export class RequestFormService {
             disabled: false // off/on
           },
           Validators.compose([
+            Validators.minLength(1), // мин длина строки
+            Validators.minLength(50), // max length
           ]) // Validations
         ),
         cellPdf831: new FormControl(
@@ -312,6 +346,8 @@ export class RequestFormService {
             disabled: false // off/on
           },
           Validators.compose([
+            Validators.minLength(1), // мин длина строки
+            Validators.minLength(50), // max length
           ]) // Validations
         ),
         cellPdf832: new FormControl(
@@ -320,6 +356,8 @@ export class RequestFormService {
             disabled: false // off/on
           },
           Validators.compose([
+            Validators.minLength(1), // мин длина строки
+            Validators.minLength(50), // max length
           ]) // Validations
         ),
         cellPdf833: new FormControl(
@@ -328,6 +366,8 @@ export class RequestFormService {
             disabled: false // off/on
           },
           Validators.compose([
+            Validators.minLength(1), // мин длина строки
+            Validators.minLength(50), // max length
           ]) // Validations
         ),
         cellPdf834: new FormControl(
@@ -336,6 +376,8 @@ export class RequestFormService {
             disabled: false // off/on
           },
           Validators.compose([
+            Validators.minLength(1), // мин длина строки
+            Validators.minLength(50), // max length
           ]) // Validations
         ),
         cellPdf835: new FormControl(
@@ -344,6 +386,8 @@ export class RequestFormService {
             disabled: false // off/on
           },
           Validators.compose([
+            Validators.minLength(1), // мин длина строки
+            Validators.minLength(50), // max length
           ]) // Validations
         ),
         cellPdf11: new FormControl(
@@ -352,6 +396,8 @@ export class RequestFormService {
             disabled: false // off/on
           },
           Validators.compose([
+            Validators.minLength(1), // мин длина строки
+            Validators.minLength(50), // max length
           ]) // Validations
         ),
         cellPdf12: new FormControl(
@@ -360,6 +406,8 @@ export class RequestFormService {
             disabled: false // off/on
           },
           Validators.compose([
+            Validators.minLength(1), // мин длина строки
+            Validators.minLength(50), // max length
           ]) // Validations
         ),
         cellPdf13: new FormControl(
@@ -368,6 +416,8 @@ export class RequestFormService {
             disabled: false // off/on
           },
           Validators.compose([
+            Validators.minLength(1), // мин длина строки
+            Validators.minLength(50), // max length
           ]) // Validations
         ),
         cellPdf14: new FormControl(
@@ -376,6 +426,8 @@ export class RequestFormService {
             disabled: false // off/on
           },
           Validators.compose([
+            Validators.minLength(1), // мин длина строки
+            Validators.minLength(50), // max length
           ]) // Validations
         ),
         cellPdf15: new FormControl(
@@ -392,6 +444,8 @@ export class RequestFormService {
             disabled: false // off/on
           },
           Validators.compose([
+            Validators.minLength(1), // мин длина строки
+            Validators.minLength(50), // max length
           ]) // Validations
         ),
         cellPdf17: new FormControl(
@@ -400,6 +454,8 @@ export class RequestFormService {
             disabled: false // off/on
           },
           Validators.compose([
+            Validators.minLength(1), // мин длина строки
+            Validators.minLength(50), // max length
           ]) // Validations
         ),
         cellPdf18: new FormControl(
@@ -416,6 +472,8 @@ export class RequestFormService {
             disabled: false // off/on
           },
           Validators.compose([
+            Validators.minLength(1), // мин длина строки
+            Validators.minLength(50), // max length
           ]) // Validations
         ),
         cellPdf20: new FormControl(
@@ -431,6 +489,8 @@ export class RequestFormService {
             disabled: false // off/on
           },
           Validators.compose([
+            Validators.minLength(1), // мин длина строки
+            Validators.minLength(50), // max length
           ]) // Validations
         ),cellPdf22: new FormControl(
           {
@@ -438,6 +498,8 @@ export class RequestFormService {
             disabled: false // off/on
           },
           Validators.compose([
+            Validators.minLength(1), // мин длина строки
+            Validators.minLength(50), // max length
           ]) // Validations
         ),
         cellPdf23: new FormControl(
@@ -446,6 +508,8 @@ export class RequestFormService {
             disabled: false // off/on
           },
           Validators.compose([
+            Validators.minLength(1), // мин длина строки
+            Validators.minLength(50), // max length
           ]) // Validations
         ),
         cellPdf24: new FormControl(
@@ -462,6 +526,8 @@ export class RequestFormService {
             disabled: false // off/on
           },
           Validators.compose([
+            Validators.minLength(1), // мин длина строки
+            Validators.minLength(50), // max length
           ]) // Validations
         )
       }),

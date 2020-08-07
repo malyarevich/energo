@@ -4,7 +4,6 @@
   </h1>
 
   <mat-vertical-stepper *ngFor="let section of sectionRequest; let i = index" linear="true" #stepper>
-
     <!-- Contact Information -->
     <mat-step label="Контактні дані" editable="true" [stepControl]="contacts">
       <ng-container *ngFor="let section of sectionContacts; let i = index">
