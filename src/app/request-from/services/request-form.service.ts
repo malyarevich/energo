@@ -529,6 +529,16 @@ export class RequestFormService {
             Validators.minLength(1), // мин длина строки
             Validators.maxLength(50), // max length
           ]) // Validations
+        ),
+        cellPdf27: new FormControl(
+          {
+            value: "", // state
+            disabled: false // off/on
+          },
+          Validators.compose([
+            Validators.minLength(1), // мин длина строки
+            Validators.maxLength(50), // max length
+          ]) // Validations
         )
       }),
 
@@ -604,7 +614,8 @@ export class RequestFormService {
           },
           Validators.compose([
             Validators.required, // обязательное поле
-            Validators.maxLength(50) // max length
+            Validators.minLength(8), // max length
+            Validators.maxLength(10) // max length
           ]) // Validations
         ),
         namePib: new FormControl(
@@ -651,13 +662,13 @@ export class RequestFormService {
         ),
         phone: new FormControl(
           {
-            value: '', // state
+            value: '+38', // state
             disabled: false // off/on
           },
           Validators.compose([
             Validators.required, // обязательное поле
-            Validators.min(3), // мин длина строки
-            Validators.maxLength(15) // max length
+            Validators.minLength(13), // мин длина строки
+            Validators.maxLength(13) // max length
           ]) // Validations
         ),
       }),
