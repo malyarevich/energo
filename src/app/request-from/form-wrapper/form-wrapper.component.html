@@ -1,11 +1,20 @@
 <div class="head_banner">
+  <ng-container *ngIf="action === 'request'">
+    
+  </ng-container>
   <div class="head_banner__dark" style="background-image: url({{backgroundImage}})">
+    <!-- <h1 class="head_banner__title">
+      <a style="color: black;" href="https://www.zoe.com.ua/connection/profile/login">
+        <b>ПЕРЕВІРКА СТАТУСУ ПРИЄДНАННЯ</b>
+      </a>
+    </h1> -->
     <h1 class="head_banner__title" (click)="scrollTo(content)">
       <b>{{pageTitle}}</b>
     </h1>
   </div>
 </div>
-
-<div class="content-area" #content>
-  <app-request-from [title]="pageTitle"></app-request-from>
-</div>
+  <div class="content-area" #content>
+    <!-- <ng-container *ngIf="action === 'request'"> -->
+    <app-request-from [title]="pageTitle"></app-request-from>
+    <!-- </ng-container> -->
+  </div>

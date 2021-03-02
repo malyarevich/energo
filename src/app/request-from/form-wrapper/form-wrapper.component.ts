@@ -9,6 +9,7 @@ export class FormWrapperComponent implements OnInit {
   pageTitle = "ПОДАННЯ ЗАЯВИ НА ПРИЄДНАННЯ В ЕЛЕКТРОННОМУ ВИГЛЯДІ";
   backgroundImage = "assets/image/zoeWriteGirl.jpg";
   @ViewChild("content") content: ElementRef;
+  action:any
 
   constructor() { }
 

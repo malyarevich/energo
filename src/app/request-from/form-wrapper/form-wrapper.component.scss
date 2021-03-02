@@ -12,9 +12,9 @@ body {
 
   &__dark{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: center;
 
     height: 100%;
     width: 100%;
@@ -35,7 +35,7 @@ body {
     background: #fafafa;
     height: 2rem;
     padding: 1rem;
-    margin: 0 auto;
+    margin: 0 1rem;
     
 
     color: #000;
@@ -78,5 +78,5 @@ body {
   -webkit-align-self: auto;
   -ms-flex-item-align: auto;
   align-self: auto;
-  padding: 1rem;
+  // padding: 1rem;
 }

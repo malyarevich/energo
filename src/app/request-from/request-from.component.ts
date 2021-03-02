@@ -24,6 +24,9 @@ import { DatePipe } from '@angular/common';
 })
 export class RequestFromComponent implements OnInit {
 
+  action: any
+  endMessage: any
+
   @Input("title") pageTitle = "Title";
   base64data: string | ArrayBuffer = null;
   pipe = new DatePipe('en-US');

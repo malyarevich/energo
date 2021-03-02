@@ -2,7 +2,6 @@
   <h1 class="request_form__title">
     <b>{{pageTitle}}</b>
   </h1>
-
   <mat-vertical-stepper *ngFor="let section of sectionRequest; let i = index" linear="true" #stepper>
     <!-- Contact Information -->
     <mat-step label="Контактні дані" editable="true" [stepControl]="contacts">
@@ -14,9 +13,7 @@
         </app-form-stepper>
       </ng-container>
       <div>
-        <button mat-raised-button matStepperPrevious type="button">Назад</button>
         <button mat-raised-button matStepperNext type="button" color="warn" style="font-size: 1rem">
-          <!-- <a [href]="refDocument">Завантажити</a> -->
           Далі
         </button>
       </div>
@@ -32,7 +29,7 @@
       </ng-container>
       <div>
         <button mat-raised-button matStepperPrevious type="button">Назад</button>
-        <button mat-raised-button matStepperNext type="button" color="warn" style="font-size: 1rem">
+        <button mat-raised-button matStepperNext type="button" color="warn" style="margin-left: 1rem; font-size: 1rem">
           <!-- <a [href]="refDocument">Завантажити</a> -->
           <a>Далі</a>
         </button>
@@ -47,8 +44,7 @@
 
       <div>
         <button mat-raised-button matStepperPrevious type="button">Назад</button>
-        <button mat-raised-button matStepperNext type="button" color="warn" style="font-size: 1rem">
-          <!-- <a [href]="refDocument">Завантажити</a> -->
+        <button mat-raised-button matStepperNext type="button" color="warn" style="margin-left: 1rem; font-size: 1rem">
           <a>Далі</a>
         </button>
       </div>
@@ -68,13 +64,11 @@
         </app-form-stepper>
       </ng-container>
 
+      <button mat-raised-button matStepperPrevious type="button">Назад</button>
       <!-- <p>Завантажте файл, роздрукуйте та заповніть його.</p>  -->
-      <button mat-raised-button matStepperNext type="button" color="warn" style="font-size: 1rem"
+      <button mat-raised-button matStepperNext type="button" color="warn" style="margin-left: 1rem; font-size: 1rem"
         (click)="generatePdf(getInputs())">
-        <!-- <a [href]="refDocument">Завантажити</a> -->
-        <!-- <a href="https://zakon.rada.gov.ua/laws/file/text/76/f490366n267.doc">Взяти на заповнення</a> Взяти на підпис -->
         Взяти на підпис
-
       </button>
     </mat-step>
 
@@ -98,4 +92,5 @@
       Відправити
     </button>
   </div>
+  <br>
 </form>

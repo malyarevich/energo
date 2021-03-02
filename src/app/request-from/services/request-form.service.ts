@@ -889,9 +889,11 @@ export class RequestFormService {
           item => {
             console.log('success, response by server', item);
             this.isSubmitted = true;
+            alert('Направлено до обробки')
           },
           error => {
             console.error;
+            alert("Немає зв'язку з сервером. Перевірте наявність інтернету і спробуйте ще раз. Якщо помилка повториться ще раз зверніться в службу технічної підтримки")
           }
         );
     }
